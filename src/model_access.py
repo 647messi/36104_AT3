@@ -8,7 +8,11 @@ from __future__ import annotations
 
 import pandas as pd
 
-from src.preprocessing import FIRST_YEAR, LAST_YEAR
+from src.preprocessing import FIRST_YEAR, LAST_YEAR, ROOT
+
+# This analysis is about notable models (Epoch AI's curated sample), so it reads
+# that file explicitly rather than the shared default source.
+NOTABLE_FILE = ROOT / "data/raw/ai_models/notable_ai_models.csv"
 
 # Chart order: Open weights first so it sits on the shared baseline of a
 # stacked bar, and Unreleased last at the top.

@@ -4,7 +4,9 @@ import unittest
 
 import pandas as pd
 
-from src.model_access import NOT_RECORDED, annual_access, classify_access, share_of
+from src.model_access import (
+    NOT_RECORDED, NOTABLE_FILE, annual_access, classify_access, share_of,
+)
 from src.preprocessing import load_models
 
 
@@ -32,18 +34,18 @@ class ClassifyAccessTest(unittest.TestCase):
 class AnnualAccessTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.models, _ = load_models()
+        cls.models, _ = load_models(NOTABLE_FILE)
 
     def test_counts_reconcile_and_shares_sum_to_one(self):
         annual = annual_access(self.models, 2015, 2025)
-        selected = self.models["Year"].between(2015, 2025).sum()
+        selected = self.models["Year"].between(2015, 2025).fillna(False).sum()
         self.assertEqual(int(annual["Count"].sum()), int(selected))
         shares = annual.dropna(subset=["Share"]).groupby("Year")["Share"].sum()
         for year, total in shares.items():
             self.assertAlmostEqual(total, 1.0, places=9, msg=year)
 
     def test_independent_recount_from_raw_csv(self):
-        raw = pd.read_csv("data/raw/ai_models/notable_ai_models.csv", dtype=str,
+        raw = pd.read_csv(NOTABLE_FILE, dtype=str,
                           keep_default_na=False)
         in_2025 = raw[raw["Publication date"].str.startswith("2025")]
         api = int((in_2025["Model accessibility"] == "API access").sum())

@@ -5,18 +5,18 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from src.data_access import load_source
 from src.model_access import (
     ACCESS_TYPES,
     CONTROLLED,
     DEFAULT_START,
     MIN_RECORDED,
     NOT_RECORDED,
+    NOTABLE_FILE,
     add_access,
     annual_access,
     share_of,
 )
-from src.preprocessing import FIRST_YEAR, LAST_YEAR
+from src.preprocessing import FIRST_YEAR, LAST_YEAR, load_models
 
 # Okabe-Ito colours, distinguishable with common colour-vision deficiencies.
 COLOURS = {
@@ -29,6 +29,16 @@ SOURCE_FIELDS = [
     "Source record", "Model", "Organization", "Publication date",
     "Model accessibility", "Access", "Link",
 ]
+
+
+@st.cache_data(show_spinner=False)
+def load_notable(modified_ns: int) -> pd.DataFrame:
+    """Always read the Notable file, whatever the shared default source is.
+
+    The modification time is part of the cache key, so an updated file is reread.
+    """
+    models, _ = load_models(NOTABLE_FILE)
+    return models
 
 
 def pct(value: float | None) -> str:
@@ -150,7 +160,7 @@ def main() -> None:
     )
 
     try:
-        models, _ = load_source()
+        models = load_notable(NOTABLE_FILE.stat().st_mtime_ns)
     except (OSError, ValueError, pd.errors.ParserError) as exc:
         st.warning(f"The model data could not be loaded: {exc}")
         return
