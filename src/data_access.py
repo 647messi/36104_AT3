@@ -14,5 +14,7 @@ def _read_source(source: str, modified_ns: int) -> tuple[pd.DataFrame, dict]:
     return load_models(Path(source))
 
 
-def load_source() -> tuple[pd.DataFrame, dict]:
-    return _read_source(str(DEFAULT_SOURCE), DEFAULT_SOURCE.stat().st_mtime_ns)
+def load_source(source: Path = DEFAULT_SOURCE) -> tuple[pd.DataFrame, dict]:
+    """Default to All; pass NOTABLE_SOURCE for the separate comparison sample."""
+    source = Path(source)
+    return _read_source(str(source), source.stat().st_mtime_ns)

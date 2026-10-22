@@ -1,0 +1,28 @@
+{
+  "source_file": "notable_ai_models.csv",
+  "source_sha256": "3ef26619430a93ee4d126bc46e91699fe6f2b15ea7b8e830f0a565e32caaa224",
+  "raw_rows": 1078,
+  "raw_columns": 47,
+  "earliest_date": "1950-07-02",
+  "latest_date": "2026-09-30",
+  "missing_organization": 18,
+  "missing_categorization": 20,
+  "exact_duplicates": 0,
+  "duplicate_model_date_pairs": 0,
+  "missing_dates": 0,
+  "invalid_dates": 0,
+  "valid_dated_rows": 1078,
+  "excluded_undated_rows": 0,
+  "analysis_years": [
+    2003,
+    2025
+  ],
+  "analysis_models": 911,
+  "analysis_sector_counts": {
+    "Industry": 510,
+    "Academia": 200,
+    "Collaboration": 170,
+    "Other": 25,
+    "Unknown": 6
+  }
+}
