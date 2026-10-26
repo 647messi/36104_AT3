@@ -64,8 +64,9 @@ def main() -> None:
     st.page_link("views/story.py", label="Back to the story", icon=":material/arrow_back:")
     st.title("Are a few organisations producing a growing share of notable AI models?")
     st.markdown(
-        "**Group question:** Is the development of advanced AI becoming increasingly concentrated "
-        "among a few organisations?  \n"
+        "**Group question:** Is AI model development becoming dominated by a few organisations?  \n"
+        "**Persona:** a technology policy analyst assessing who develops AI models and whether "
+        "participation is becoming more concentrated.  \n"
         "**This page asks:** each year, what share of notable AI models involves that year's "
         "top 3 (or top 5) organisations — and is that share rising?"
     )
