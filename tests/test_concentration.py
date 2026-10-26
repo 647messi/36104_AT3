@@ -7,9 +7,9 @@ from pathlib import Path
 import pandas as pd
 
 from src.concentration import (
-    PARENT_MAP, annual_concentration, split_organisations, year_records,
+    NOTABLE_FILE, PARENT_MAP, annual_concentration, split_organisations, year_records,
 )
-from src.preprocessing import DEFAULT_SOURCE, load_models
+from src.preprocessing import load_models
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -61,7 +61,7 @@ class ConcentrationRules(unittest.TestCase):
 class RealData(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.models, _ = load_models()
+        cls.models, _ = load_models(NOTABLE_FILE)
 
     def test_shares_within_bounds_and_reconcile(self):
         for n in (3, 5):
@@ -75,7 +75,7 @@ class RealData(unittest.TestCase):
         year, n = 2025, 3
         top, _ = year_records(self.models, year, n)
         involved = known = 0
-        with open(DEFAULT_SOURCE, encoding="utf-8-sig", newline="") as handle:
+        with open(NOTABLE_FILE, encoding="utf-8-sig", newline="") as handle:
             for record in csv.DictReader(handle):
                 if not record["Publication date"].startswith(str(year)):
                     continue

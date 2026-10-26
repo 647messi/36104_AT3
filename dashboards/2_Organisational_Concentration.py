@@ -5,10 +5,16 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src.concentration import (
-    DEFAULT_START, FIRST_YEAR, LAST_YEAR, TOP_N_OPTIONS,
+    DEFAULT_START, FIRST_YEAR, LAST_YEAR, NOTABLE_FILE, TOP_N_OPTIONS,
     annual_concentration, missing_compute, name_map_table, year_records,
 )
-from src.data_access import load_source
+from src.preprocessing import load_models
+
+
+@st.cache_data(show_spinner=False)
+def load_notable(modified_ns: int) -> tuple[pd.DataFrame, dict]:
+    """Always read the Notable file; the modification time refreshes the cache."""
+    return load_models(NOTABLE_FILE)
 
 LINE_COLOUR = "#3b7dd8"      # mid blue: readable on light and dark themes, safe under colour vision deficiency
 BAR_COLOUR = "#8c8c8c"
@@ -65,7 +71,7 @@ def main() -> None:
     )
 
     try:
-        models, quality = load_source()
+        models, quality = load_notable(NOTABLE_FILE.stat().st_mtime_ns)
     except (OSError, ValueError, pd.errors.ParserError) as exc:
         st.error(f"The source data could not be loaded: {exc}")
         return

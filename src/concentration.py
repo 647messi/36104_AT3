@@ -23,9 +23,11 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.preprocessing import DEFAULT_SOURCE, load_models
+from src.preprocessing import load_models
 
 ROOT = Path(__file__).resolve().parents[1]
+# This analysis always uses Epoch AI's Notable sample, whatever the shared default source is.
+NOTABLE_FILE = ROOT / "data/raw/ai_models/notable_ai_models.csv"
 FIRST_YEAR = 2003
 LAST_YEAR = 2025          # 2026 is an incomplete calendar year and is excluded
 DEFAULT_START = 2014      # before 2014 there are fewer than 20 notable models a year
@@ -102,7 +104,7 @@ def annual_concentration(
     data = attach_organisations(models, merge)
     rows = []
     for year in range(start, end + 1):
-        in_year = data.loc[data["Year"] == year]
+        in_year = data.loc[data["Year"].eq(year).fillna(False).astype(bool)]
         known = in_year.loc[in_year["Organisations"].str.len() > 0]
         if known.empty:
             rows.append({"Year": year, "Models with organisation": 0, "Missing organisation": len(in_year),
@@ -130,7 +132,7 @@ def annual_concentration(
 def year_records(models: pd.DataFrame, year: int, n: int, merge: bool = True) -> tuple[list[str], pd.DataFrame]:
     """Every model in one year with its organisations and whether it counts toward the top N."""
     data = attach_organisations(models, merge)
-    in_year = data.loc[data["Year"] == year].copy()
+    in_year = data.loc[data["Year"].eq(year).fillna(False).astype(bool)].copy()
     known = in_year.loc[in_year["Organisations"].str.len() > 0]
     top, _ = top_n_for_year(known, n) if not known.empty else ([], None)
     in_year["Counts toward top N"] = in_year["Organisations"].map(lambda orgs: any(o in top for o in orgs))
@@ -142,7 +144,7 @@ def year_records(models: pd.DataFrame, year: int, n: int, merge: bool = True) ->
 
 def missing_compute(models: pd.DataFrame, start: int, end: int) -> tuple[int, int]:
     """Models in the range with no `Training compute (FLOP)` value, and the total."""
-    in_range = models.loc[models["Year"].between(start, end)]
+    in_range = models.loc[models["Year"].between(start, end).fillna(False).astype(bool)]
     missing = int(in_range["Training compute (FLOP)"].str.strip().eq("").sum())
     return missing, len(in_range)
 
@@ -154,7 +156,7 @@ def name_map_table() -> pd.DataFrame:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
+    parser.add_argument("--source", type=Path, default=NOTABLE_FILE)
     parser.add_argument("--output", type=Path, default=ROOT / "data/processed")
     args = parser.parse_args()
     models, _ = load_models(args.source)
