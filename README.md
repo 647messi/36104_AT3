@@ -98,21 +98,57 @@ The checks cover classification boundaries, zero-filled years, rejected duplicat
 
 **Walkthrough:** open **Organisational Concentration** in the sidebar → read the line chart (top-3 share 36% in 2014, peak 60% in 2020, 44% in 2025) → switch **Top 3 / Top 5** in the sidebar → scroll to **Which organisations produce the most notable models?** to see the leaders.
 
-**Charts:** top-N share of notable models by year (line; change over time), organisations ranked by number of notable models (sorted bar; ranking), distinct organisations per year (bar; magnitude).
-
-**Interactions (sidebar):** Top 3 / Top 5; publication-year range; merge company name variants on/off.
-
 **Answer on screen:** by number of notable models, the top organisations hold a large share (around half) but it has not risen steadily: it is higher in 2019–2022 than in 2023–2024.
 
-**Data:** Epoch AI, Notable AI Models (CC BY 4.0), `data/raw/ai_models/notable_ai_models.csv`, snapshot added 22 October 2026. Data dictionary: `data/dictionary/concentration.yml`. Processed files: `data/processed/annual_concentration.csv`, `organisation_name_map.csv`, `organisation_ranking_2014_2025.csv`.
+### Files
 
-**Regenerate and check:**
+```text
+dashboards/2_Organisational_Concentration.py   Page: charts, sidebar controls, answer, limits, verification
+src/concentration.py                           Name merging, top-N shares, ranking, exports
+tests/test_concentration.py                    Rules, real-data reconciliation, regeneration and page checks
+data/dictionary/concentration.yml              Data dictionary for the three processed files
+data/processed/annual_concentration.csv        Top-3 and top-5 shares by year, 2003–2025
+data/processed/organisation_name_map.csv       Corporate name variants and their parent organisation
+data/processed/organisation_ranking_2014_2025.csv  Top 15 organisations by notable models, 2014–2025
+```
+
+### Data and attribution
+
+Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models), Notable AI Models, local file `data/raw/ai_models/notable_ai_models.csv` (CC BY 4.0; 1,078 records; latest publication date 2026-09-30; snapshot added 22 October 2026). The page always reads the Notable file, whatever the shared default source is.
+
+Each model is counted once in the year of `Publication date`. The rules are explicit analytical choices rather than a classification supplied by Epoch AI:
+
+| Step | Rule |
+| --- | --- |
+| Split | `Organization` is split on commas into organisation names |
+| Merge | Corporate name variants are merged into a current parent, e.g. Google Brain, DeepMind and Google DeepMind become Google; Facebook AI Research becomes Meta (22 names, 7 parents; see `organisation_name_map.csv`) |
+| Rank | Each year, organisations are ranked by the number of models listing them; ties are broken alphabetically so the ranking is reproducible |
+| Share | Models listing at least one top-N organisation ÷ models with at least one organisation × 100. A model is never counted twice, so the share cannot exceed 100% |
+| Exclude | Models with an empty `Organization` are left out of the share and reported; no organisation is inferred from a model's name. The incomplete 2026 calendar year is excluded |
+
+Universities, joint labs and independent firms are left as recorded. Acquired or sister companies (Maluuba, MetaMind Inc, Isomorphic Labs) are deliberately not merged; each appears on one model alongside its parent, so no share or ranking changes. The **Merge company name variants** toggle shows the effect of merging: with it off, the 2019 top-3 share falls from 53% to 28%.
+
+In the ranking chart a jointly developed model counts once for each organisation listed, so shares can sum to more than 100%.
+
+### Interpreting the share
+
+The share measures how much of each year's notable output involves that year's leaders; the leaders can change from year to year (Google most years, OpenAI in 2025). Before 2014 there are fewer than 20 notable models a year, so a few models can move the share by tens of percentage points; the default view is therefore 2014–2025 and the page warns when earlier years are selected. A rise in the number of notable models is not concentration in itself, which is why the chart shows a share rather than counts (33 models in 2014, 107 in 2025).
+
+### Design and recording
+
+The main chart is a single line because the task is change over time in one measure; position on a common scale is the most accurate encoding. A stacked area chart with one band per organisation was rejected: with 29–119 organisations a year the bands would be thin and shifting, and readers would have to compare band thicknesses. Every point is labelled, with labels placed on the open side of the line, so values can be read without hovering. The ranking uses a sorted horizontal bar so names stay readable and order is immediate. Counting models was chosen over training compute because compute is missing for 173 of 324 models from 2023–2025, mostly the largest closed models, so a compute share would measure who discloses compute rather than who holds it. One colour family is used throughout and was checked under simulated protanopia, deuteranopia, tritanopia and achromatopsia. Controls sit in the sidebar so they stay visible beside the charts.
+
+For a numerical demonstration, choose a year under **Verify a displayed number**: the page shows the top-N organisations, the calculation (e.g. 47 ÷ 107 = 43.9% for 2025) and every matching source record with its one-based `Source record` number in the unchanged CSV. The records can be downloaded and compared with the raw file.
+
+### Regenerate and check
 
 ```bash
 python -m src.concentration
 python -m unittest tests.test_concentration -v
 ```
 
-The tests include an independent recount from the raw CSV and a check that the processed files regenerate identically.
+The 11 checks cover the merging and counting rules (including no double counting and alphabetical ties), the ranking and an empty year range, an independent recount of 2025 from the raw CSV using the `csv` module rather than pandas, a check that the committed processed files regenerate byte-for-byte (exports use Unix line endings; see `.gitattributes`), and a Streamlit AppTest that opens the page through `app.py` and exercises every control.
 
-**Limits:** counts models, not compute or capability (training compute is missing for 173 of 324 models from 2023–2025); the notable list is a curated selection, not every AI model; a jointly developed model counts for every organisation listed.
+### Limits
+
+Counts models, not compute or capability. Epoch AI's notable list is a curated selection, not every AI model, and recent years may gain records retrospectively. A model is attributed to every organisation listed; the data does not record who led the work. Merging uses current corporate parents, so DeepMind before its 2014 acquisition is grouped with Google.
