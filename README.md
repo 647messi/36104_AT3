@@ -89,3 +89,30 @@ python -m unittest discover -s tests -v
 ```
 
 The checks cover classification boundaries, zero-filled years, rejected duplicate records, count reconciliation and an independent raw-CSV recomputation. Streamlit's AppTest checks that Story opens first, that navigation can reach the dashboard and return home, and that the dashboard supports the full range, changed ranges, a single year and verification selections without a browser. An isolated fixture also verifies that an additional student page is discovered without changing the entry point.
+
+## Organisational Concentration (Vaishnavi)
+
+**Sub-question:** Each year, what share of notable AI models involves that year's top 3 (or top 5) organisations, and is that share rising?
+
+**User story:** As a technology policy analyst, I want to see what share of notable AI models involves the top 3 or top 5 organisations each year, so that I can judge whether AI model development is becoming dominated by a few organisations.
+
+**Walkthrough:** open **Organisational Concentration** in the sidebar → read the line chart (top-3 share 36% in 2014, peak 60% in 2020, 44% in 2025) → switch **Top 3 / Top 5** in the sidebar → scroll to **Which organisations produce the most notable models?** to see the leaders.
+
+**Charts:** top-N share of notable models by year (line; change over time), organisations ranked by number of notable models (sorted bar; ranking), distinct organisations per year (bar; magnitude).
+
+**Interactions (sidebar):** Top 3 / Top 5; publication-year range; merge company name variants on/off.
+
+**Answer on screen:** by number of notable models, the top organisations hold a large share (around half) but it has not risen steadily: it is higher in 2019–2022 than in 2023–2024.
+
+**Data:** Epoch AI, Notable AI Models (CC BY 4.0), `data/raw/ai_models/notable_ai_models.csv`, snapshot added 22 October 2026. Data dictionary: `data/dictionary/concentration.yml`. Processed files: `data/processed/annual_concentration.csv`, `organisation_name_map.csv`, `organisation_ranking_2014_2025.csv`.
+
+**Regenerate and check:**
+
+```bash
+python -m src.concentration
+python -m unittest tests.test_concentration -v
+```
+
+The tests include an independent recount from the raw CSV and a check that the processed files regenerate identically.
+
+**Limits:** counts models, not compute or capability (training compute is missing for 173 of 324 models from 2023–2025); the notable list is a curated selection, not every AI model; a jointly developed model counts for every organisation listed.
