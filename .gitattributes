@@ -1,0 +1,5 @@
+# Keep the concentration page's processed exports byte-identical on every operating system,
+# so "python -m src.concentration" regenerates them exactly (checked by tests/test_concentration.py).
+data/processed/annual_concentration.csv text eol=lf
+data/processed/organisation_name_map.csv text eol=lf
+data/processed/organisation_ranking_2014_2025.csv text eol=lf

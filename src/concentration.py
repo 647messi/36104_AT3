@@ -191,10 +191,11 @@ def main() -> None:
     out = pd.concat(frames)
     out = out[["N", *[c for c in out.columns if c != "N"]]]
     args.output.mkdir(parents=True, exist_ok=True)
-    out.to_csv(args.output / "annual_concentration.csv", index=False)
-    name_map_table().to_csv(args.output / "organisation_name_map.csv", index=False)
+    # Always write Unix line endings so the exports are byte-identical on Windows, macOS and Linux.
+    out.to_csv(args.output / "annual_concentration.csv", index=False, lineterminator="\n")
+    name_map_table().to_csv(args.output / "organisation_name_map.csv", index=False, lineterminator="\n")
     ranking, _ = organisation_ranking(models, DEFAULT_START, LAST_YEAR)
-    ranking.to_csv(args.output / "organisation_ranking_2014_2025.csv", index=False)
+    ranking.to_csv(args.output / "organisation_ranking_2014_2025.csv", index=False, lineterminator="\n")
     print(out.to_string(index=False))
 
 

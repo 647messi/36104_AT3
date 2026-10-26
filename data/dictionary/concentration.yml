@@ -108,6 +108,9 @@ datasets:
     Written from PARENT_MAP in src/concentration.py. A manually curated list of corporate name
     variants found in the Organization field, each mapped to its current parent organisation.
     Universities, joint labs (e.g. MIT-IBM Watson AI Lab) and independent firms are left as recorded.
+    Checked against every distinct Organization value on 2026-10-26: no variant missing. Acquired or
+    sister companies (Maluuba, MetaMind Inc, Isomorphic Labs) are deliberately left separate; each appears
+    on one model alongside its parent, so no share or ranking changes.
   columns:
     Name in source:
       type: string

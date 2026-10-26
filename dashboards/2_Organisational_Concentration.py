@@ -22,11 +22,18 @@ BAR_COLOUR = "#7fa8dc"      # lighter tint of the line colour: same family, seco
 
 def concentration_chart(table: pd.DataFrame, n: int) -> go.Figure:
     data = table.dropna(subset=["Top N share (%)"])
+    values = list(data["Top N share (%)"])
+    # Put each label on the open side of the line: below a dip, above a rise or peak.
+    positions = []
+    for i, v in enumerate(values):
+        neighbours = [values[j] for j in (i - 1, i + 1) if 0 <= j < len(values)]
+        positions.append("bottom center" if neighbours and v < sum(neighbours) / len(neighbours)
+                         else "top center")
     fig = go.Figure(go.Scatter(
         x=data["Year"], y=data["Top N share (%)"], mode="lines+markers+text",
         line={"color": LINE_COLOUR, "width": 4}, marker={"size": 11, "color": LINE_COLOUR},
-        text=[f"<b>{v:.0f}%</b>" for v in data["Top N share (%)"]], textposition="top center",
-        textfont={"size": 16},
+        text=[f"<b>{v:.0f}%</b>" for v in values], textposition=positions,
+        textfont={"size": 15},
         customdata=data[["Top N models", "Models with organisation", "Top N organisations"]],
         hovertemplate=("<b>%{x}</b><br>Top-" + str(n) + " share: %{y:.1f}%"
                        "<br>%{customdata[0]} of %{customdata[1]} models"
@@ -139,7 +146,7 @@ def main() -> None:
         f"the highest share in this range was **{peak['Top N share (%)']:.0f}%** in {int(peak['Year'])}."
     )
 
-    st.plotly_chart(concentration_chart(table, n), use_container_width=True, key="conc_chart")
+    st.plotly_chart(concentration_chart(table, n), width="stretch", key="conc_chart")
     st.caption(
         f"Each point is one publication year. A model counts once if any of its listed organisations "
         f"is among that year's top {n} by number of notable models; the share is out of all models with "
@@ -159,14 +166,14 @@ def main() -> None:
         "Models with organisation": "Models with an organisation",
         "Top N share (%)": f"Top-{n} share (%)",
         "Organisations": "Distinct organisations"})
-    st.dataframe(shown.sort_values("Year", ascending=False), hide_index=True, use_container_width=True)
+    st.dataframe(shown.sort_values("Year", ascending=False), hide_index=True, width="stretch")
 
     st.subheader("Which organisations produce the most notable models?")
     ranking, denominator = organisation_ranking(models, start, end, merge)
     if ranking.empty:
         st.info("No models with a recorded organisation fall in the selected years. Widen the year range.")
     else:
-        st.plotly_chart(ranking_chart(ranking, start, end, denominator), use_container_width=True,
+        st.plotly_chart(ranking_chart(ranking, start, end, denominator), width="stretch",
                         key="conc_ranking_chart")
         st.caption(
             f"Bars rank organisations by the number of notable models listing them across {start}–{end}; "
@@ -176,7 +183,7 @@ def main() -> None:
         )
 
     st.subheader("How many organisations take part?")
-    st.plotly_chart(organisations_chart(table), use_container_width=True, key="conc_orgs_chart")
+    st.plotly_chart(organisations_chart(table), width="stretch", key="conc_orgs_chart")
     st.caption("Count of distinct organisations listed on that year's notable models. Large multi-institution "
                "papers can raise this count in a single year. Source: Epoch AI, Notable AI Models.")
 
@@ -219,7 +226,7 @@ def main() -> None:
         + (f"  \n{int(row['Missing organisation'])} model(s) with no organisation are excluded."
            if row["Missing organisation"] else "")
     )
-    st.dataframe(records, hide_index=True, use_container_width=True)
+    st.dataframe(records, hide_index=True, width="stretch")
     st.download_button("Download these records (CSV)", records.to_csv(index=False).encode("utf-8"),
                        file_name=f"concentration_{year}_top{n}.csv", mime="text/csv", key="conc_download")
     st.caption("`Source record` is the one-based record number in data/raw/ai_models/notable_ai_models.csv "
@@ -236,7 +243,7 @@ def main() -> None:
             "count models listing at least one top-N organisation; divide by models with at least one organisation.\n\n"
             "**Processing module:** `src/concentration.py` (regenerate exports with `python -m src.concentration`)."
         )
-        st.dataframe(name_map_table(), hide_index=True, use_container_width=True)
+        st.dataframe(name_map_table(), hide_index=True, width="stretch")
 
 
 if __name__ == "__main__":
