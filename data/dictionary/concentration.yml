@@ -1,0 +1,159 @@
+# Data dictionary: organisational concentration page (dashboards/2_Organisational_Concentration.py)
+# Owner: Vaishnavi. Format follows the Assignment 2 Part C dashboard.yml standard (sources + datasets).
+# Regenerate every processed file below with:  python -m src.concentration
+# Check that the committed files match a fresh run with:  python -m unittest tests.test_concentration
+
+sources:
+- id: epoch_notable_models
+  publisher: Epoch AI
+  title: Data on AI models, Notable AI Models (notable_ai_models.csv)
+  url: https://epoch.ai/data/ai-models
+  licence: Creative Commons Attribution 4.0 International (CC BY 4.0); cite Epoch AI, 'Data on AI models'
+  retrieved: '2026-10-22'
+  cadence: Updated continuously by Epoch AI; records can be added or revised retrospectively
+  status: snapshot
+  notes: Unchanged local copy at data/raw/ai_models/notable_ai_models.csv (1,078 records, 47 columns,
+    SHA-256 587afd70c2336e535bdfa704a40dc6186e84eb2304cc719c8dce27d1df3446e4). The retrieved date is
+    the date the snapshot was committed to the repository (commit eded8d5); the exact download time was
+    not recorded. Fields used - Model, Organization, Publication date, Training compute (FLOP).
+
+datasets:
+- id: annual_concentration
+  source_ids:
+  - epoch_notable_models
+  sample: data/raw/ai_models/notable_ai_models.csv
+  processed_output: data/processed/annual_concentration.csv
+  format: csv
+  date_column: Year
+  primary_key:
+  - N
+  - Year
+  minimum_rows: 46
+  latest_observation: '2025-12-31'
+  time_coverage: Publication years 2003-2025 (2026 is an incomplete calendar year and is excluded);
+    the app's default view is 2014-2025.
+  transform: >-
+    src/concentration.py. For each publication year: split Organization on commas; merge corporate
+    name variants with organisation_name_map; drop models with an empty Organization (counted in
+    'Missing organisation'); rank organisations by the number of models listing them (ties broken
+    alphabetically); count models listing at least one of the top N; share = that count divided by
+    models with an organisation x 100, rounded to 1 decimal place. Run for N = 3 and N = 5.
+  columns:
+    N:
+      type: integer
+      role: dimension
+      nullable: false
+      unit: number of top organisations included
+      allowed_values: [3, 5]
+    Year:
+      type: integer
+      role: time
+      nullable: false
+      unit: calendar year of Publication date
+      minimum: 2003
+      maximum: 2025
+    Models with organisation:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of notable models with at least one recorded organisation (share denominator)
+      minimum: 1
+      maximum: 119
+    Missing organisation:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of notable models in the year with an empty Organization field (excluded)
+      minimum: 0
+      maximum: 2
+    Organisations:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of distinct organisations (after merging) listed on the year's models
+      minimum: 1
+      maximum: 119
+    Top N models:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of models listing at least one top-N organisation (share numerator)
+      minimum: 1
+      maximum: 59
+    Top N share (%):
+      type: number
+      role: measure
+      nullable: false
+      unit: percent of models with an organisation (0-100), 1 decimal place
+      minimum: 31.6
+      maximum: 100.0
+    Top N organisations:
+      type: string
+      role: dimension
+      nullable: false
+      unit: semicolon-separated list of the top-N organisations with their model counts in brackets
+
+- id: organisation_name_map
+  source_ids:
+  - epoch_notable_models
+  sample: data/raw/ai_models/notable_ai_models.csv
+  processed_output: data/processed/organisation_name_map.csv
+  format: csv
+  primary_key:
+  - Name in source
+  minimum_rows: 22
+  time_coverage: Not time-dependent; applies to all years
+  latest_observation_note: Not applicable (lookup table built from the 2026-10-22 snapshot)
+  transform: >-
+    Written from PARENT_MAP in src/concentration.py. A manually curated list of corporate name
+    variants found in the Organization field, each mapped to its current parent organisation.
+    Universities, joint labs (e.g. MIT-IBM Watson AI Lab) and independent firms are left as recorded.
+  columns:
+    Name in source:
+      type: string
+      role: identifier
+      nullable: false
+      unit: organisation name exactly as written in the Organization field
+    Parent organisation:
+      type: string
+      role: dimension
+      nullable: false
+      unit: parent organisation name used in the analysis
+      allowed_values: [Alibaba, Google, Huawei, Meta, Microsoft, Salesforce, Samsung]
+
+- id: organisation_ranking_2014_2025
+  source_ids:
+  - epoch_notable_models
+  sample: data/raw/ai_models/notable_ai_models.csv
+  processed_output: data/processed/organisation_ranking_2014_2025.csv
+  format: csv
+  primary_key:
+  - Organisation
+  minimum_rows: 15
+  time_coverage: Publication years 2014-2025 combined (the app recomputes this for the selected range)
+  latest_observation: '2025-12-31'
+  transform: >-
+    src/concentration.py organisation_ranking(). Over 2014-2025: split and merge organisation names as
+    above; count, for each organisation, the models listing it (a jointly developed model counts once
+    for each listed organisation); keep the top 15 (ties broken alphabetically); share = count divided
+    by the 814 models with an organisation x 100, rounded to 1 decimal place.
+  columns:
+    Organisation:
+      type: string
+      role: identifier
+      nullable: false
+      unit: organisation name after merging
+    Models:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of notable models listing the organisation, 2014-2025
+      minimum: 13
+      maximum: 194
+    Share of models (%):
+      type: number
+      role: measure
+      nullable: false
+      unit: percent of the 814 models with an organisation, 2014-2025 (shares can sum to more than 100)
+      minimum: 1.6
+      maximum: 23.8

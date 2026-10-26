@@ -32,6 +32,10 @@ FIRST_YEAR = 2003
 LAST_YEAR = 2025          # 2026 is an incomplete calendar year and is excluded
 DEFAULT_START = 2014      # before 2014 there are fewer than 20 notable models a year
 TOP_N_OPTIONS = (3, 5)
+RANKING_SIZE = 15
+# The local snapshot of Epoch AI's file was committed to the repository on this date
+# (git commit eded8d5); Epoch AI does not stamp a download date inside the CSV.
+SNAPSHOT_ADDED = "22 October 2026"
 
 # Source name -> parent organisation. Only corporate groups with several recorded
 # names are merged; universities, joint labs and independent firms are left as recorded.
@@ -149,6 +153,26 @@ def missing_compute(models: pd.DataFrame, start: int, end: int) -> tuple[int, in
     return missing, len(in_range)
 
 
+def organisation_ranking(
+    models: pd.DataFrame, start: int, end: int, merge: bool = True, size: int = RANKING_SIZE,
+) -> tuple[pd.DataFrame, int]:
+    """Organisations ranked by the number of notable models listing them over a year range.
+
+    A model with several organisations counts once for each of them, so the counts can
+    sum to more than the number of models. Returns the top `size` rows and the number of
+    models with at least one organisation in the range (the share denominator).
+    """
+    data = attach_organisations(models, merge)
+    in_range = data.loc[data["Year"].between(start, end).fillna(False).astype(bool)]
+    known = in_range.loc[in_range["Organisations"].str.len() > 0]
+    if known.empty:
+        return pd.DataFrame(columns=["Organisation", "Models", "Share of models (%)"]), 0
+    ranked = rank_organisations(known)
+    table = ranked.head(size).rename_axis("Organisation").reset_index(name="Models")
+    table["Share of models (%)"] = (100 * table["Models"] / len(known)).round(1)
+    return table, len(known)
+
+
 def name_map_table() -> pd.DataFrame:
     return (pd.DataFrame(sorted(PARENT_MAP.items(), key=lambda kv: (kv[1], kv[0])),
                          columns=["Name in source", "Parent organisation"]))
@@ -164,10 +188,13 @@ def main() -> None:
     for n in TOP_N_OPTIONS:
         table = annual_concentration(models, n).assign(N=n)
         frames.append(table)
-    out = pd.concat(frames)[["N", *frames[0].columns]]
+    out = pd.concat(frames)
+    out = out[["N", *[c for c in out.columns if c != "N"]]]
     args.output.mkdir(parents=True, exist_ok=True)
     out.to_csv(args.output / "annual_concentration.csv", index=False)
     name_map_table().to_csv(args.output / "organisation_name_map.csv", index=False)
+    ranking, _ = organisation_ranking(models, DEFAULT_START, LAST_YEAR)
+    ranking.to_csv(args.output / "organisation_ranking_2014_2025.csv", index=False)
     print(out.to_string(index=False))
 
 

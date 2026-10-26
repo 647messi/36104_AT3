@@ -5,8 +5,8 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src.concentration import (
-    DEFAULT_START, FIRST_YEAR, LAST_YEAR, NOTABLE_FILE, TOP_N_OPTIONS,
-    annual_concentration, missing_compute, name_map_table, year_records,
+    DEFAULT_START, FIRST_YEAR, LAST_YEAR, NOTABLE_FILE, SNAPSHOT_ADDED, TOP_N_OPTIONS,
+    annual_concentration, missing_compute, name_map_table, organisation_ranking, year_records,
 )
 from src.preprocessing import load_models
 
@@ -67,6 +67,28 @@ def organisations_chart(table: pd.DataFrame) -> go.Figure:
     return fig
 
 
+def ranking_chart(ranking: pd.DataFrame, start: int, end: int, denominator: int) -> go.Figure:
+    data = ranking.iloc[::-1]          # largest at the top of a horizontal bar chart
+    fig = go.Figure(go.Bar(
+        x=data["Models"], y=data["Organisation"], orientation="h", marker_color=LINE_COLOUR,
+        text=[f"{m} ({s:.0f}%)" for m, s in zip(data["Models"], data["Share of models (%)"])],
+        textposition="outside", textfont={"size": 13}, cliponaxis=False,
+        hovertemplate="<b>%{y}</b><br>%{x} notable models<extra></extra>",
+    ))
+    fig.update_layout(
+        title={"text": f"<b>{ranking.iloc[0]['Organisation']} leads with {int(ranking.iloc[0]['Models'])} notable models, "
+                       f"{start}–{end}</b><br><span style='font-size:14px'>Top {len(ranking)} organisations by number "
+                       f"of notable AI models listing them, {start}–{end} (share of {denominator} models)</span>"},
+        xaxis={"title": "Notable models listing the organisation (count)", "gridcolor": "rgba(128,128,128,0.25)",
+               "range": [0, ranking["Models"].max() * 1.22]},
+        yaxis={"title": None, "tickfont": {"size": 13}},
+        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+        height=max(360, 32 * len(ranking) + 120), margin={"t": 80, "l": 10, "r": 20, "b": 50},
+        font={"size": 13},
+    )
+    return fig
+
+
 def main() -> None:
     st.page_link("views/story.py", label="Back to the story", icon=":material/arrow_back:")
     st.title("Are a few organisations producing a growing share of notable AI models?")
@@ -96,6 +118,9 @@ def main() -> None:
                                "Full list under Source and methodology.")
     st.caption(f"Showing: Top {n} · {start}–{end} · name variants {'merged' if merge else 'as recorded'} "
                "(change these in the sidebar)")
+    st.caption(f"Source: Epoch AI, Notable AI Models (CC BY 4.0) · last data refresh: snapshot added "
+               f"{SNAPSHOT_ADDED} · latest publication date in the file: {quality['latest_date']} · "
+               f"{quality['raw_rows']:,} records")
 
     table = annual_concentration(models, n, start, end, merge)
     plotted = table.dropna(subset=["Top N share (%)"])
@@ -135,6 +160,20 @@ def main() -> None:
         "Top N share (%)": f"Top-{n} share (%)",
         "Organisations": "Distinct organisations"})
     st.dataframe(shown.sort_values("Year", ascending=False), hide_index=True, use_container_width=True)
+
+    st.subheader("Which organisations produce the most notable models?")
+    ranking, denominator = organisation_ranking(models, start, end, merge)
+    if ranking.empty:
+        st.info("No models with a recorded organisation fall in the selected years. Widen the year range.")
+    else:
+        st.plotly_chart(ranking_chart(ranking, start, end, denominator), use_container_width=True,
+                        key="conc_ranking_chart")
+        st.caption(
+            f"Bars rank organisations by the number of notable models listing them across {start}–{end}; "
+            f"labels show the count and its share of the {denominator} models with a recorded organisation. "
+            "A jointly developed model counts once for each organisation, so shares can sum to more than 100%. "
+            "Source: Epoch AI, Notable AI Models (CC BY 4.0)."
+        )
 
     st.subheader("How many organisations take part?")
     st.plotly_chart(organisations_chart(table), use_container_width=True, key="conc_orgs_chart")

@@ -58,6 +58,22 @@ class ConcentrationRules(unittest.TestCase):
             self.assertEqual(PARENT_MAP.get(parent, parent), parent)
 
 
+class Ranking(unittest.TestCase):
+    def test_fixture_ranking(self):
+        from src.concentration import organisation_ranking
+        table, denom = organisation_ranking(fixture(), 2020, 2020, size=2)
+        self.assertEqual(denom, 5)
+        self.assertEqual(list(table["Organisation"]), ["Google", "University X"])
+        self.assertEqual(list(table["Models"]), [2, 2])
+        self.assertEqual(list(table["Share of models (%)"]), [40.0, 40.0])
+
+    def test_empty_range(self):
+        from src.concentration import organisation_ranking
+        table, denom = organisation_ranking(fixture(), 2021, 2021)
+        self.assertTrue(table.empty)
+        self.assertEqual(denom, 0)
+
+
 class RealData(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -85,6 +101,19 @@ class RealData(unittest.TestCase):
                     involved += bool(orgs & set(top))
         row = annual_concentration(self.models, n, year, year).iloc[0]
         self.assertEqual((row["Top N models"], row["Models with organisation"]), (involved, known))
+
+
+class Regenerates(unittest.TestCase):
+    def test_processed_files_regenerate_identically(self):
+        """The committed exports must match a fresh run of the documented transform."""
+        import subprocess, sys, tempfile, filecmp
+        with tempfile.TemporaryDirectory() as tmp:
+            subprocess.run([sys.executable, "-m", "src.concentration", "--output", tmp],
+                           cwd=ROOT, check=True, capture_output=True)
+            for name in ("annual_concentration.csv", "organisation_name_map.csv",
+                         "organisation_ranking_2014_2025.csv"):
+                self.assertTrue(filecmp.cmp(Path(tmp) / name, ROOT / "data/processed" / name, shallow=False),
+                                f"{name} differs from a fresh regeneration")
 
 
 class PageRuns(unittest.TestCase):
