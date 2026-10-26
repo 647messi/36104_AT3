@@ -84,13 +84,18 @@ def main() -> None:
         st.error(f"The source data could not be loaded: {exc}")
         return
 
-    controls = st.columns([1, 2, 1.4])
-    n = controls[0].radio("Top organisations", TOP_N_OPTIONS, horizontal=True,
-                          format_func=lambda v: f"Top {v}", key="conc_n")
-    start, end = controls[1].slider("Publication years", FIRST_YEAR, LAST_YEAR,
-                                    (DEFAULT_START, LAST_YEAR), key="conc_years")
-    merge = controls[2].toggle("Merge company name variants", value=True, key="conc_merge",
-                            help="Groups e.g. DeepMind, Google Brain and Google Research under Google. Full list under Source and methodology.")
+    # Controls live in the sidebar so they stay visible beside the charts while scrolling.
+    with st.sidebar:
+        st.markdown("**Concentration controls**")
+        n = st.radio("Top organisations", TOP_N_OPTIONS, horizontal=True,
+                     format_func=lambda v: f"Top {v}", key="conc_n")
+        start, end = st.slider("Publication years", FIRST_YEAR, LAST_YEAR,
+                               (DEFAULT_START, LAST_YEAR), key="conc_years")
+        merge = st.toggle("Merge company name variants", value=True, key="conc_merge",
+                          help="Groups e.g. DeepMind, Google Brain and Google Research under Google. "
+                               "Full list under Source and methodology.")
+    st.caption(f"Showing: Top {n} · {start}–{end} · name variants {'merged' if merge else 'as recorded'} "
+               "(change these in the sidebar)")
 
     table = annual_concentration(models, n, start, end, merge)
     plotted = table.dropna(subset=["Top N share (%)"])
@@ -109,7 +114,7 @@ def main() -> None:
         f"the highest share in this range was **{peak['Top N share (%)']:.0f}%** in {int(peak['Year'])}."
     )
 
-    st.plotly_chart(concentration_chart(table, n), use_container_width=True)
+    st.plotly_chart(concentration_chart(table, n), use_container_width=True, key="conc_chart")
     st.caption(
         f"Each point is one publication year. A model counts once if any of its listed organisations "
         f"is among that year's top {n} by number of notable models; the share is out of all models with "
@@ -132,7 +137,7 @@ def main() -> None:
     st.dataframe(shown.sort_values("Year", ascending=False), hide_index=True, use_container_width=True)
 
     st.subheader("How many organisations take part?")
-    st.plotly_chart(organisations_chart(table), use_container_width=True)
+    st.plotly_chart(organisations_chart(table), use_container_width=True, key="conc_orgs_chart")
     st.caption("Count of distinct organisations listed on that year's notable models. Large multi-institution "
                "papers can raise this count in a single year. Source: Epoch AI, Notable AI Models.")
 
