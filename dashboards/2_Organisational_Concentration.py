@@ -17,28 +17,35 @@ def load_notable(modified_ns: int) -> tuple[pd.DataFrame, dict]:
     return load_models(NOTABLE_FILE)
 
 LINE_COLOUR = "#3b7dd8"      # mid blue: readable on light and dark themes, safe under colour vision deficiency
-BAR_COLOUR = "#8c8c8c"
+BAR_COLOUR = "#7fa8dc"      # lighter tint of the line colour: same family, secondary emphasis
 
 
 def concentration_chart(table: pd.DataFrame, n: int) -> go.Figure:
     data = table.dropna(subset=["Top N share (%)"])
     fig = go.Figure(go.Scatter(
         x=data["Year"], y=data["Top N share (%)"], mode="lines+markers+text",
-        line={"color": LINE_COLOUR, "width": 3}, marker={"size": 8, "color": LINE_COLOUR},
-        text=[f"{v:.0f}%" for v in data["Top N share (%)"]], textposition="top center",
-        textfont={"size": 13},
+        line={"color": LINE_COLOUR, "width": 4}, marker={"size": 11, "color": LINE_COLOUR},
+        text=[f"<b>{v:.0f}%</b>" for v in data["Top N share (%)"]], textposition="top center",
+        textfont={"size": 16},
         customdata=data[["Top N models", "Models with organisation", "Top N organisations"]],
         hovertemplate=("<b>%{x}</b><br>Top-" + str(n) + " share: %{y:.1f}%"
                        "<br>%{customdata[0]} of %{customdata[1]} models"
                        "<br>%{customdata[2]}<extra></extra>"),
     ))
+    first, last = data.iloc[0], data.iloc[-1]
+    peak = data.loc[data["Top N share (%)"].idxmax()]
+    headline = (f"Top-{n} share: {first['Top N share (%)']:.0f}% in {int(first['Year'])}, "
+                f"peak {peak['Top N share (%)']:.0f}% in {int(peak['Year'])}, "
+                f"{last['Top N share (%)']:.0f}% in {int(last['Year'])}")
     fig.update_layout(
-        title=f"Share of notable AI models involving that year's top {n} organisations, {int(data['Year'].min())}–{int(data['Year'].max())}",
-        xaxis={"title": "Publication year", "dtick": 1, "tickangle": 0},
-        yaxis={"title": "Share of notable models (%)", "range": [0, 105],
+        title={"text": f"<b>{headline}</b><br><span style='font-size:14px'>Share of notable AI models "
+                       f"involving that year's top {n} organisations, {int(first['Year'])}–{int(last['Year'])}</span>"},
+        xaxis={"title": "Publication year", "dtick": 1, "tickangle": 0, "tickfont": {"size": 14}},
+        yaxis={"title": "Share of notable models (%)", "range": [0, 108], "tickfont": {"size": 14},
                "ticksuffix": "%", "gridcolor": "rgba(128,128,128,0.25)"},
-        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)", height=470, margin={"t": 60, "l": 70, "r": 20, "b": 50},
-        font={"size": 13},
+        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)", height=520,
+        margin={"t": 90, "l": 70, "r": 20, "b": 50},
+        font={"size": 15},
     )
     return fig
 
@@ -46,7 +53,7 @@ def concentration_chart(table: pd.DataFrame, n: int) -> go.Figure:
 def organisations_chart(table: pd.DataFrame) -> go.Figure:
     fig = go.Figure(go.Bar(
         x=table["Year"], y=table["Organisations"], marker_color=BAR_COLOUR,
-        text=table["Organisations"], textposition="outside",
+        text=table["Organisations"], textposition="outside", textfont={"size": 14},
         hovertemplate="<b>%{x}</b><br>%{y} distinct organisations<extra></extra>",
     ))
     fig.update_layout(
