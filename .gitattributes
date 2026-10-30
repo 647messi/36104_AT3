@@ -3,3 +3,7 @@
 data/processed/annual_concentration.csv text eol=lf
 data/processed/organisation_name_map.csv text eol=lf
 data/processed/organisation_ranking_2014_2025.csv text eol=lf
+
+# The same for the Model Access exports ("python -m src.model_access", checked by tests/test_model_access.py).
+data/processed/annual_model_access.csv text eol=lf
+data/processed/access_classification.csv text eol=lf
