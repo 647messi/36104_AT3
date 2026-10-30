@@ -13,6 +13,9 @@ from src.preprocessing import FIRST_YEAR, LAST_YEAR, ROOT
 # This analysis is about notable models (Epoch AI's curated sample), so it reads
 # that file explicitly rather than the shared default source.
 NOTABLE_FILE = ROOT / "data/raw/ai_models/notable_ai_models.csv"
+# The snapshot was committed to the repository on this date (commit eded8d5);
+# the exact download time was not recorded.
+SNAPSHOT_ADDED = "22 October 2026"
 
 # Chart order: Open weights first so it sits on the shared baseline of a
 # stacked bar, and Unreleased last at the top.
@@ -99,3 +102,22 @@ def share_of(annual: pd.DataFrame, year: int, access: tuple[str, ...]) -> float 
     if recorded == 0:
         return None
     return float(row.loc[row["Access"].isin(access), "Count"].sum() / recorded)
+
+
+def values_table(annual: pd.DataFrame, as_share: bool) -> pd.DataFrame:
+    """One row per year with every value in the stacked bar chart, as text.
+
+    Small segments are too thin to carry a label inside the bar, so this table
+    makes every value readable without hovering.
+    """
+    data = annual.loc[annual["Access"] != NOT_RECORDED]
+    if as_share:
+        cell = data.apply(
+            lambda r: f"{r['Share']:.0%} ({r['Count']})" if r["Recorded"] else "n/a", axis=1)
+    else:
+        cell = data["Count"].astype(str)
+    table = (data.assign(Cell=cell)
+             .pivot(index="Year", columns="Access", values="Cell")
+             .reindex(columns=list(ACCESS_TYPES)))
+    table["Recorded models (n)"] = data.groupby("Year")["Recorded"].first()
+    return table.reset_index().astype({"Year": str})
