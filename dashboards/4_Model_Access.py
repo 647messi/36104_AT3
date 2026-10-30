@@ -260,6 +260,7 @@ def main() -> None:
         st.caption("Source record is the one-based data-record number in "
                    "data/raw/ai_models/notable_ai_models.csv (excluding the header).")
 
+    missing = int((add_access(models)["Access"] == NOT_RECORDED).sum())
     with st.expander("Source and methodology"):
         st.markdown(
             f"""
@@ -282,7 +283,8 @@ but the developer keeps the weights and sets the terms. Shares use models with a
 accessibility as the denominator.
 
 **What the data cannot show:** accessibility is the status Epoch AI recorded, not necessarily the
-status at release, and it is missing for about one in five models (mostly before {DEFAULT_START}).
+status at release, and it is missing for {missing / len(models):.0%} of models ({missing:,} of
+{len(models):,}, mostly before {DEFAULT_START}).
 Notable models are a curated selection, not every AI model. The counts say how models are made
 available, not how widely they are used, how capable they are, or which licences apply in detail.
 """

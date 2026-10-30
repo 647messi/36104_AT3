@@ -72,6 +72,25 @@ class AnnualAccessTest(unittest.TestCase):
         counts = values_table(annual, as_share=False)
         self.assertEqual(counts.loc[counts["Year"] == "2025", "API access"].iloc[0], "46")
 
+    def test_processed_files_regenerate_identically(self):
+        """The committed exports must match a fresh run of the documented transform."""
+        import filecmp, subprocess, sys, tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as tmp:
+            subprocess.run([sys.executable, "-m", "src.model_access", "--output", tmp],
+                           cwd=ROOT, check=True, capture_output=True)
+            for name in ("annual_model_access.csv", "access_classification.csv"):
+                self.assertTrue(filecmp.cmp(Path(tmp) / name, ROOT / "data/processed" / name, shallow=False),
+                                f"{name} differs from a fresh regeneration")
+
+    def test_dictionary_lists_every_exported_column(self):
+        dictionary = (ROOT / "data/dictionary/model_access.yml").read_text(encoding="utf-8")
+        for name in ("annual_model_access.csv", "access_classification.csv"):
+            header = (ROOT / "data/processed" / name).read_text(encoding="utf-8").splitlines()[0]
+            self.assertIn(f"processed_output: data/processed/{name}", dictionary)
+            for column in header.split(","):
+                self.assertTrue(f"    {column}:\n" in dictionary, f"{name}: {column} not documented")
+
 
 class PageTest(unittest.TestCase):
     def test_page_shows_refresh_and_value_table(self):

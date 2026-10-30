@@ -2,13 +2,19 @@
 
 This module adds its own Access field. It does not change the shared Sector
 classification in src.preprocessing.
+
+Regenerate the processed exports documented in data/dictionary/model_access.yml:
+    python -m src.model_access
 """
 
 from __future__ import annotations
 
+import argparse
+from pathlib import Path
+
 import pandas as pd
 
-from src.preprocessing import FIRST_YEAR, LAST_YEAR, ROOT
+from src.preprocessing import FIRST_YEAR, LAST_YEAR, ROOT, load_models
 
 # This analysis is about notable models (Epoch AI's curated sample), so it reads
 # that file explicitly rather than the shared default source.
@@ -121,3 +127,40 @@ def values_table(annual: pd.DataFrame, as_share: bool) -> pd.DataFrame:
              .reindex(columns=list(ACCESS_TYPES)))
     table["Recorded models (n)"] = data.groupby("Year")["Recorded"].first()
     return table.reset_index().astype({"Year": str})
+
+
+def classification_table(models: pd.DataFrame) -> pd.DataFrame:
+    """Every Model accessibility value in the source, its access type and its number of models."""
+    counts = models["Model accessibility"].str.strip().value_counts().rename("Models")
+    table = counts.rename_axis("Model accessibility").reset_index()
+    table.insert(1, "Access type", table["Model accessibility"].map(classify_access))
+    order = {access: i for i, access in enumerate(ALL_ACCESS)}
+    return table.sort_values(["Access type", "Model accessibility"],
+                             key=lambda s: s.map(order) if s.name == "Access type" else s,
+                             ignore_index=True)
+
+
+def annual_export(models: pd.DataFrame) -> pd.DataFrame:
+    """The annual counts behind the charts, with shares as percentages to 1 decimal place."""
+    annual = annual_access(models, FIRST_YEAR, LAST_YEAR)
+    annual["Share (%)"] = (annual.pop("Share") * 100).round(1)
+    return annual[["Year", "Access", "Count", "Recorded", "Share (%)", "Thin year"]]
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", type=Path, default=NOTABLE_FILE)
+    parser.add_argument("--output", type=Path, default=ROOT / "data/processed")
+    args = parser.parse_args()
+    models, _ = load_models(args.source)
+    args.output.mkdir(parents=True, exist_ok=True)
+    # Unix line endings keep the exports byte-identical on Windows, macOS and Linux.
+    annual = annual_export(models)
+    annual.to_csv(args.output / "annual_model_access.csv", index=False, lineterminator="\n")
+    classes = classification_table(models)
+    classes.to_csv(args.output / "access_classification.csv", index=False, lineterminator="\n")
+    print(classes.to_string(index=False))
+
+
+if __name__ == "__main__":
+    main()

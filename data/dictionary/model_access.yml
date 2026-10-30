@@ -1,0 +1,121 @@
+# Data dictionary: Model Access page (dashboards/4_Model_Access.py)
+# Owner: Rebecca. Format follows the Assignment 2 Part C dashboard.yml standard (sources + datasets),
+# as in concentration.yml.
+# Regenerate both processed files below with:  python -m src.model_access
+# Check that the committed files match a fresh run with:  python -m unittest tests.test_model_access
+
+sources:
+- id: epoch_notable_models
+  publisher: Epoch AI
+  title: Data on AI models, Notable AI Models (notable_ai_models.csv)
+  url: https://epoch.ai/data/ai-models
+  licence: Creative Commons Attribution 4.0 International (CC BY 4.0); cite Epoch AI, 'Data on AI models'
+  retrieved: '2026-10-22'
+  cadence: Updated continuously by Epoch AI; records can be added or revised retrospectively
+  status: snapshot
+  notes: Unchanged local copy at data/raw/ai_models/notable_ai_models.csv (1,078 records, latest
+    publication date 2026-09-30, SHA-256 3ef26619430a93ee4d126bc46e91699fe6f2b15ea7b8e830f0a565e32caaa224
+    as committed, matching data/processed/notable/data_quality.json). The retrieved date is the date
+    the snapshot was committed to the repository (commit eded8d5); the exact download time was not
+    recorded. Fields used - Model, Organization, Publication date, Model accessibility.
+
+datasets:
+- id: annual_model_access
+  source_ids:
+  - epoch_notable_models
+  sample: data/raw/ai_models/notable_ai_models.csv
+  processed_output: data/processed/annual_model_access.csv
+  format: csv
+  date_column: Year
+  primary_key:
+  - Year
+  - Access
+  minimum_rows: 115
+  latest_observation: '2025-12-31'
+  time_coverage: Publication years 2003-2025 (2026 is an incomplete calendar year and is excluded);
+    the app's default view is 2015-2025. Years before 2015 have fewer than 10 recorded models each.
+  transform: >-
+    src/model_access.py annual_export(). Each model is counted once in the year of Publication date.
+    Model accessibility is grouped into four access types by classify_access() (see
+    access_classification). For every year and access type, including zero counts: Count = models;
+    Recorded = models in that year with a recorded accessibility (the share denominator);
+    Share (%) = Count / Recorded x 100, rounded to 1 decimal place. Blank accessibility is kept as
+    'Not recorded', counted but given no share. The counts reconcile with the source rows in the
+    selected years, or processing stops.
+  columns:
+    Year:
+      type: integer
+      role: time
+      nullable: false
+      unit: calendar year of Publication date
+      minimum: 2003
+      maximum: 2025
+    Access:
+      type: string
+      role: dimension
+      nullable: false
+      unit: access type grouped from Model accessibility
+      allowed_values: [Open weights, API access, Hosted or limited access, Unreleased, Not recorded]
+    Count:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of notable models in the year with this access type
+      minimum: 0
+      maximum: 59
+    Recorded:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of notable models in the year with a recorded accessibility (same on every row of a year)
+      minimum: 0
+      maximum: 119
+    Share (%):
+      type: number
+      role: measure
+      nullable: true
+      unit: percent of recorded models in the year (0-100), 1 decimal place; blank for Not recorded
+        and for years with no recorded model
+      minimum: 0.0
+      maximum: 100.0
+    Thin year:
+      type: boolean
+      role: flag
+      nullable: false
+      unit: true when Recorded is below 10, so the year's shares are unstable (faded in the chart)
+
+- id: access_classification
+  source_ids:
+  - epoch_notable_models
+  sample: data/raw/ai_models/notable_ai_models.csv
+  processed_output: data/processed/access_classification.csv
+  format: csv
+  primary_key:
+  - Model accessibility
+  minimum_rows: 8
+  time_coverage: All 1,078 records in the snapshot, including 2026 and undated records
+  latest_observation: '2026-09-30'
+  transform: >-
+    src/model_access.py classification_table(). Every distinct Model accessibility value in the
+    source, the access type classify_access() assigns to it, and its number of records. Any value
+    not covered by the rules stops processing, so a new source category is reviewed rather than
+    silently miscounted (this check caught 'Limited access'). Models sum to 1,078.
+  columns:
+    Model accessibility:
+      type: string
+      role: identifier
+      nullable: true
+      unit: value exactly as written in the source field; blank means not recorded
+    Access type:
+      type: string
+      role: dimension
+      nullable: false
+      unit: access type used in the analysis
+      allowed_values: [Open weights, API access, Hosted or limited access, Unreleased, Not recorded]
+    Models:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of records in the snapshot with this value
+      minimum: 3
+      maximum: 287
