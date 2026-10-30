@@ -34,6 +34,7 @@ src/
   preprocessing.py                  Existing sector classification and aggregation
 data/raw/ai_models/                  Unchanged source snapshots
 data/processed/                      Reproducible exports
+notebooks/verify_sector_share.ipynb   Raw-record numerical trace for recording
 tests/                              Data and navigation checks
 ```
 
@@ -95,6 +96,8 @@ The line chart supports temporal comparison across 23 years. A grouped bar chart
 The 100% stacked area chart supports comparison of sector composition through time. A sequence of pie charts was rejected because it would require comparing many separate circles. Industry sits at the bottom with a common zero baseline. Other categories are read by band thickness and exact hover values. This chart hides absolute volume, so compare it with Chart 1 and the annual totals in its hover.
 
 For a numerical demonstration, expand **Verify a displayed number**, which is collapsed by default. Choose **All or Notable**, then a year and sector. The app identifies the exact source file and displays the count and share formula. The first tab shows numerator records; the second shows **all source records in that sample's annual denominator**, including Other and Unknown. Both preserve relevant unchanged source fields, raw sector tags, notability criteria, original reference and a one-based source data-record number (excluding the header; not a physical file line). Download the matching rows and compare them with the indicated CSV. Annual downloads include counts, totals and shares for the selected sample. Switching verification samples leaves the All main analysis unchanged.
+
+For a notebook demonstration, open [notebooks/verify_sector_share.ipynb](notebooks/verify_sector_share.ipynb), select the project's `.venv` Python kernel and run all cells. Install `ipykernel` in a fresh environment with `python -m pip install ipykernel` if needed. The default point is All / 2025 / Industry. It reads the original CSV with Python's `csv` reader, shows the year and sector records, calculates the full annual denominator and share, then checks the results and exact source-record membership against the dashboard's processing functions. `DATASET`, `YEAR` and `SECTOR` can be changed at the top. The saved outputs provide a preview; rerun the relevant cells on screen for the live trace. Chart 2 hover uses one decimal place and the Verify panel uses two, so their displayed percentages can differ in rounding.
 
 ## Checks
 
