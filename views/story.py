@@ -1,37 +1,49 @@
 """The shared narrative; detailed analysis lives on individual student pages."""
 
+from pathlib import Path
+
 import pandas as pd
 import streamlit as st
 
 from src.data_access import load_source
-from src.preprocessing import FIRST_YEAR, LAST_YEAR, aggregate_counts
+from src.preprocessing import (
+    DEFAULT_SOURCE,
+    FIRST_YEAR,
+    LAST_YEAR,
+    NOTABLE_SOURCE,
+    aggregate_counts,
+    calculate_shares,
+)
 
 
-def sector_evidence() -> None:
-    """Introduce the first chapter using numbers from the same source as its chart."""
+def load_evidence(source: Path) -> pd.DataFrame | None:
+    """Use the dashboard's source and transformations for the story's evidence."""
     try:
-        models, _ = load_source()
-        annual = aggregate_counts(models, FIRST_YEAR, LAST_YEAR)
+        models, _ = load_source(source)
+        return calculate_shares(
+            aggregate_counts(models, FIRST_YEAR, LAST_YEAR)
+        ).set_index(["Year", "Sector"])
     except (OSError, ValueError, pd.errors.ParserError) as exc:
-        st.warning(f"The sector evidence could not be loaded: {exc}")
-        return
+        st.warning(f"The {source.name} evidence could not be loaded: {exc}")
+        return None
 
-    counts = annual.pivot(index="Year", columns="Sector", values="Count")
-    comparison_year = max(FIRST_YEAR, LAST_YEAR - 10)
-    industry_before = int(counts.loc[comparison_year, "Industry"])
-    industry_after = int(counts.loc[LAST_YEAR, "Industry"])
-    academia_before = int(counts.loc[comparison_year, "Academia"])
-    academia_after = int(counts.loc[LAST_YEAR, "Academia"])
+
+def sector_evidence(annual: pd.DataFrame, comparison_year: int) -> None:
+    """Introduce the count comparison without treating shares as counts."""
+    industry_before = int(annual.loc[(comparison_year, "Industry"), "Count"])
+    industry_after = int(annual.loc[(LAST_YEAR, "Industry"), "Count"])
+    academia_before = int(annual.loc[(comparison_year, "Academia"), "Count"])
+    academia_after = int(annual.loc[(LAST_YEAR, "Academia"), "Count"])
     st.markdown(
-        f"In the local Epoch AI dataset, **{comparison_year}** records "
-        f"**{industry_before} Industry-only models** and **{academia_before} Academia-only models**. "
-        f"In **{LAST_YEAR}**, the corresponding counts are **{industry_after}** and "
-        f"**{academia_after}**. These two years suggest a changing balance of participation; "
-        "the full timeline shows whether that pattern holds across other years."
+        f"In the local Epoch AI **All** dataset, Industry-only model counts rise from "
+        f"**{industry_before} in {comparison_year}** to **{industry_after} in {LAST_YEAR}**. "
+        f"Academia-only counts change from **{academia_before}** to **{academia_after}** "
+        "over the same years. The full timeline shows how the two trajectories develop "
+        "between these endpoints."
     )
     st.caption(
         "Industry–academia collaborations are counted separately. "
-        "These are model counts in this snapshot, rather than relative sector shares."
+        f"This ten-year comparison sits within the full {FIRST_YEAR}–{LAST_YEAR} timeline."
     )
 
 
@@ -39,26 +51,28 @@ def main() -> None:
     st.caption("THE RISE OF ARTIFICIAL INTELLIGENCE · A GROUP DATA STORY")
     st.title("Who is driving the rise of AI?")
     st.markdown(
-        "AI development is often described as a race between companies. "
-        "To understand who is taking part, we begin with a broader comparison: "
-        "industry, academia and the models they develop together. "
+        "Who develops the AI models recorded by Epoch AI, and how has that changed? "
+        "We begin by comparing industry, academia and the models they develop together. "
         "We then ask whether a change in sector participation also means that "
         "development is concentrated among a few organisations."
     )
     with st.container(border=True):
         st.markdown(
             "**Working group research question**\n\n"
-            "Is the development of advanced AI becoming dominated by a few organisations?"
+            "Is AI model development becoming dominated by a few organisations?"
         )
         st.caption(
-            "For technology policymakers and AI researchers interested in who develops "
-            "notable AI models."
+            "Proposed target persona: a technology policy analyst assessing who develops "
+            "AI models and whether participation is becoming more concentrated."
         )
 
     st.subheader("1. Start with who builds the models")
-    sector_evidence()
+    annual = load_evidence(DEFAULT_SOURCE)
+    comparison_year = max(FIRST_YEAR, LAST_YEAR - 10)
+    if annual is not None:
+        sector_evidence(annual, comparison_year)
     st.markdown(
-        "The first dashboard compares annual model counts for Industry, Academia and "
+        "The first chart compares annual model counts for Industry, Academia and "
         "their joint development. Explore different time windows, compare the trajectories, "
         "and trace a displayed number back to its source records."
     )
@@ -72,11 +86,63 @@ def main() -> None:
     st.markdown(
         "An increase in industry model counts could reflect growth across the whole "
         "dataset, an increase in industry's relative contribution, or both. "
-        "Comparing sector shares is the next step in distinguishing these explanations."
+        "Chart 2 compares the shares of all recorded models in each category to distinguish "
+        "these explanations. Other and Unknown remain in the denominator, so the full "
+        "composition adds up to 100%."
     )
-    st.caption("Next question for the story: how have relative sector shares changed?")
+    if annual is not None:
+        industry_before = annual.loc[(comparison_year, "Industry")]
+        industry_after = annual.loc[(LAST_YEAR, "Industry")]
+        academia_before = annual.loc[(comparison_year, "Academia")]
+        academia_after = annual.loc[(LAST_YEAR, "Academia")]
+        if industry_before["Total"] > 0 and industry_after["Total"] > 0:
+            st.markdown(
+                f"Industry accounts for **{industry_before['Share']:.1f}%** of All records "
+                f"in {comparison_year} ({int(industry_before['Count'])} of "
+                f"{int(industry_before['Total'])}), compared with "
+                f"**{industry_after['Share']:.1f}%** in {LAST_YEAR} "
+                f"({int(industry_after['Count'])} of {int(industry_after['Total'])}). "
+                "Its growth therefore includes an increase in relative share. "
+                f"Academia's share falls from **{academia_before['Share']:.1f}%** to "
+                f"**{academia_after['Share']:.1f}%**, even though its recorded count "
+                "does not fall between these endpoints. A smaller share alone does not "
+                "show a decline in academic research quality or influence."
+            )
+    st.page_link(
+        "dashboards/1_Industry_vs_Academia.py",
+        label="Compare relative shares in Chart 2",
+        icon=":material/arrow_forward:",
+    )
 
-    st.subheader("3. Ask whether development is concentrated")
+    st.subheader("3. Check the Notable sample")
+    st.markdown(
+        "The broader All dataset and Epoch's selected Notable models can produce different "
+        "sector shares. The comparison below the two main charts asks whether the direction "
+        "of industry's change is consistent across both samples, using the same years and "
+        "sector classification. Each sample keeps its own denominator."
+    )
+    notable = load_evidence(NOTABLE_SOURCE)
+    if annual is not None and notable is not None:
+        all_latest = annual.loc[(LAST_YEAR, "Industry")]
+        notable_latest = notable.loc[(LAST_YEAR, "Industry")]
+        if all_latest["Total"] > 0 and notable_latest["Total"] > 0:
+            gap = notable_latest["Share"] - all_latest["Share"]
+            st.markdown(
+                f"In **{LAST_YEAR}**, Industry represents "
+                f"**{notable_latest['Share']:.1f}%** of Notable models "
+                f"({int(notable_latest['Count'])} of {int(notable_latest['Total'])}), "
+                f"compared with **{all_latest['Share']:.1f}%** in All: "
+                f"a difference of **{gap:+.1f} percentage points** (Notable minus All). "
+                "The strength of the sector imbalance depends on which sample is used. "
+                "Notable is a selected subset of All, so these are overlapping samples, "
+                "rather than independent confirmation."
+            )
+    st.page_link(
+        "dashboards/1_Industry_vs_Academia.py", label="Examine the Notable comparison",
+        icon=":material/arrow_forward:",
+    )
+
+    st.subheader("4. Ask whether development is concentrated")
     st.markdown(
         "Industry includes many organisations. Even if industry produces most recorded "
         "models, that does not establish whether a few companies account for most of them. "
@@ -87,10 +153,12 @@ def main() -> None:
     st.divider()
     with st.expander("What this story measures"):
         st.markdown(
-            f"The first chapter uses the local **Epoch AI Notable AI Models** dataset "
+            f"The two main charts use the local **Epoch AI All AI Models** dataset "
             f"for **{FIRST_YEAR}–{LAST_YEAR}**, with one count per model in its publication year. "
-            "The incomplete 2026 calendar year is excluded.\n\n"
-            "Notable models are a selected dataset, not an exhaustive census of AI research. "
+            "The incomplete 2026 calendar year and records without a publication date are excluded "
+            "from annual comparisons. A separate section compares the Notable sample.\n\n"
+            "All refers to all records in Epoch's database snapshot. It is a selected collection, "
+            "not an exhaustive census of AI research. "
             "These counts do not measure research quality or academic influence. "
             "Academia follows the source category and includes more than universities alone. "
             "Each dashboard documents its classifications and verification records.\n\n"

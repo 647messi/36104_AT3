@@ -1,25 +1,28 @@
 {
-  "source_file": "notable_ai_models.csv",
-  "source_sha256": "3ef26619430a93ee4d126bc46e91699fe6f2b15ea7b8e830f0a565e32caaa224",
-  "raw_rows": 1078,
-  "raw_columns": 47,
+  "source_file": "all_ai_models.csv",
+  "source_sha256": "271051c653d9a602afe4c96c4da83afb5a783095a416a984a5b76109be990aaf",
+  "raw_rows": 3628,
+  "raw_columns": 57,
   "earliest_date": "1950-07-02",
-  "latest_date": "2026-09-30",
-  "missing_organization": 18,
-  "missing_categorization": 20,
+  "latest_date": "2026-10-17",
+  "missing_organization": 75,
+  "missing_categorization": 99,
   "exact_duplicates": 0,
   "duplicate_model_date_pairs": 0,
+  "missing_dates": 12,
   "invalid_dates": 0,
+  "valid_dated_rows": 3616,
+  "excluded_undated_rows": 12,
   "analysis_years": [
     2003,
     2025
   ],
-  "analysis_models": 911,
+  "analysis_models": 3323,
   "analysis_sector_counts": {
-    "Industry": 510,
-    "Academia": 200,
-    "Collaboration": 170,
-    "Other": 25,
-    "Unknown": 6
+    "Industry": 1770,
+    "Academia": 741,
+    "Collaboration": 583,
+    "Other": 160,
+    "Unknown": 69
   }
 }
