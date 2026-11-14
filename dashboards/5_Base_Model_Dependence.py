@@ -25,6 +25,13 @@ def load_records(modified_ns: int) -> pd.DataFrame:
     return models[models["Year"].isna() | (models["Year"] <= LAST_YEAR)]
 
 
+@st.cache_data(show_spinner=False)
+def latest_record(modified_ns: int) -> str:
+    """Latest publication date in the whole snapshot, including the incomplete 2026."""
+    dates = load_all()["Publication date"]
+    return dates[dates != ""].max()
+
+
 def share_line(share: pd.DataFrame) -> go.Figure:
     fig = go.Figure(go.Scatter(
         x=share["Year"], y=share["Share"], mode="lines+markers+text",
@@ -97,7 +104,7 @@ def main() -> None:
         st.warning(f"The model data could not be loaded: {exc}")
         return
 
-    latest = records["Publication date"].replace("", pd.NA).dropna().max()
+    latest = latest_record(ALL_FILE.stat().st_mtime_ns)
     st.caption(f"Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models) (CC BY 4.0), "
                f"`{SOURCE_FILE}`. Latest record in this snapshot: {latest}. "
                f"Data last refreshed in the repository: {LAST_REFRESH}.")
