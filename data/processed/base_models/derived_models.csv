@@ -1,0 +1,653 @@
+Source record,Model,Organization,Publication date,Year,Base model,Base used,Base owner,Credit
+179,Nemotron-Cascade 14B,Nvidia,2025-12-15,2025,Qwen3-14B,Qwen3-14B,Alibaba,1.0
+196,DeepSeekMath-V2,DeepSeek,2025-11-27,2025,DeepSeek-V3.2-Exp-Base,DeepSeek-V3.2-Exp-Base,Not in dataset,1.0
+197,INTELLECT-3,Prime Intellect,2025-11-26,2025,GLM-4.5-Air,GLM-4.5-Air,Z.ai (Zhipu AI),0.5
+197,INTELLECT-3,Prime Intellect,2025-11-26,2025,GLM-4.5-Air,GLM-4.5-Air,Tsinghua University,0.5
+208,Cogito v2.1,Deep Cogito,2025-11-19,2025,DeepSeek-V3-Base,DeepSeek-V3-Base,Not in dataset,1.0
+212,π0.6 (pi-0.6),Physical Intelligence,2025-11-17,2025,Gemma 3 4B,Gemma 3 4B,Alphabet,1.0
+213,P1-235B-A22B,Shanghai AI Lab,2025-11-17,2025,Qwen3-235B-A22B,Qwen3-235B-A22B,Alibaba,1.0
+225,Emu3.5,Beijing Academy of Artificial Intelligence / BAAI,2025-10-30,2025,"Whisper v2,Qwen3-32B",Whisper v2,OpenAI,1.0
+231,LoongRL 7B,"Microsoft Research Asia,Shanghai Jiao Tong University,Carnegie Mellon University (CMU)",2025-10-27,2025,Qwen2.5 Instruct (7B),Qwen2.5 Instruct (7B),Alibaba,1.0
+232,LoongRL 14B,"Microsoft Research Asia,Shanghai Jiao Tong University,Carnegie Mellon University (CMU)",2025-10-27,2025,Qwen2.5-14B,Qwen2.5-14B,Alibaba,1.0
+236,Deepseek OCR,DeepSeek,2025-10-21,2025,"Segment Anything Model,CLIP (ViT L/14@336px)",Segment Anything Model,Meta,1.0
+237,BAPO 32B,"Fudan University,Shanghai Qiji Zhifeng",2025-10-21,2025,Qwen2.5-32B,Qwen2.5-32B,Alibaba,1.0
+266,MinerU2.5,"Shanghai AI Lab,Peking University,Shanghai Jiao Tong University",2025-09-29,2025,"Qwen2-VL-2B,Qwen2-0.5B",Qwen2-VL-2B,Alibaba,1.0
+281,Granite-Docling,IBM,2025-09-17,2025,SigLIP 2,SigLIP 2,Alphabet,1.0
+289,K2 Think,"Mohamed bin Zayed University of Artificial Intelligence (MBZUAI),G42",2025-09-09,2025,Qwen2.5-32B,Qwen2.5-32B,Alibaba,1.0
+309,Gemma-SEA-LION-v4-27B-IT,AI Singapore,2025-08-20,2025,Gemma 3 27B,Gemma 3 27B,Alphabet,1.0
+311,MolmoAct-7B-D,"Allen Institute for AI,University of Washington",2025-08-19,2025,"Qwen2.5-7B,SigLIP 400M",Qwen2.5-7B,Alibaba,1.0
+337,rStar-Math (Qwen2.5-Math-7B base),"Microsoft Research Asia,Peking University,Tsinghua University",2025-08-01,2025,Qwen2.5-Math-7B-Base,Qwen2.5-Math-7B-Base,Alibaba,1.0
+338,rStar-Math (Qwen2-Math-7B base),"Microsoft Research Asia,Peking University,Tsinghua University",2025-08-01,2025,Qwen2-Math-7B,Qwen2-Math-7B,Alibaba,1.0
+339,MindLink-72B,Kunlun Inc.,2025-08-01,2025,Qwen2.5-72B,Qwen2.5-72B,Alibaba,1.0
+340,MindLink-32B,Kunlun Inc.,2025-08-01,2025,Qwen3-32B,Qwen3-32B,Alibaba,1.0
+346,Llama Nemotron Super v1.5,Nvidia,2025-07-29,2025,Llama 3.3 70B,Llama 3.3 70B,Meta,1.0
+352,Agentar-Fin-R1 32B,Ant Group,2025-07-27,2025,Qwen3-32B,Qwen3-32B,Alibaba,1.0
+353,Agentar-Fin-R1 8B,Ant Group,2025-07-27,2025,Qwen3-8B,Qwen3-8B,Alibaba,1.0
+360,GR-3,ByteDance,2025-07-21,2025,Qwen2.5-VL-3B,Qwen2.5-VL-3B,Alibaba,1.0
+361,T-Pro 2.0,T-Bank,2025-07-18,2025,Qwen3-32B,Qwen3-32B,Alibaba,1.0
+363,OpenReasoning-Nemotron-32B,Nvidia,2025-07-16,2025,Qwen2.5-32B,Qwen2.5-32B,Alibaba,1.0
+389,Kimi Dev 72b,Moonshot,2025-06-16,2025,Qwen2.5-72B,Qwen2.5-72B,Alibaba,1.0
+395,CollabLLM,"Stanford University,Microsoft,Georgia Institute of Technology",2025-06-12,2025,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+415,ether0,FutureHouse,2025-06-05,2025,Mistral Small 3,Mistral Small 3,Mistral AI,1.0
+430,Skywork-OR1-32B,Kunlun Inc.,2025-05-29,2025,DeepSeek-R1-Distill-Qwen-32B,DeepSeek-R1-Distill-Qwen-32B,DeepSeek,1.0
+435,DMind-1,,2025-05-24,2025,Qwen3-32B,Qwen3-32B,Alibaba,1.0
+436,OpenOmni,"Chinese Academy of Sciences,Shenzhen Institute of Advanced Technology,University of Chinese Academy of Sciences,National University of Singapore,University of Science and Technology of China (USTC)",2025-05-24,2025,"Qwen2.5 Instruct (7B),CLIP (ViT L/14@336px),Whisper v3",Qwen2.5 Instruct (7B),Alibaba,1.0
+453,Cosmos-Reason1 7B,Nvidia,2025-05-19,2025,Qwen2.5-VL-7B,Qwen2.5-VL-7B,Alibaba,1.0
+461,II-Medical-8B,Intelligent Internet,2025-05-15,2025,Qwen3-8B,Qwen3-8B,Alibaba,1.0
+467,NTele-R1-32B-V1,ZTE,2025-05-12,2025,DeepSeek-R1-Distill-Qwen-32B,DeepSeek-R1-Distill-Qwen-32B,DeepSeek,1.0
+470,Tianxi-32B,Lenovo,2025-05-09,2025,Qwen2.5-32B,Qwen2.5-32B,Alibaba,1.0
+471,Tianxi-72B,Lenovo,2025-05-09,2025,Qwen2.5-72B,Qwen2.5-72B,Alibaba,1.0
+475,Kevin-32B,"Cognition,Stanford University",2025-05-06,2025,QwQ-32B,QwQ-32B,Alibaba,1.0
+477,Typhoon 2.1 Gemma 4B,Typhoon / SCB 10X,2025-05-05,2025,Gemma 3 4B,Gemma 3 4B,Alphabet,1.0
+478,Typhoon 2.1 Gemma 12B,Typhoon / SCB 10X,2025-05-05,2025,Gemma 3 12B,Gemma 3 12B,Alphabet,1.0
+488,GTE-ModernColBERT-v1,LightOn,2025-04-30,2025,gte-modernbert,gte-modernbert,Alibaba,1.0
+497,Foundation-sec-8b,Cisco,2025-04-28,2025,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+507,π0.5 (pi-0.5),Physical Intelligence,2025-04-22,2025,PaliGemma,PaliGemma,Alphabet,1.0
+508,Eagle 2.5,"Nvidia,Nanjing University,Hong Kong Polytechnic University,Rutgers University",2025-04-21,2025,Qwen2.5-7B,Qwen2.5-7B,Alibaba,1.0
+509,SkyReels-V2,Kunlun Inc.,2025-04-21,2025,Qwen2.5-VL-7B,Qwen2.5-VL-7B,Alibaba,1.0
+510,Llama-Primus-Nemotron-70B,Trend Micro,2025-04-21,2025,Llama-3.1-Nemotron-70B-Instruct,Llama-3.1-Nemotron-70B-Instruct,Nvidia,0.5
+510,Llama-Primus-Nemotron-70B,Trend Micro,2025-04-21,2025,Llama-3.1-Nemotron-70B-Instruct,Llama-3.1-Nemotron-70B-Instruct,Meta,0.5
+521,MAI-DS-R1,Microsoft,2025-04-16,2025,DeepSeek-R1,DeepSeek-R1,DeepSeek,1.0
+556,FoundationStereo,Nvidia,2025-04-04,2025,Depth Anything V2 Large,Depth Anything V2 Large,Tik Tok,0.5
+556,FoundationStereo,Nvidia,2025-04-04,2025,Depth Anything V2 Large,Depth Anything V2 Large,Hong Kong University,0.5
+559,OpenThaiGPT 1.6 /  OTG-1.6 (72B),"Mahidol University,AI Entrepreneurs Association of Thailand",2025-04-02,2025,Qwen2.5 Instruct (72B),Qwen2.5 Instruct (72B),Alibaba,1.0
+560,OpenThaiGPT R1 32b / OTG-R1 (32B),"Mahidol University,AI Entrepreneurs Association of Thailand",2025-04-02,2025,DeepSeek-R1-Distill-Qwen-32B,DeepSeek-R1-Distill-Qwen-32B,DeepSeek,1.0
+565,DeepHermes 3 - Mistral 24B,Nous Research,2025-03-29,2025,Mistral Small 3,Mistral Small 3,Mistral AI,1.0
+581,Diffusion Renderer,"Nvidia,University of Toronto,Vector Institute,University of Illinois Urbana-Champaign (UIUC)",2025-03-22,2025,Stable Video Diffusion,Stable Video Diffusion,Stability AI,1.0
+586,Llama Nemotron Nano 8B,Nvidia,2025-03-18,2025,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+587,Llama Nemotron Ultra 253B,Nvidia,2025-03-18,2025,Llama 3.1-405B,Llama 3.1-405B,Meta,1.0
+588,Llama Nemotron Super 49B,Nvidia,2025-03-18,2025,Llama 3.3 70B,Llama 3.3 70B,Meta,1.0
+603,Meissonic,"National University of Singapore,Skywork AI,Hong Kong University of Science and Technology (HKUST),University of California (UC) Berkeley,Zhejiang University (ZJU)",2025-03-13,2025,CLIP ViT-H/14 - LAION-2B,CLIP ViT-H/14 - LAION-2B,LAION,1.0
+616,YuE,"Hong Kong University of Science and Technology (HKUST),Multimodal Art Projection (MAP)",2025-03-11,2025,Llama 2-7B,Llama 2-7B,Meta,1.0
+619,FoxBrain,Foxconn,2025-03-10,2025,Llama 3.1-70B,Llama 3.1-70B,Meta,1.0
+631,Aya Vision 32B,Cohere,2025-03-03,2025,Aya Expanse 32B,Aya Expanse 32B,Cohere Labs (formerly Cohere for AI),1.0
+635,Difix3D+,"Nvidia,National University of Singapore,University of Toronto,Vector Institute",2025-03-03,2025,SD-Turbo,SD-Turbo,Stability AI,1.0
+648,Tianxi-7B,Lenovo,2025-02-25,2025,DeepSeek LLM 7B,DeepSeek LLM 7B,DeepSeek,1.0
+649,BFS-Prover,ByteDance,2025-02-25,2025,Qwen2.5-Math-7B-Base,Qwen2.5-Math-7B-Base,Alibaba,1.0
+654,Baigong (百工),"Shanghai Lingyi Artificial Intelligence Technology Co., Ltd.",2025-02-21,2025,InternLM,InternLM,Shanghai AI Lab,0.5
+654,Baigong (百工),"Shanghai Lingyi Artificial Intelligence Technology Co., Ltd.",2025-02-21,2025,InternLM,InternLM,SenseTime,0.5
+665,R1 1776,Perplexity,2025-02-18,2025,DeepSeek-R1,DeepSeek-R1,DeepSeek,1.0
+674,SkyReels-A1,Kunlun Inc.,2025-02-15,2025,CogVideoX,CogVideoX,Z.ai (Zhipu AI),0.5
+674,SkyReels-A1,Kunlun Inc.,2025-02-15,2025,CogVideoX,CogVideoX,Tsinghua University,0.5
+677,Deephermes 3 Llama 3 8B Preview,Nous Research,2025-02-14,2025,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+682,OREAL 32B,"Shanghai AI Lab,Shanghai Jiao Tong University,Chinese University of Hong Kong (CUHK),InnoHK",2025-02-10,2025,Qwen2.5-32B,Qwen2.5-32B,Alibaba,1.0
+683,OREAL 7B,"Shanghai AI Lab,Shanghai Jiao Tong University,Chinese University of Hong Kong (CUHK),InnoHK",2025-02-10,2025,Qwen2.5-7B,Qwen2.5-7B,Alibaba,1.0
+694,s1-32B,"Stanford University,University of Washington,Allen Institute for AI,Contextual AI",2025-01-31,2025,Qwen2.5 Instruct (32B),Qwen2.5 Instruct (32B),Alibaba,1.0
+695,s1.1,"Stanford University,University of Washington,Allen Institute for AI,Contextual AI",2025-01-31,2025,Qwen2.5 Instruct (32B),Qwen2.5 Instruct (32B),Alibaba,1.0
+697,Tulu 3 405B,"Allen Institute for AI,University of Washington",2025-01-30,2025,Llama 3.1-405B,Llama 3.1-405B,Meta,1.0
+702,Janus-Pro-1B,DeepSeek,2025-01-27,2025,"SigLIP 400M,DeepSeek-LLM-1.3b-base",SigLIP 400M,Alphabet,1.0
+711,DeepSeek-R1-Distill-Llama-70B,DeepSeek,2025-01-22,2025,Llama 3.3 70B,Llama 3.3 70B,Meta,1.0
+712,DeepSeek-R1-Distill-Qwen-14B,DeepSeek,2025-01-22,2025,Qwen2.5-14B,Qwen2.5-14B,Alibaba,1.0
+713,DeepSeek-R1-Distill-Qwen-1.5B,DeepSeek,2025-01-22,2025,Qwen2.5-Math-1.5B,Qwen2.5-Math-1.5B,Alibaba,1.0
+714,DeepSeek-R1-Distill-Llama-8B,DeepSeek,2025-01-22,2025,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+715,DeepSeek-R1-Distill-Qwen-32B,DeepSeek,2025-01-22,2025,Qwen2.5-32B,Qwen2.5-32B,Alibaba,1.0
+716,DeepSeek-R1-Distill-Qwen-7B,DeepSeek,2025-01-22,2025,Qwen2.5-7B,Qwen2.5-7B,Alibaba,1.0
+719,Sonar,Perplexity,2025-01-21,2025,Llama 3.3 70B,Llama 3.3 70B,Meta,1.0
+722,Eagle 2,"Nvidia,Nanjing University,Tsinghua University,Hong Kong Polytechnic University,Johns Hopkins University,New York University (NYU)",2025-01-20,2025,Qwen2.5-7B,Qwen2.5-7B,Alibaba,1.0
+724,INTELLECT-MATH,Prime Intellect,2025-01-17,2025,Qwen2.5-Math-7B-Base,Qwen2.5-Math-7B-Base,Alibaba,1.0
+730,Unichat-32B-c1,China Unicom,2025-01-15,2025,Qwen2.5 Instruct (32B),Qwen2.5 Instruct (32B),Alibaba,1.0
+732,s1,"Stanford University,University of Washington,Allen Institute for AI,Contextual AI",2025-01-14,2025,Qwen2.5 Instruct (72B),Qwen2.5 Instruct (72B),Alibaba,1.0
+735,OpenBioLLM-Llama3-70B,Saama,2025-01-14,2025,Llama 3-70B,Llama 3-70B,Meta,1.0
+736,OpenBioLLM-Llama3-8B,Saama,2025-01-14,2025,Llama 3-8B,Llama 3-8B,Meta,1.0
+744,Eurus-2-7B-PRIME,"Tsinghua University,University of Illinois Urbana-Champaign (UIUC),Shanghai AI Lab,Peking University,Shanghai Jiao Tong University,CUHK Shenzhen Research Institute",2025-01-02,2025,Qwen2.5-Math-7B-Base,Qwen2.5-Math-7B-Base,Alibaba,1.0
+765,SEA-LION V3 Gemma2 9B,AI Singapore,2024-12-19,2024,Gemma 2 9B,Gemma 2 9B,Alphabet,1.0
+766,SEA-LION V3 Llama3.1 8B,AI Singapore,2024-12-19,2024,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+767,SEA-LION V3 Llama3.1 70B,AI Singapore,2024-12-19,2024,Llama 3.1-70B,Llama 3.1-70B,Meta,1.0
+768,Llama 3.1 Typhoon 2 70B,Typhoon / SCB 10X,2024-12-19,2024,Llama 3.1-70B,Llama 3.1-70B,Meta,1.0
+769,Llama 3.1 Typhoon 2 8B,Typhoon / SCB 10X,2024-12-19,2024,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+770,Typhoon 2 7B,Typhoon / SCB 10X,2024-12-19,2024,Qwen2.5-7B,Qwen2.5-7B,Alibaba,1.0
+771,LLama 3.2 Typhoon 2 3B,Typhoon / SCB 10X,2024-12-19,2024,Llama 3.2 3B,Llama 3.2 3B,Meta,1.0
+772,LLama 3..2 Typhoon 2 1B,Typhoon / SCB 10X,2024-12-19,2024,Llama 3.2 1B,Llama 3.2 1B,Meta,1.0
+773,Typhoon2-Vision,Typhoon / SCB 10X,2024-12-19,2024,Qwen2-VL-7B,Qwen2-VL-7B,Alibaba,1.0
+785,Apollo 3B,"Meta AI,Stanford University",2024-12-13,2024,"SigLIP 400M,Qwen2.5-3B",SigLIP 400M,Alphabet,1.0
+786,Apollo 1.5B,"Meta AI,Stanford University",2024-12-13,2024,"SigLIP 400M,Qwen2.5-1.5B",SigLIP 400M,Alphabet,1.0
+788,Apollo 7B,"Meta AI,Stanford University",2024-12-13,2024,"SigLIP 400M,Qwen2.5-7B",SigLIP 400M,Alphabet,1.0
+793,Coconut,"Facebook,University of California San Diego",2024-12-11,2024,GPT-2 (124M),GPT-2 (124M),OpenAI,1.0
+794,T-Pro,T-Bank,2024-12-11,2024,Qwen2.5-32B,Qwen2.5-32B,Alibaba,1.0
+795,T-Lite,T-Bank,2024-12-11,2024,Qwen2.5-7B,Qwen2.5-7B,Alibaba,1.0
+804,InternVL2_5-38B,"Shanghai AI Lab,SenseTime,Tsinghua University,Nanjing University,Fudan University,Chinese University of Hong Kong (CUHK),Shanghai Jiao Tong University",2024-12-06,2024,"Qwen2.5 Instruct (32B),InternViT-6B",Qwen2.5 Instruct (32B),Alibaba,1.0
+805,InternVL2_5-78B,"Shanghai AI Lab,SenseTime,Tsinghua University,Nanjing University,Fudan University,Chinese University of Hong Kong (CUHK),Shanghai Jiao Tong University",2024-12-06,2024,"Qwen2.5 Instruct (72B),InternViT-6B",Qwen2.5 Instruct (72B),Alibaba,1.0
+814,TokenFlow-XL,ByteDance,2024-12-04,2024,Qwen2.5-14B,Qwen2.5-14B,Alibaba,1.0
+821,Intelligent Go-Explore (IGE),"University of British Columbia (UBC),Vector Institute,CIFAR AI Research",2024-12-03,2024,GPT-4 Turbo (Nov 2023),GPT-4 Turbo (Nov 2023),OpenAI,1.0
+834,DeepThought-8B,Ruliad,2024-11-27,2024,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+835,Ovis1.6-Gemma2-27B,Alibaba,2024-11-26,2024,"Gemma 2 27B,SigLIP 400M",Gemma 2 27B,Alphabet,1.0
+843,Tulu 3 (Tülu 3) 70B,"Allen Institute for AI,University of Washington",2024-11-21,2024,Llama 3.1-70B,Llama 3.1-70B,Meta,1.0
+845,Tulu 3 8B,"Allen Institute for AI,University of Washington",2024-11-21,2024,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+857,LLaVA-CoT,"Peking University,Tsinghua University,Peng Cheng Laboratory,Alibaba DAMO Academy,Lehigh University",2024-11-15,2024,Llama 3.2 11B,Llama 3.2 11B,Meta,1.0
+861,Athene-V2,Nexusflow,2024-11-14,2024,Qwen2.5-72B,Qwen2.5-72B,Alibaba,1.0
+862,Gemma2 9B CPT Sahabat-AI,"Indosat,Tech Mahindra,AI Singapore,GoTo",2024-11-14,2024,Gemma 2 9B,Gemma 2 9B,Alphabet,1.0
+867,NatureLM-audio,Earth Species Project,2024-11-11,2024,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+878,Llama-3.1-Minitron-4B,Nvidia,2024-11-04,2024,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+881,KwooVa,Harbin Institute of Technology,2024-11-02,2024,MiniCPM-V 2.6,MiniCPM-V 2.6,OpenBMB (Open Lab for Big Model Base),1.0
+882,KwooLa,Harbin Institute of Technology,2024-11-02,2024,Qwen1.5-14B,Qwen1.5-14B,Alibaba,1.0
+885,Uni-Med,"Tsinghua University,Beijing University of Posts and Telecommunications",2024-11-01,2024,"Llama 2-7B,ViT-G/14",Llama 2-7B,Meta,1.0
+886,SimPO,"Princeton University,University of Virginia",2024-11-01,2024,Gemma 2 9B,Gemma 2 9B,Alphabet,1.0
+887,π0 (pi-zero),Physical Intelligence,2024-10-31,2024,PaliGemma,PaliGemma,Alphabet,1.0
+893,Universal-2-TF,AssemblyAI,2024-10-30,2024,Conformer,Conformer,Alphabet,1.0
+901,Bielik 7B,"SpeakLeash,Cyfronet AGH",2024-10-24,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+907,NVLM-D 72B,Nvidia,2024-10-22,2024,"Qwen2-72B,InternViT-6B",Qwen2-72B,Alibaba,1.0
+908,NVLM-H 72B,Nvidia,2024-10-22,2024,"Qwen2-72B,InternViT-6B",Qwen2-72B,Alibaba,1.0
+909,NVLM-X 72B,Nvidia,2024-10-22,2024,"Qwen2-72B,InternViT-6B",Qwen2-72B,Alibaba,1.0
+913,LongVU,"Meta AI,King Abdullah University of Science and Technology (KAUST),Korea University",2024-10-22,2024,Qwen2-7B,Qwen2-7B,Alibaba,1.0
+921,Depth Anything V2 Giant,"Tik Tok,Hong Kong University",2024-10-20,2024,DINOv2,DINOv2,Meta,0.5
+921,Depth Anything V2 Giant,"Tik Tok,Hong Kong University",2024-10-20,2024,DINOv2,DINOv2,INRIA,0.5
+942,EvoBind2,"Stockholm University,Science for Life Laboratory",2024-10-12,2024,AlphaFold 2,AlphaFold 2,Alphabet,1.0
+946,T2V-Turbo-v2,"University of California Santa Barbara (UCSB),University of California Los Angeles (UCLA),Amazon,University of Waterloo",2024-10-11,2024,VideoCrafter2,VideoCrafter2,Tencent,1.0
+948,ProteinChat,"University of California San Diego,BioMap Research,The Scripps Research Institute,Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)",2024-10-10,2024,"xTrimoPGLM - 1B,Vicuna-13B v0",xTrimoPGLM - 1B,Not in dataset,1.0
+952,ProCALM (Uniref9B),"Profluent Bio,California Institute of Technology",2024-10-09,2024,ProGen2-base,ProGen2-base,Salesforce Research,0.3333
+952,ProCALM (Uniref9B),"Profluent Bio,California Institute of Technology",2024-10-09,2024,ProGen2-base,ProGen2-base,Columbia University,0.3333
+952,ProCALM (Uniref9B),"Profluent Bio,California Institute of Technology",2024-10-09,2024,ProGen2-base,ProGen2-base,Johns Hopkins University,0.3333
+969,BindCraft,"Ecole Polytechnique F´ed´erale de Lausanne (EPFL),University of Zurich,University of Lausanne,Massachusetts Institute of Technology (MIT),Visterra Inc,Swiss Federal Institute of Technology",2024-10-01,2024,AlphaFold 2,AlphaFold 2,Alphabet,1.0
+977,ConoDL,"Chongqing University,Ministry of Natural Resources (China)",2024-09-28,2024,ProGen,ProGen,Salesforce Research,0.5
+977,ConoDL,"Chongqing University,Ministry of Natural Resources (China)",2024-09-28,2024,ProGen,ProGen,Stanford University,0.5
+996,Molmo 72B,"Allen Institute for AI,University of Washington",2024-09-25,2024,"Qwen2-72B,CLIP (ViT L/14@336px)",Qwen2-72B,Alibaba,1.0
+1005,DrugTar,Isfahan University of Technology,2024-09-24,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1005,DrugTar,Isfahan University of Technology,2024-09-24,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1005,DrugTar,Isfahan University of Technology,2024-09-24,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1005,DrugTar,Isfahan University of Technology,2024-09-24,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1030,pKALM,Hokkaido University,2024-09-19,2024,ESM2-35M,ESM2-35M,Meta,0.25
+1030,pKALM,Hokkaido University,2024-09-19,2024,ESM2-35M,ESM2-35M,New York University (NYU),0.25
+1030,pKALM,Hokkaido University,2024-09-19,2024,ESM2-35M,ESM2-35M,Stanford University,0.25
+1030,pKALM,Hokkaido University,2024-09-19,2024,ESM2-35M,ESM2-35M,Massachusetts Institute of Technology (MIT),0.25
+1040,Oryx 34B,"Tsinghua University,Tencent,Nanyang Technological University",2024-09-19,2024,Yi-1.5-34B,Yi-1.5-34B,01.AI,1.0
+1041,Oryx 7B,"Tsinghua University,Tencent,Nanyang Technological University",2024-09-19,2024,Qwen2-7B,Qwen2-7B,Alibaba,1.0
+1064,Ovis1.6-Gemma2-9B,Alibaba,2024-09-16,2024,"Gemma 2 9B,SigLIP 400M",Gemma 2 9B,Alphabet,1.0
+1065,Playground v3,Playground,2024-09-16,2024,Llama 3-8B,Llama 3-8B,Meta,1.0
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,Chinese University of Hong Kong (CUHK),0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,Fudan University,0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,Shanghai AI Lab,0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,Harbin Institute of Technology,0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,University of Electronic Science and Technology of China,0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,Massachusetts Institute of Technology (MIT),0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,Harvard University,0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,Shanghai Zelixir Biotech,0.1111
+1066,RNAdiffusion,"Princeton University,Tsinghua University,Stanford University",2024-09-15,2024,RNA-FM,RNA-FM,CUHK Shenzhen Research Institute,0.1111
+1069,ProtRNA,"Fudan University,Shanghai AI Lab",2024-09-14,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1069,ProtRNA,"Fudan University,Shanghai AI Lab",2024-09-14,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1069,ProtRNA,"Fudan University,Shanghai AI Lab",2024-09-14,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1069,ProtRNA,"Fudan University,Shanghai AI Lab",2024-09-14,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1070,PLTNUM,"Kyoto University,National Institute of Biomedical Innovation,RIKEN",2024-09-14,2024,SaProt,SaProt,Zhejiang University (ZJU),0.5
+1070,PLTNUM,"Kyoto University,National Institute of Biomedical Innovation,RIKEN",2024-09-14,2024,SaProt,SaProt,Westlake University,0.5
+1074,YOLOv8 (reCAPTCHA fine-tuned),ETH Zurich,2024-09-13,2024,YOLOv8x,YOLOv8x,Ultralytics,1.0
+1076,IDPFold,"Shandong University,BioMap Research,Fuzhou University,Shanghai Jiao Tong University",2024-09-13,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1076,IDPFold,"Shandong University,BioMap Research,Fuzhou University,Shanghai Jiao Tong University",2024-09-13,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1076,IDPFold,"Shandong University,BioMap Research,Fuzhou University,Shanghai Jiao Tong University",2024-09-13,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1076,IDPFold,"Shandong University,BioMap Research,Fuzhou University,Shanghai Jiao Tong University",2024-09-13,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1095,ProteinMPNN-DDG,Peptone,2024-09-09,2024,ProteinMPNN,ProteinMPNN,University of Washington,0.25
+1095,ProteinMPNN-DDG,Peptone,2024-09-09,2024,ProteinMPNN,ProteinMPNN,Wageningen University and Research,0.25
+1095,ProteinMPNN-DDG,Peptone,2024-09-09,2024,ProteinMPNN,ProteinMPNN,NERSC,0.25
+1095,ProteinMPNN-DDG,Peptone,2024-09-09,2024,ProteinMPNN,ProteinMPNN,Lawrence Berkeley National Laboratory,0.25
+1101,AbGPT,Carnegie Mellon University (CMU),2024-09-09,2024,ProtGPT2,ProtGPT2,University of Bayreuth,1.0
+1106,ESM-DBP,Hunan University,2024-09-07,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1106,ESM-DBP,Hunan University,2024-09-07,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1106,ESM-DBP,Hunan University,2024-09-07,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1106,ESM-DBP,Hunan University,2024-09-07,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1113,xLAM-8x22B,Salesforce,2024-09-06,2024,Mixtral 8x22B,Mixtral 8x22B,Mistral AI,1.0
+1125,DrugCLIP,"Tsinghua University,Tsinghua-Peiking Center for Life Sciences,Peking University,Beijing Academy of Artificial Intelligence / BAAI",2024-09-03,2024,Uni-Mol Molecular Model,Uni-Mol Molecular Model,Renmin University of China,0.25
+1125,DrugCLIP,"Tsinghua University,Tsinghua-Peiking Center for Life Sciences,Peking University,Beijing Academy of Artificial Intelligence / BAAI",2024-09-03,2024,Uni-Mol Molecular Model,Uni-Mol Molecular Model,DP Technology,0.25
+1125,DrugCLIP,"Tsinghua University,Tsinghua-Peiking Center for Life Sciences,Peking University,Beijing Academy of Artificial Intelligence / BAAI",2024-09-03,2024,Uni-Mol Molecular Model,Uni-Mol Molecular Model,AI for Science Institute,0.25
+1125,DrugCLIP,"Tsinghua University,Tsinghua-Peiking Center for Life Sciences,Peking University,Beijing Academy of Artificial Intelligence / BAAI",2024-09-03,2024,Uni-Mol Molecular Model,Uni-Mol Molecular Model,Beijing (AISI),0.25
+1135,NV-Embed-v2,Nvidia,2024-08-30,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1141,Bielik-11B-v2,"SpeakLeash,Cyfronet AGH",2024-08-28,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1146,Xinyu,"Zhejiang University (ZJU),Institute for Advanced Algorithms Research,Northeastern University (China),China Telecom,State Key Laboratory of Media Convergence Production Technology and Systems",2024-08-23,2024,Llama 2-13B,Llama 2-13B,Meta,1.0
+1149,GameNGen,"Google Research,Google DeepMind,Tel Aviv University",2024-08-22,2024,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Runway,0.3333
+1149,GameNGen,"Google Research,Google DeepMind,Tel Aviv University",2024-08-22,2024,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Ludwig Maximilian University of Munich,0.3333
+1149,GameNGen,"Google Research,Google DeepMind,Tel Aviv University",2024-08-22,2024,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Heidelberg University,0.3333
+1156,Kosmos-2.5,Microsoft,2024-08-21,2024,Pix2Struct-Large,Pix2Struct-Large,Alphabet,0.5
+1156,Kosmos-2.5,Microsoft,2024-08-21,2024,Pix2Struct-Large,Pix2Struct-Large,University of Cambridge,0.5
+1159,LongVILA-7B,"Nvidia,Massachusetts Institute of Technology (MIT),University of California (UC) Berkeley,UT Austin",2024-08-19,2024,Qwen2-7B,Qwen2-7B,Alibaba,1.0
+1160,Hybrid-Phi-Mamba-1.5B,"Carnegie Mellon University (CMU),Mohamed bin Zayed University of Artificial Intelligence (MBZUAI),Cartesia",2024-08-19,2024,Phi-1.5,Phi-1.5,Microsoft,1.0
+1163,xGen-MM (BLIP-3),"Salesforce Research,University of Washington",2024-08-16,2024,phi-3-mini 3.8B,phi-3-mini 3.8B,Microsoft,1.0
+1167,Hermes 3 405B,Nous Research,2024-08-14,2024,Llama 3.1-405B,Llama 3.1-405B,Meta,1.0
+1168,Hermes 3 70B,Nous Research,2024-08-14,2024,Llama 3.1-70B,Llama 3.1-70B,Meta,1.0
+1169,Hermes 3 8B,Nous Research,2024-08-14,2024,Llama 3.1-8B,Llama 3.1-8B,Meta,1.0
+1177,P-LLama3,University of Siena,2024-08-12,2024,Llama 3-8B,Llama 3-8B,Meta,1.0
+1178,P-Mistral,University of Siena,2024-08-12,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1179,P-Llama2,University of Siena,2024-08-12,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1180,P-gemma,University of Siena,2024-08-12,2024,Gemma 7B,Gemma 7B,Alphabet,1.0
+1187,MooER,Moore Threads,2024-08-09,2024,Qwen2-7B,Qwen2-7B,Alibaba,1.0
+1189,3-ensemble of Self-ensembles on CIFAR-100,Google DeepMind,2024-08-08,2024,ResNet-152 (ImageNet),ResNet-152 (ImageNet),Microsoft,1.0
+1193,LLaVA-OV-7B,"ByteDance,Nanyang Technological University,Chinese University of Hong Kong (CUHK),Hong Kong University of Science and Technology (HKUST)",2024-08-06,2024,Qwen2-7B,Qwen2-7B,Alibaba,1.0
+1194,LLaVA-OV-72B,"ByteDance,Nanyang Technological University,Chinese University of Hong Kong (CUHK),Hong Kong University of Science and Technology (HKUST)",2024-08-06,2024,Qwen2-72B,Qwen2-72B,Alibaba,1.0
+1196,Jais-70B ,"G42,Inception G42",2024-08-05,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1201,OmniParser: Interactable Region Detection Model,Microsoft Research,2024-08-01,2024,YOLOv8x,YOLOv8x,Ultralytics,1.0
+1202,OmniParser: Icon Description Model,Microsoft Research,2024-08-01,2024,BLIP-2 (Q-Former),BLIP-2 (Q-Former),Salesforce Research,1.0
+1207,Llama SEA-LION V2 8B,AI Singapore,2024-07-30,2024,Llama 3-8B,Llama 3-8B,Meta,1.0
+1216,SaulLM-large,Equall.ai,2024-07-28,2024,Mixtral 8x22B,Mixtral 8x22B,Mistral AI,1.0
+1224,PrePR-CT,"King Abdullah University of Science and Technology (KAUST),Karolinska Institute",2024-07-24,2024,ChemBERTa,ChemBERTa,University of Toronto,0.3333
+1224,PrePR-CT,"King Abdullah University of Science and Technology (KAUST),Karolinska Institute",2024-07-24,2024,ChemBERTa,ChemBERTa,Reverie Labs,0.3333
+1224,PrePR-CT,"King Abdullah University of Science and Technology (KAUST),Karolinska Institute",2024-07-24,2024,ChemBERTa,ChemBERTa,DeepChem,0.3333
+1236,Athene-70B,Nexusflow,2024-07-19,2024,Llama 3-70B,Llama 3-70B,Meta,1.0
+1247,Cygnet,Gray Swan,2024-07-16,2024,Llama 3-8B,Llama 3-8B,Meta,1.0
+1251,LLaVA-NeXT-32B-Qwen,LMMs-Lab,2024-07-16,2024,Qwen1.5-32B,Qwen1.5-32B,Alibaba,1.0
+1254,ScribblePrompt-SAM,Massachusetts Institute of Technology (MIT),2024-07-16,2024,Segment Anything Model,Segment Anything Model,Meta,1.0
+1258,InternVL2-Llama3-76B,Shanghai AI Lab,2024-07-15,2024,"Hermes 2 Theta Llama-3 70B,InternViT-6B",Hermes 2 Theta Llama-3 70B,Nous Research,0.5
+1258,InternVL2-Llama3-76B,Shanghai AI Lab,2024-07-15,2024,"Hermes 2 Theta Llama-3 70B,InternViT-6B",Hermes 2 Theta Llama-3 70B,Arcee AI,0.5
+1268,ColPali,"Illuin Technology,Equall.ai,University Paris-Saclay,ETH Zurich",2024-07-05,2024,PaliGemma,PaliGemma,Alphabet,1.0
+1270,InternVL2-40B,Shanghai AI Lab,2024-07-04,2024,"Nous-Hermes-2-Yi-34B,InternViT-6B",Nous-Hermes-2-Yi-34B,Nous Research,1.0
+1272,Smaug-34B,Abacus AI,2024-07-03,2024,Yi-34B,Yi-34B,01.AI,1.0
+1273,Smaug-72B,Abacus AI,2024-07-03,2024,Qwen-72B,Qwen-72B,Alibaba,1.0
+1276,ChatBit,"Beijing Institute of Technology,Academy of Military Science,Minzu University of China",2024-06-28,2024,LLaMA-13B,LLaMA-13B,Meta,1.0
+1291,Cambrian-1-34B,New York University (NYU),2024-06-24,2024,Yi-34B,Yi-34B,01.AI,1.0
+1293,Cambrian-1-8B,New York University (NYU),2024-06-24,2024,LLaMA-3-Instruct-8B,LLaMA-3-Instruct-8B,Meta,1.0
+1297,Hermes 2 Theta Llama-3 70B,"Nous Research,Arcee AI",2024-06-20,2024,Llama 3-70B,Llama 3-70B,Meta,1.0
+1310,OpenVLA,"Stanford University,University of California (UC) Berkeley,Toyota Research Institute,Google DeepMind,Massachusetts Institute of Technology (MIT),Physical Intelligence",2024-06-13,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1317,Megrez-3B-Omni,"Infinigence AI,Tsinghua University,Shanghai Jiao Tong University",2024-06-12,2024,SigLIP 400M,SigLIP 400M,Alphabet,1.0
+1329,ProTrek,Westlake University,2024-06-03,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1329,ProTrek,Westlake University,2024-06-03,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1329,ProTrek,Westlake University,2024-06-03,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1329,ProTrek,Westlake University,2024-06-03,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1330,Prot2Token,"University of Missouri,Politecnico di Milano",2024-06-03,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1330,Prot2Token,"University of Missouri,Politecnico di Milano",2024-06-03,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1330,Prot2Token,"University of Missouri,Politecnico di Milano",2024-06-03,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1330,Prot2Token,"University of Missouri,Politecnico di Milano",2024-06-03,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1334,MULAN,"AIRI Artificial Intelligence Research Institute,Skolkovo Institute of Science and Technology,Belozersky Institute of Physio-Chemical Biology,Ligand Pro",2024-06-02,2024,ESM2-35M,ESM2-35M,Meta,0.25
+1334,MULAN,"AIRI Artificial Intelligence Research Institute,Skolkovo Institute of Science and Technology,Belozersky Institute of Physio-Chemical Biology,Ligand Pro",2024-06-02,2024,ESM2-35M,ESM2-35M,New York University (NYU),0.25
+1334,MULAN,"AIRI Artificial Intelligence Research Institute,Skolkovo Institute of Science and Technology,Belozersky Institute of Physio-Chemical Biology,Ligand Pro",2024-06-02,2024,ESM2-35M,ESM2-35M,Stanford University,0.25
+1334,MULAN,"AIRI Artificial Intelligence Research Institute,Skolkovo Institute of Science and Technology,Belozersky Institute of Physio-Chemical Biology,Ligand Pro",2024-06-02,2024,ESM2-35M,ESM2-35M,Massachusetts Institute of Technology (MIT),0.25
+1337,KeTu (Kolors),Kuaishou Technology,2024-05-31,2024,ChatGLM3-6B,ChatGLM3-6B,Z.ai (Zhipu AI),1.0
+1342,FoldFlow2,"Dreamfold,University of Montreal / Université de Montréal,McGill University,University of Oxford",2024-05-30,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1342,FoldFlow2,"Dreamfold,University of Montreal / Université de Montréal,McGill University,University of Oxford",2024-05-30,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1342,FoldFlow2,"Dreamfold,University of Montreal / Université de Montréal,McGill University,University of Oxford",2024-05-30,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1342,FoldFlow2,"Dreamfold,University of Montreal / Université de Montréal,McGill University,University of Oxford",2024-05-30,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1345,ChunkLlama2-13B,"Alibaba,The University of Hong Kong,Fudan University",2024-05-29,2024,Llama 2-13B,Llama 2-13B,Meta,1.0
+1349,NV-Embed-v1,Nvidia,2024-05-27,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1350,LUXIA-21.4B-Alignment,SaltLux,2024-05-27,2024,InternLM2-20B,InternLM2-20B,Shanghai AI Lab,0.25
+1350,LUXIA-21.4B-Alignment,SaltLux,2024-05-27,2024,InternLM2-20B,InternLM2-20B,SenseTime,0.25
+1350,LUXIA-21.4B-Alignment,SaltLux,2024-05-27,2024,InternLM2-20B,InternLM2-20B,Chinese University of Hong Kong (CUHK),0.25
+1350,LUXIA-21.4B-Alignment,SaltLux,2024-05-27,2024,InternLM2-20B,InternLM2-20B,Fudan University,0.25
+1351,Zamba2-7B,Zyphra,2024-05-26,2024,"Mamba 2, 2.7B",Mamba 2,Not in dataset,1.0
+1352,Llama-3-70B-Synthia-v3.5,,2024-05-26,2024,Llama 3-70B,Llama 3-70B,Meta,1.0
+1362,ALLaM adapted13B,Saudi Data and Artificial Intelligence Authority,2024-05-21,2024,LLaMA-13B,LLaMA-13B,Meta,1.0
+1363,ALLaM adapted 70B,Saudi Data and Artificial Intelligence Authority,2024-05-21,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1364,ALLaM 7B,Saudi Data and Artificial Intelligence Authority,2024-05-21,2024,LLaMA-7B,LLaMA-7B,Meta,1.0
+1387,VILA-7B,"Nvidia,Massachusetts Institute of Technology (MIT)",2024-05-15,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1400,Xinyuan (心元大模型),"Beijing Lituo Feiyuan Technology Co., Ltd.,Cylingo Group",2024-05-13,2024,Qwen3-14B,Qwen3-14B,Alibaba,1.0
+1402,llama-3-airoboros-70b-3.3,,2024-05-12,2024,Llama 3-70B,Llama 3-70B,Meta,1.0
+1413,Emu2,"Beijing Academy of Artificial Intelligence / BAAI,Tsinghua University,Peking University",2024-05-08,2024,"LLaMA-33B,Stable Diffusion XL (SDXL)",LLaMA-33B,Meta,1.0
+1421,MetaMath 70B,"University of Cambridge,Southern University of Science and Technology (SUSTech),Hong Kong University of Science and Technology (HKUST),Huawei Noah's Ark Lab,Alan Turing Institute,Max Planck Institute for Intelligent Systems",2024-05-03,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1422,MetaMath 7B (LLaMa finetune),"University of Cambridge,Southern University of Science and Technology (SUSTech),Hong Kong University of Science and Technology (HKUST),Huawei Noah's Ark Lab,Alan Turing Institute,Max Planck Institute for Intelligent Systems",2024-05-03,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1423,MetaMath 7B (Mistral finetune),"University of Cambridge,Southern University of Science and Technology (SUSTech),Hong Kong University of Science and Technology (HKUST),Huawei Noah's Ark Lab,Alan Turing Institute,Max Planck Institute for Intelligent Systems",2024-05-03,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1424,Idefics2,"Hugging Face,Sorbonne University",2024-05-03,2024,"Mistral 7B,SigLIP 400M",Mistral 7B,Mistral AI,1.0
+1425,VILA1.5-13B,"Nvidia,Massachusetts Institute of Technology (MIT)",2024-05-03,2024,"SigLIP 400M,Vicuna-13B-v1.5",SigLIP 400M,Alphabet,1.0
+1434,DiffPepBuilder,Peking University,2024-04-30,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1434,DiffPepBuilder,Peking University,2024-04-30,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1434,DiffPepBuilder,Peking University,2024-04-30,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1434,DiffPepBuilder,Peking University,2024-04-30,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1437,TAIDE-LX-7B,National Science and Technology Council,2024-04-29,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1439,Llama 3-TAIDE-LX-8B-Chat-Alpha1,National Science and Technology Council,2024-04-29,2024,Llama 3-8B,Llama 3-8B,Meta,1.0
+1441,Swallow,Tokyo Institute of Technology,2024-04-27,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1445,Beyond ESM2: Graph-Enhanced Protein Sequence Modeling with Efficient,"Huazhong University of Science and Technology,Fudan University,Northwestern Polytechnical University",2024-04-24,2024,ESM2-35M,ESM2-35M,Meta,0.25
+1445,Beyond ESM2: Graph-Enhanced Protein Sequence Modeling with Efficient,"Huazhong University of Science and Technology,Fudan University,Northwestern Polytechnical University",2024-04-24,2024,ESM2-35M,ESM2-35M,New York University (NYU),0.25
+1445,Beyond ESM2: Graph-Enhanced Protein Sequence Modeling with Efficient,"Huazhong University of Science and Technology,Fudan University,Northwestern Polytechnical University",2024-04-24,2024,ESM2-35M,ESM2-35M,Stanford University,0.25
+1445,Beyond ESM2: Graph-Enhanced Protein Sequence Modeling with Efficient,"Huazhong University of Science and Technology,Fudan University,Northwestern Polytechnical University",2024-04-24,2024,ESM2-35M,ESM2-35M,Massachusetts Institute of Technology (MIT),0.25
+1459,VISTA-2D,Nvidia,2024-04-22,2024,Segment Anything Model,Segment Anything Model,Meta,1.0
+1472,GRITLM 7B,"Contextual AI,The University of Hong Kong,Microsoft",2024-04-17,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1473,GRITLM 8x7B,"Contextual AI,The University of Hong Kong,Microsoft",2024-04-17,2024,Mixtral 8x7B,Mixtral 8x7B,Mistral AI,1.0
+1481,WizardLM-2 8x22B,Microsoft,2024-04-15,2024,Mixtral 8x22B,Mixtral 8x22B,Mistral AI,1.0
+1482,WizardLM-2 70B,Microsoft,2024-04-15,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1483,WizardLM-2 7B,Microsoft,2024-04-15,2024,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1487,NOMI GPT,NIO,2024-04-12,2024,"TinyBert,wave2vec 2.0 LARGE",TinyBert,Huazhong University of Science and Technology,0.3333
+1487,NOMI GPT,NIO,2024-04-12,2024,"TinyBert,wave2vec 2.0 LARGE",TinyBert,Huawei Noah's Ark Lab,0.3333
+1487,NOMI GPT,NIO,2024-04-12,2024,"TinyBert,wave2vec 2.0 LARGE",TinyBert,Huawei,0.3333
+1492,Zephyr 141B-A39B,"Hugging Face,Korea Advanced Institute of Science and Technology (KAIST),Argilla",2024-04-10,2024,Mixtral 8x22B,Mixtral 8x22B,Mistral AI,1.0
+1498,OpenThaiGPT v1.0.0 (13B),"Mahidol University,AI Entrepreneurs Association of Thailand",2024-04-08,2024,Llama 2-13B,Llama 2-13B,Meta,1.0
+1499,OpenThaiGPT v1.0.0 (7B),"Mahidol University,AI Entrepreneurs Association of Thailand",2024-04-08,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1500,SambaLingo-Thai-Chat (7B),"SambaNova Systems, Inc",2024-04-08,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1501,SambaLingo-Thai-Chat-70B,"SambaNova Systems, Inc",2024-04-08,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1503,ESM-AA,"Peking University,Nanjing University,Tsinghua University,PharMolix",2024-04-05,2024,ESM2-35M,ESM2-35M,Meta,0.25
+1503,ESM-AA,"Peking University,Nanjing University,Tsinghua University,PharMolix",2024-04-05,2024,ESM2-35M,ESM2-35M,New York University (NYU),0.25
+1503,ESM-AA,"Peking University,Nanjing University,Tsinghua University,PharMolix",2024-04-05,2024,ESM2-35M,ESM2-35M,Stanford University,0.25
+1503,ESM-AA,"Peking University,Nanjing University,Tsinghua University,PharMolix",2024-04-05,2024,ESM2-35M,ESM2-35M,Massachusetts Institute of Technology (MIT),0.25
+1507,Sailor-7B-Chat,"Sea AI Lab,Singapore University of Technology & Design",2024-04-04,2024,Qwen1.5-7B,Qwen1.5-7B,Alibaba,1.0
+1508,Universal-1,AssemblyAI,2024-04-03,2024,Conformer,Conformer,Alphabet,1.0
+1510,POKE´LLMON,Georgia Institute of Technology,2024-04-02,2024,GPT-4 (Mar 2023),GPT-4 (Mar 2023),OpenAI,1.0
+1520,TW3-JRGL-v2,"French Engineering School ECE,TW3 Partners",2024-04-01,2024,MultiVerse 70B,MultiVerse 70B,MTS,1.0
+1521,Le_Triomphant-ECE-TW3,"French Engineering School ECE,TW3 Partners",2024-04-01,2024,"Smaug-72B,MultiVerse 70B",Smaug-72B,Abacus AI,1.0
+1522,ReALM,Apple,2024-03-29,2024,Flan-T5 11B,Flan-T5 11B,Alphabet,1.0
+1530,MultiVerse 70B,MTS,2024-03-25,2024,Qwen-72B,Qwen-72B,Alibaba,1.0
+1537,MiniGPT4 + LRV-Instruction,"University of Maryland,Microsoft",2024-03-19,2024,MiniGPT4 (Vicuna finetune),MiniGPT4 (Vicuna finetune),King Abdullah University of Science and Technology (KAUST),1.0
+1555,BaseFold,Basecamp Research,2024-03-06,2024,AlphaFold 2,AlphaFold 2,Alphabet,1.0
+1556,GroundingGPT,"ByteDance,Fudan University",2024-03-05,2024,Vicuna-7B v0,Vicuna-7B v0,Large Model Systems Organization,0.5
+1556,GroundingGPT,"ByteDance,Fudan University",2024-03-05,2024,Vicuna-7B v0,Vicuna-7B v0,University of California (UC) Berkeley,0.5
+1575,PTM-Mamba,Duke University,2024-02-29,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1575,PTM-Mamba,Duke University,2024-02-29,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1575,PTM-Mamba,Duke University,2024-02-29,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1575,PTM-Mamba,Duke University,2024-02-29,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1577,Protllm,"Beijing Institute of Technology,Beihang University,Peking University,Smart Grid Research Institute,Shanghai AI Lab",2024-02-28,2024,LLaMA-7B,LLaMA-7B,Meta,1.0
+1585,ProLLaMA,"Peking University,Peng Cheng Laboratory",2024-02-26,2024,Llama 2-7B,Llama 2-7B,Meta,1.0
+1588,SDXL-Lightning,ByteDance,2024-02-24,2024,Stable Diffusion XL (SDXL),Stable Diffusion XL (SDXL),Stability AI,1.0
+1599,Me Llama 70B,"Yale School of Medicine,University of Florida,University of Texas Health Science Center",2024-02-20,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1600,Me Llama 13B,"Yale School of Medicine,University of Florida,University of Texas Health Science Center",2024-02-20,2024,Llama 2-13B,Llama 2-13B,Meta,1.0
+1603,ProtChatGPT,"University of Technology Sydney,Zhejiang University (ZJU)",2024-02-15,2024,Llama 3-8B,Llama 3-8B,Meta,1.0
+1607,Aya,"Cohere Labs (formerly Cohere for AI),Brown University,Cohere,Carnegie Mellon University (CMU),Massachusetts Institute of Technology (MIT)",2024-02-12,2024,mT5-XXL,mT5-XXL,Alphabet,1.0
+1608,PLAPT,"Wolfram Research,ASC27,Newport High School,Sanskriti School",2024-02-12,2024,"ChemBERTa,ProtBERT-BFD",ChemBERTa,University of Toronto,0.3333
+1608,PLAPT,"Wolfram Research,ASC27,Newport High School,Sanskriti School",2024-02-12,2024,"ChemBERTa,ProtBERT-BFD",ChemBERTa,Reverie Labs,0.3333
+1608,PLAPT,"Wolfram Research,ASC27,Newport High School,Sanskriti School",2024-02-12,2024,"ChemBERTa,ProtBERT-BFD",ChemBERTa,DeepChem,0.3333
+1612,Structure-Informed Protein Language Model,"Mila - Quebec AI (originally Montreal Institute for Learning Algorithms),University of Montreal / Université de Montréal,IBM Research,HEC Montreal,CIFAR AI Research",2024-02-07,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1612,Structure-Informed Protein Language Model,"Mila - Quebec AI (originally Montreal Institute for Learning Algorithms),University of Montreal / Université de Montréal,IBM Research,HEC Montreal,CIFAR AI Research",2024-02-07,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1612,Structure-Informed Protein Language Model,"Mila - Quebec AI (originally Montreal Institute for Learning Algorithms),University of Montreal / Université de Montréal,IBM Research,HEC Montreal,CIFAR AI Research",2024-02-07,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1612,Structure-Informed Protein Language Model,"Mila - Quebec AI (originally Montreal Institute for Learning Algorithms),University of Montreal / Université de Montréal,IBM Research,HEC Montreal,CIFAR AI Research",2024-02-07,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1632,BGE-M3 Embedding,Beijing Academy of Artificial Intelligence / BAAI,2024-01-30,2024,XLM-RoBERTa,XLM-RoBERTa,Meta,1.0
+1635,Karakuri LM,KARAKURI Inc.,2024-01-26,2024,Llama 2-70B,Llama 2-70B,Meta,1.0
+1636,ProteinStructureTransformer,Max Planck Institute of Biochemistry,2024-01-26,2024,ESM2-650M,ESM2-650M,Meta,0.25
+1636,ProteinStructureTransformer,Max Planck Institute of Biochemistry,2024-01-26,2024,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1636,ProteinStructureTransformer,Max Planck Institute of Biochemistry,2024-01-26,2024,ESM2-650M,ESM2-650M,Stanford University,0.25
+1636,ProteinStructureTransformer,Max Planck Institute of Biochemistry,2024-01-26,2024,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1661,InternViT-6B,"Shanghai AI Lab,Nanjing University,The University of Hong Kong,Tsinghua University,SenseTime,University of Science and Technology of China (USTC)",2024-01-15,2024,LLaMA-7B,LLaMA-7B,Meta,1.0
+1680,PLLaMa,"University of California Santa Barbara (UCSB),University of Lincoln,Chinese Academy of Agricultural Sciences,Swedish University of Agricultural Sciences",2024-01-03,2024,Llama 2-13B,Llama 2-13B,Meta,1.0
+1683,Qarasu-14B,Lightblue,2023-12-29,2023,Qwen-14B,Qwen-14B,Alibaba,1.0
+1684,CoRe,Tsinghua University,2023-12-29,2023,GPT-J-6B,GPT-J-6B,EleutherAI,0.5
+1684,CoRe,Tsinghua University,2023-12-29,2023,GPT-J-6B,GPT-J-6B,LAION,0.5
+1687,Elyza,Elyza,2023-12-27,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1689,Nous-Hermes-2-Yi-34B,Nous Research,2023-12-25,2023,Yi-34B,Yi-34B,01.AI,1.0
+1690,Solar-10.7B (Solar Mini),Upstage,2023-12-23,2023,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1695,nekomata-14b,rinna,2023-12-21,2023,Qwen-14B,Qwen-14B,Alibaba,1.0
+1708,MedLM,Google Cloud,2023-12-13,2023,Med-PaLM 2,Med-PaLM 2,Alphabet,1.0
+1710,VILA-13B,"Nvidia,Massachusetts Institute of Technology (MIT)",2023-12-12,2023,"Llama 2-13B,CLIP (ViT L/14@336px)",Llama 2-13B,Meta,1.0
+1720,SeamlessM4T,"Facebook,INRIA,University of California (UC) Berkeley",2023-12-08,2023,W2v-BERT,W2v-BERT,Alphabet,0.5
+1720,SeamlessM4T,"Facebook,INRIA,University of California (UC) Berkeley",2023-12-08,2023,W2v-BERT,W2v-BERT,Massachusetts Institute of Technology (MIT),0.5
+1725,OneLLM,"Chinese University of Hong Kong (CUHK),Shanghai AI Lab",2023-12-06,2023,Llama 2-7B,Llama 2-7B,Meta,1.0
+1726,NexusRaven-V2,Nexusflow,2023-12-05,2023,Code Llama-13B,Code Llama-13B,Meta,1.0
+1729,Baize-v2-13B (白泽),"University of California San Diego,Sun Yat-sen University,Microsoft Research Asia",2023-12-02,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+1736,SeaLLM-7B-v2,Alibaba DAMO Academy,2023-12-01,2023,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1737,SeaLLM-7B-v2.5,Alibaba DAMO Academy,2023-12-01,2023,Gemma 7B,Gemma 7B,Alphabet,1.0
+1743,PPLX-70B-Online,Perplexity,2023-11-29,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1746,Llama-3-Taiwan-70B,National Taiwan University,2023-11-29,2023,Llama 3-70B,Llama 3-70B,Meta,1.0
+1750,Meditron-70B,Ecole Polytechnique F´ed´erale de Lausanne (EPFL),2023-11-27,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1753,Starling-LM-7B-alpha,University of California (UC) Berkeley,2023-11-25,2023,OpenChat 3.5-7B,OpenChat 3.5-7B,Tsinghua University,1.0
+1755,Belle VL,KE Holdings Inc. (“Beike”),2023-11-24,2023,Qwen-14B,Qwen-14B,Alibaba,1.0
+1757,TAIWAN-LLM 13B,National Taiwan University,2023-11-23,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1758,TAIWAN-LLM 7B,National Taiwan University,2023-11-23,2023,Llama 2-7B,Llama 2-7B,Meta,1.0
+1760,OmniFusion-7B (InternViT-6B-448px V1-2),"AIRI Artificial Intelligence Research Institute,Sber,Skolkovo Institute of Science and Technology",2023-11-22,2023,"InternViT-6B,GigaChat-7B",InternViT-6B,Shanghai AI Lab,0.1667
+1760,OmniFusion-7B (InternViT-6B-448px V1-2),"AIRI Artificial Intelligence Research Institute,Sber,Skolkovo Institute of Science and Technology",2023-11-22,2023,"InternViT-6B,GigaChat-7B",InternViT-6B,Nanjing University,0.1667
+1760,OmniFusion-7B (InternViT-6B-448px V1-2),"AIRI Artificial Intelligence Research Institute,Sber,Skolkovo Institute of Science and Technology",2023-11-22,2023,"InternViT-6B,GigaChat-7B",InternViT-6B,The University of Hong Kong,0.1667
+1760,OmniFusion-7B (InternViT-6B-448px V1-2),"AIRI Artificial Intelligence Research Institute,Sber,Skolkovo Institute of Science and Technology",2023-11-22,2023,"InternViT-6B,GigaChat-7B",InternViT-6B,Tsinghua University,0.1667
+1760,OmniFusion-7B (InternViT-6B-448px V1-2),"AIRI Artificial Intelligence Research Institute,Sber,Skolkovo Institute of Science and Technology",2023-11-22,2023,"InternViT-6B,GigaChat-7B",InternViT-6B,SenseTime,0.1667
+1760,OmniFusion-7B (InternViT-6B-448px V1-2),"AIRI Artificial Intelligence Research Institute,Sber,Skolkovo Institute of Science and Technology",2023-11-22,2023,"InternViT-6B,GigaChat-7B",InternViT-6B,University of Science and Technology of China (USTC),0.1667
+1762,Orca 2-13B,Microsoft Research,2023-11-21,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+1763,Tulu V2 DPO 70B,"Allen Institute for AI,University of Washington",2023-11-20,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1766,Mistral 7B + OVM,Chinese University of Hong Kong (CUHK),2023-11-16,2023,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1772,SPHINX (Llama 2 13B),"Shanghai AI Lab,Chinese University of Hong Kong (CUHK),ShanghaiTech University",2023-11-13,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1773,Volcano 13B,"Korea University,Korea Advanced Institute of Science and Technology (KAIST),LG",2023-11-13,2023,LLaVA 1.5,LLaVA 1.5,University of Wisconsin Madison,0.5
+1773,Volcano 13B,"Korea University,Korea Advanced Institute of Science and Technology (KAIST),LG",2023-11-13,2023,LLaVA 1.5,LLaVA 1.5,Microsoft,0.5
+1774,LLaVA + LVIS-INSTRUCT4V,"Fudan University,University of Maryland",2023-11-13,2023,LLaVA 1.5,LLaVA 1.5,University of Wisconsin Madison,0.5
+1774,LLaVA + LVIS-INSTRUCT4V,"Fudan University,University of Maryland",2023-11-13,2023,LLaVA 1.5,LLaVA 1.5,Microsoft,0.5
+1787,OmniVec,TensorTour,2023-11-07,2023,BERT-Large,BERT-Large,Alphabet,1.0
+1788,mPLUG-Owl2,Alibaba,2023-11-07,2023,Llama 2-7B,Llama 2-7B,Meta,1.0
+1789,OtterHD-8B,Nanyang Technological University,2023-11-07,2023,Fuyu-8B,Fuyu-8B,Adept,1.0
+1792,Consistency Decoder,OpenAI,2023-11-06,2023,Denoising Diffusion Probabilistic Models (LSUN Bedroom),Denoising Diffusion Probabilistic Models (LSUN Bedroom),University of California (UC) Berkeley,1.0
+1794,CogVLM-17B,"Tsinghua University,Z.ai (Zhipu AI),Beihang University",2023-11-06,2023,Vicuna-7B v0,Vicuna-7B v0,Large Model Systems Organization,0.5
+1794,CogVLM-17B,"Tsinghua University,Z.ai (Zhipu AI),Beihang University",2023-11-06,2023,Vicuna-7B v0,Vicuna-7B v0,University of California (UC) Berkeley,0.5
+1796,LLaVA 1.5,"University of Wisconsin Madison,Microsoft Research",2023-11-05,2023,Vicuna-13B v0,Vicuna-13B v0,Large Model Systems Organization,0.5
+1796,LLaVA 1.5,"University of Wisconsin Madison,Microsoft Research",2023-11-05,2023,Vicuna-13B v0,Vicuna-13B v0,University of California (UC) Berkeley,0.5
+1801,ZhihaiTu AI (知海图),Beijing Zhizhe Tianxia Technology,2023-11-04,2023,CPM-Bee,CPM-Bee,Tsinghua University,0.25
+1801,ZhihaiTu AI (知海图),Beijing Zhizhe Tianxia Technology,2023-11-04,2023,CPM-Bee,CPM-Bee,Beijing Academy of Artificial Intelligence / BAAI,0.25
+1801,ZhihaiTu AI (知海图),Beijing Zhizhe Tianxia Technology,2023-11-04,2023,CPM-Bee,CPM-Bee,ModelBest,0.25
+1801,ZhihaiTu AI (知海图),Beijing Zhizhe Tianxia Technology,2023-11-04,2023,CPM-Bee,CPM-Bee,OpenBMB (Open Lab for Big Model Base),0.25
+1817,OpenChat 3.5-7B,Tsinghua University,2023-11-01,2023,Llama 2-7B,Llama 2-7B,Meta,1.0
+1818,MuggleMath,"University of Science and Technology of China (USTC),Alibaba",2023-11-01,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1819,YaRN (Llama 2 13B),"Nous Research,EleutherAI,University of Geneva",2023-11-01,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1820,YaRN (Llama 2 70B),"Nous Research,EleutherAI,University of Geneva",2023-11-01,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1828,DiT-XL/2 + CADS,"ETH Zurich,Disney Research",2023-10-26,2023,DiT-XL/2,DiT-XL/2,New York University (NYU),0.5
+1828,DiT-XL/2 + CADS,"ETH Zurich,Disney Research",2023-10-26,2023,DiT-XL/2,DiT-XL/2,University of California (UC) Berkeley,0.5
+1829,QMoE: compressed SwitchTransformer,"Institute of Science and Technology Austria (ISTA),Neural Magic",2023-10-25,2023,Switch,Switch,Alphabet,1.0
+1831,Zephyr 7B,Hugging Face,2023-10-25,2023,Mistral 7B,Mistral 7B,Mistral AI,1.0
+1834,CausalLM 14B,CausalLM,2023-10-22,2023,Qwen-14B,Qwen-14B,Alibaba,1.0
+1843,Llemma 34B,"Princeton University,University of Toronto,Vector Institute,University of Cambridge,Carnegie Mellon University (CMU),University of Washington,EleutherAI",2023-10-16,2023,Code Llama-34B,Code Llama-34B,Meta,1.0
+1844,Llemma 7B,"Princeton University,EleutherAI,University of Toronto,Vector Institute,University of Cambridge,Carnegie Mellon University (CMU),University of Washington",2023-10-16,2023,Code Llama-7B,Code Llama-7B,Meta,1.0
+1846,Table-GPT,Microsoft Research,2023-10-13,2023,GPT-3.5 (davinci-002),GPT-3.5 (davinci-002),OpenAI,1.0
+1849,Ferret (13B),"Columbia University,Apple",2023-10-11,2023,Vicuna-13B v0,Vicuna-13B v0,Large Model Systems Organization,0.5
+1849,Ferret (13B),"Columbia University,Apple",2023-10-11,2023,Vicuna-13B v0,Vicuna-13B v0,University of California (UC) Berkeley,0.5
+1854,FinGPT-13B,"University of California Los Angeles (UCLA),Columbia University,New York University (NYU)",2023-10-07,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1857,LLaMA-7B (protein-oriented instruction-tuned),Zhejiang University (ZJU),2023-10-02,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+1885,OpenChat-13b,"Tsinghua University,Shanghai AI Lab,01.AI",2023-09-20,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+1887,bge-reranker-large,"Beijing Academy of Artificial Intelligence / BAAI,Hugging Face",2023-09-14,2023,XLM-RoBERTa,XLM-RoBERTa,Meta,1.0
+1901,TigerBot-70B,Tigerobo,2023-09-06,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1908,PeptideBERT,Carnegie Mellon University (CMU),2023-08-28,2023,ProtBERT-UniRef,ProtBERT-UniRef,Technical University of Munich,0.1667
+1908,PeptideBERT,Carnegie Mellon University (CMU),2023-08-28,2023,ProtBERT-UniRef,ProtBERT-UniRef,Nvidia,0.1667
+1908,PeptideBERT,Carnegie Mellon University (CMU),2023-08-28,2023,ProtBERT-UniRef,ProtBERT-UniRef,Seoul National University,0.1667
+1908,PeptideBERT,Carnegie Mellon University (CMU),2023-08-28,2023,ProtBERT-UniRef,ProtBERT-UniRef,Alphabet,0.1667
+1908,PeptideBERT,Carnegie Mellon University (CMU),2023-08-28,2023,ProtBERT-UniRef,ProtBERT-UniRef,Oak Ridge National Laboratory,0.1667
+1908,PeptideBERT,Carnegie Mellon University (CMU),2023-08-28,2023,ProtBERT-UniRef,ProtBERT-UniRef,Med AI Technology,0.1667
+1913,Open-Assistant Llama2 70B SFT v10,,2023-08-25,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1917,airoboros-l2-70b-2.1,,2023-08-24,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1920,IDEFICS-80B,Hugging Face,2023-08-22,2023,"LLaMA-65B,CLIP ViT-H/14 - LAION-2B",LLaMA-65B,Meta,1.0
+1921,IDEFICS-9B,Hugging Face,2023-08-22,2023,"CLIP ViT-H/14 - LAION-2B,LLaMA-7B",CLIP ViT-H/14 - LAION-2B,LAION,1.0
+1932,Platypus-70B,Boston University,2023-08-14,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1943,GGNN,"Westlake University,Tsinghua University,Toyota Technological Institute at Chicago",2023-08-05,2023,ESM2-650M,ESM2-650M,Meta,0.25
+1943,GGNN,"Westlake University,Tsinghua University,Toyota Technological Institute at Chicago",2023-08-05,2023,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+1943,GGNN,"Westlake University,Tsinghua University,Toyota Technological Institute at Chicago",2023-08-05,2023,ESM2-650M,ESM2-650M,Stanford University,0.25
+1943,GGNN,"Westlake University,Tsinghua University,Toyota Technological Institute at Chicago",2023-08-05,2023,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+1945,YuLan-Chat-2 (13B),Renmin University of China,2023-08-02,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+1948,Vicuna-7B-v1.5,"Large Model Systems Organization,University of California (UC) Berkeley",2023-08-01,2023,Llama 2-7B,Llama 2-7B,Meta,1.0
+1949,Vicuna-13B-v1.5,"Large Model Systems Organization,University of California (UC) Berkeley",2023-08-01,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1954,BELLE-Llama2-13B-chat-0.4M,KE Holdings Inc. (“Beike”),2023-07-27,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1958,WizardLM 13B v1.2,"Microsoft,Peking University",2023-07-25,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1961,YAYI-13B-Llama2,Yayi (Wenge),2023-07-22,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+1962,YAYI-7B-Llama2,Yayi (Wenge),2023-07-22,2023,Llama 2-7B,Llama 2-7B,Meta,1.0
+1963,Stable Beluga 1,Stability AI,2023-07-21,2023,LLaMA-65B,LLaMA-65B,Meta,1.0
+1964,Stable Beluga 2,Stability AI,2023-07-20,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+1981,Emu1 (BAAI),"Beijing Academy of Artificial Intelligence / BAAI,Tsinghua University,Peking University",2023-07-11,2023,"Stable Diffusion (LDM-KL-8-G),EVA-01,LLaMA-13B",Stable Diffusion (LDM-KL-8-G),Runway,0.3333
+1981,Emu1 (BAAI),"Beijing Academy of Artificial Intelligence / BAAI,Tsinghua University,Peking University",2023-07-11,2023,"Stable Diffusion (LDM-KL-8-G),EVA-01,LLaMA-13B",Stable Diffusion (LDM-KL-8-G),Ludwig Maximilian University of Munich,0.3333
+1981,Emu1 (BAAI),"Beijing Academy of Artificial Intelligence / BAAI,Tsinghua University,Peking University",2023-07-11,2023,"Stable Diffusion (LDM-KL-8-G),EVA-01,LLaMA-13B",Stable Diffusion (LDM-KL-8-G),Heidelberg University,0.3333
+2000,Llama-2-Chinese 13B,FlagAlpha,2023-06-25,2023,Llama 2-13B,Llama 2-13B,Meta,1.0
+2003,Vicuna-33B-v1.3,"Large Model Systems Organization,University of California (UC) Berkeley",2023-06-22,2023,LLaMA-33B,LLaMA-33B,Meta,1.0
+2004,Vicuna-13B-v1.3,"Large Model Systems Organization,University of California (UC) Berkeley",2023-06-22,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+2005,Vicuna-7B-v1.3,"Large Model Systems Organization,University of California (UC) Berkeley",2023-06-22,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Hugging Face,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,ServiceNow,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Northeastern University,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Mila - Quebec AI (originally Montreal Institute for Learning Algorithms),0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Carnegie Mellon University (CMU),0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Johns Hopkins University,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Leipzig University,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,ScaDS.AI,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Queen Mary University of London,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Roblox,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Sea AI Lab,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Technion - Israel Institute of Technology,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Monash University,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,CSIRO,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Data61,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,McGill University,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Saama,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,University of British Columbia (UBC),0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Massachusetts Institute of Technology (MIT),0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Technical University of Munich,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,IBM,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,University of Vermont,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,UnfoldML,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,SAP,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,University of Notre Dame,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Columbia University,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,New York University (NYU),0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,University of Allahabad,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Discover Dollar,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Toloka,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Telefonica,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Stanford University,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Weizmann Institute of Science,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Alan Turing Institute,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Wellesley College,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,EleutherAI,0.027
+2009,WizardCoder-15.5B,Microsoft,2023-06-14,2023,StarCoder,StarCoder,Forschungszentrum Julich,0.027
+2012,BELLE-LLaMA-7B-0.6M-enc,KE Holdings Inc. (“Beike”),2023-06-12,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2013,BELLE-LLaMA-7B-2M-enc ,KE Holdings Inc. (“Beike”),2023-06-12,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2014,BELLE-LLaMA-13B-2M-enc,KE Holdings Inc. (“Beike”),2023-06-12,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+2018,SYNTERACT,University of Delaware,2023-06-09,2023,ProtBERT-BFD,ProtBERT-BFD,Technical University of Munich,0.1667
+2018,SYNTERACT,University of Delaware,2023-06-09,2023,ProtBERT-BFD,ProtBERT-BFD,Nvidia,0.1667
+2018,SYNTERACT,University of Delaware,2023-06-09,2023,ProtBERT-BFD,ProtBERT-BFD,Seoul National University,0.1667
+2018,SYNTERACT,University of Delaware,2023-06-09,2023,ProtBERT-BFD,ProtBERT-BFD,Alphabet,0.1667
+2018,SYNTERACT,University of Delaware,2023-06-09,2023,ProtBERT-BFD,ProtBERT-BFD,Oak Ridge National Laboratory,0.1667
+2018,SYNTERACT,University of Delaware,2023-06-09,2023,ProtBERT-BFD,ProtBERT-BFD,Med AI Technology,0.1667
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,EleutherAI,0.125
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,Booz Allen Hamilton,0.125
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,McLean,0.125
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,University of Cambridge,0.125
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,"Indraprastha Institute of Information Technology
+Delhi",0.125
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,Stability AI,0.125
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,datasaur.ai,0.125
+2034,DPO on Pythia-2.8B,"Stanford University,CZ Biohub Network",2023-05-29,2023,Pythia-2.8b,Pythia-2.8b,University of Amsterdam,0.125
+2036,HuatuoGPT,"Shenzhen Research Institue of Big Data,Chinese University of Hong Kong (CUHK)",2023-05-24,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+2038,LLaMA-7B (LoRA finetuned),NAVER,2023-05-23,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2039,LLaMA-65B (LoRA finetuned),NAVER,2023-05-23,2023,LLaMA-65B,LLaMA-65B,Meta,1.0
+2040,LLaMA-13B (LoRA finetuned),NAVER,2023-05-23,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+2041,LLaMA-33B (LoRA finetuned),NAVER,2023-05-23,2023,LLaMA-33B,LLaMA-33B,Meta,1.0
+2042,Goat-7B,National University of Singapore,2023-05-23,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2043,Guanaco-65B,University of Washington,2023-05-23,2023,LLaMA-65B,LLaMA-65B,Meta,1.0
+2049,XuanYuan 2.0,Du Xiaoman,2023-05-19,2023,BLOOM-176B,BLOOM-176B,Hugging Face,0.5
+2049,XuanYuan 2.0,Du Xiaoman,2023-05-19,2023,BLOOM-176B,BLOOM-176B,BigScience,0.5
+2054,CoEdiT-xxl,"University of Minnesota,Grammarly",2023-05-17,2023,Flan-T5 11B,Flan-T5 11B,Alphabet,1.0
+2060,InstructBLIP,"Salesforce Research,Hong Kong University of Science and Technology (HKUST),Nanyang Technological University",2023-05-11,2023,Vicuna-13B v0,Vicuna-13B v0,Large Model Systems Organization,0.5
+2060,InstructBLIP,"Salesforce Research,Hong Kong University of Science and Technology (HKUST),Nanyang Technological University",2023-05-11,2023,Vicuna-13B v0,Vicuna-13B v0,University of California (UC) Berkeley,0.5
+2068,ImageBind,Meta AI,2023-05-09,2023,ViT-Huge/14,ViT-Huge/14,Alphabet,1.0
+2080,WizardLM-7B,"Microsoft,Peking University",2023-04-24,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2082,WizardLM 70B,"Microsoft,Peking University",2023-04-24,2023,Llama 2-70B,Llama 2-70B,Meta,1.0
+2085,MiniGPT4 (Vicuna finetune),King Abdullah University of Science and Technology (KAUST),2023-04-20,2023,Vicuna-13B v0,Vicuna-13B v0,Large Model Systems Organization,0.5
+2085,MiniGPT4 (Vicuna finetune),King Abdullah University of Science and Technology (KAUST),2023-04-20,2023,Vicuna-13B v0,Vicuna-13B v0,University of California (UC) Berkeley,0.5
+2086,AlphaLink,"Technische Universitat Berlin,Research Cluster of Excellence,University of Edinburgh",2023-04-20,2023,AlphaFold 2,AlphaFold 2,Alphabet,1.0
+2087,MOSS-Moon-003,Fudan University,2023-04-19,2023,CodeGen-Mono 16.1B,CodeGen-Mono 16.1B,Salesforce,1.0
+2090,LLaVA,"University of Wisconsin Madison,Microsoft Research,Columbia University",2023-04-17,2023,Vicuna-13B v0,Vicuna-13B v0,Large Model Systems Organization,0.5
+2090,LLaVA,"University of Wisconsin Madison,Microsoft Research,Columbia University",2023-04-17,2023,Vicuna-13B v0,Vicuna-13B v0,University of California (UC) Berkeley,0.5
+2091,BELLE-LLaMA-EXT-7B,KE Holdings Inc. (“Beike”),2023-04-16,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2095,HuaTuo,Harbin Institute of Technology,2023-04-14,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,EleutherAI,0.125
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,Booz Allen Hamilton,0.125
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,McLean,0.125
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,University of Cambridge,0.125
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,"Indraprastha Institute of Information Technology
+Delhi",0.125
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,Stability AI,0.125
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,datasaur.ai,0.125
+2096,Dolly 2.0-12b,Databricks,2023-04-12,2023,Pythia-12b,Pythia-12b,University of Amsterdam,0.125
+2099,gLM,Harvard University,2023-04-08,2023,ESM2-650M,ESM2-650M,Meta,0.25
+2099,gLM,Harvard University,2023-04-08,2023,ESM2-650M,ESM2-650M,New York University (NYU),0.25
+2099,gLM,Harvard University,2023-04-08,2023,ESM2-650M,ESM2-650M,Stanford University,0.25
+2099,gLM,Harvard University,2023-04-08,2023,ESM2-650M,ESM2-650M,Massachusetts Institute of Technology (MIT),0.25
+2101,EvoMIL,"University of Glasgow,Cancer Research UK Beatson Institute",2023-04-08,2023,ESM1b,ESM1b,Meta,0.5
+2101,EvoMIL,"University of Glasgow,Cancer Research UK Beatson Institute",2023-04-08,2023,ESM1b,ESM1b,New York University (NYU),0.5
+2103,Segment Anything Model,Meta AI,2023-04-05,2023,ViT-Huge/14,ViT-Huge/14,Alphabet,1.0
+2104,BELLE-7B-0.2M,KE Holdings Inc. (“Beike”),2023-04-05,2023,BLOOM-7.1B,BLOOM-7.1B,Hugging Face,0.5
+2104,BELLE-7B-0.2M,KE Holdings Inc. (“Beike”),2023-04-05,2023,BLOOM-7.1B,BLOOM-7.1B,BigScience,0.5
+2105,BELLE-7B-1M,KE Holdings Inc. (“Beike”),2023-04-05,2023,BLOOM-7.1B,BLOOM-7.1B,Hugging Face,0.5
+2105,BELLE-7B-1M,KE Holdings Inc. (“Beike”),2023-04-05,2023,BLOOM-7.1B,BLOOM-7.1B,BigScience,0.5
+2106,BELLE-7B-2M,KE Holdings Inc. (“Beike”),2023-04-05,2023,BLOOM-7.1B,BLOOM-7.1B,Hugging Face,0.5
+2106,BELLE-7B-2M,KE Holdings Inc. (“Beike”),2023-04-05,2023,BLOOM-7.1B,BLOOM-7.1B,BigScience,0.5
+2119,Vicuna-13B v0,"Large Model Systems Organization,University of California (UC) Berkeley",2023-03-30,2023,LLaMA-13B,LLaMA-13B,Meta,1.0
+2121,Vicuna-7B v0,"Large Model Systems Organization,University of California (UC) Berkeley",2023-03-30,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2122,VideoMAE V2,"Nanjing University,Shenzhen Institute of Advanced Technology,Shanghai AI Lab",2023-03-29,2023,ViT-G/14,ViT-G/14,Alphabet,1.0
+2127,BELLE-7B-0.6M,KE Holdings Inc. (“Beike”),2023-03-26,2023,BLOOM-7.1B,BLOOM-7.1B,Hugging Face,0.5
+2127,BELLE-7B-0.6M,KE Holdings Inc. (“Beike”),2023-03-26,2023,BLOOM-7.1B,BLOOM-7.1B,BigScience,0.5
+2129,minChatGPT,Stanford University,2023-03-24,2023,GPT-2 (1.5B),GPT-2 (1.5B),OpenAI,1.0
+2130,Lightweight Fine-tuning a Pretrained Protein Language Model for Protein Secondary,Henan University,2023-03-23,2023,ProtT5-XL-U50,ProtT5-XL-U50,Technical University of Munich,0.1667
+2130,Lightweight Fine-tuning a Pretrained Protein Language Model for Protein Secondary,Henan University,2023-03-23,2023,ProtT5-XL-U50,ProtT5-XL-U50,Med AI Technology,0.1667
+2130,Lightweight Fine-tuning a Pretrained Protein Language Model for Protein Secondary,Henan University,2023-03-23,2023,ProtT5-XL-U50,ProtT5-XL-U50,Nvidia,0.1667
+2130,Lightweight Fine-tuning a Pretrained Protein Language Model for Protein Secondary,Henan University,2023-03-23,2023,ProtT5-XL-U50,ProtT5-XL-U50,Oak Ridge National Laboratory,0.1667
+2130,Lightweight Fine-tuning a Pretrained Protein Language Model for Protein Secondary,Henan University,2023-03-23,2023,ProtT5-XL-U50,ProtT5-XL-U50,Alphabet,0.1667
+2130,Lightweight Fine-tuning a Pretrained Protein Language Model for Protein Secondary,Henan University,2023-03-23,2023,ProtT5-XL-U50,ProtT5-XL-U50,Seoul National University,0.1667
+2138,LEP-AD,"King Abdullah University of Science and Technology (KAUST),Karolinska Institute",2023-03-15,2023,ESM2-3B,ESM2-3B,Meta,0.25
+2138,LEP-AD,"King Abdullah University of Science and Technology (KAUST),Karolinska Institute",2023-03-15,2023,ESM2-3B,ESM2-3B,New York University (NYU),0.25
+2138,LEP-AD,"King Abdullah University of Science and Technology (KAUST),Karolinska Institute",2023-03-15,2023,ESM2-3B,ESM2-3B,Stanford University,0.25
+2138,LEP-AD,"King Abdullah University of Science and Technology (KAUST),Karolinska Institute",2023-03-15,2023,ESM2-3B,ESM2-3B,Massachusetts Institute of Technology (MIT),0.25
+2141,Alpaca,Stanford University,2023-03-13,2023,LLaMA-7B,LLaMA-7B,Meta,1.0
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,EleutherAI,0.125
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,Booz Allen Hamilton,0.125
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,McLean,0.125
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,University of Cambridge,0.125
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,"Indraprastha Institute of Information Technology
+Delhi",0.125
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,Stability AI,0.125
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,datasaur.ai,0.125
+2142,Pythia-Chat-Base-7B-v0.16,Together,2023-03-08,2023,Pythia-6.9b,Pythia-6.9b,University of Amsterdam,0.125
+2148,DiT-XL/2,"New York University (NYU),University of California (UC) Berkeley",2023-03-02,2023,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Runway,0.3333
+2148,DiT-XL/2,"New York University (NYU),University of California (UC) Berkeley",2023-03-02,2023,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Ludwig Maximilian University of Munich,0.3333
+2148,DiT-XL/2,"New York University (NYU),University of California (UC) Berkeley",2023-03-02,2023,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Heidelberg University,0.3333
+2155,Kosmos-1,Microsoft,2023-03-01,2023,ViT-G/14 (LiT),ViT-G/14 (LiT),Alphabet,1.0
+2171,ProteinDT,"University of California (UC) Berkeley,California Institute of Technology,University of Toronto,University of Wisconsin Madison,Texas A&M,Nvidia,Mila - Quebec AI (originally Montreal Institute for Learning Algorithms)",2023-02-09,2023,SciBERT,SciBERT,Allen Institute for AI,1.0
+2172,ToolFormer,Meta AI,2023-02-09,2023,GPT-J-6B,GPT-J-6B,EleutherAI,0.5
+2172,ToolFormer,Meta AI,2023-02-09,2023,GPT-J-6B,GPT-J-6B,LAION,0.5
+2179,Flan T5-XXL + BLIP-2,Salesforce Research,2023-01-30,2023,Flan-T5 11B,Flan-T5 11B,Alphabet,1.0
+2201,SparseOPT-175B,"Institute of Science and Technology Austria (ISTA),Neural Magic",2023-01-02,2023,OPT-175B,OPT-175B,Meta,1.0
+2202,SparseOPT-66B,Institute of Science and Technology Austria (ISTA),2023-01-02,2023,OPT-66B,OPT-66B,Meta,1.0
+2204,SparseOPT-30B,Institute of Science and Technology Austria (ISTA),2023-01-02,2023,OPT-30B,OPT-30B,Meta,1.0
+2222,Transformer + GFM,Nanjing University,2022-12-01,2022,FAIRSEQ Adaptive Inputs,FAIRSEQ Adaptive Inputs,Meta,0.5
+2222,Transformer + GFM,Nanjing University,2022-12-01,2022,FAIRSEQ Adaptive Inputs,FAIRSEQ Adaptive Inputs,Alphabet,0.5
+2226,DiT-XL/2 + Discriminator Guidance,"Korea Advanced Institute of Science and Technology (KAIST),NAVER",2022-11-28,2022,DiT-XL/2,DiT-XL/2,New York University (NYU),0.5
+2226,DiT-XL/2 + Discriminator Guidance,"Korea Advanced Institute of Science and Technology (KAIST),NAVER",2022-11-28,2022,DiT-XL/2,DiT-XL/2,University of California (UC) Berkeley,0.5
+2232,AR-LDM,"Alibaba,University of Waterloo,Vector Institute",2022-11-20,2022,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Runway,0.3333
+2232,AR-LDM,"Alibaba,University of Waterloo,Vector Institute",2022-11-20,2022,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Ludwig Maximilian University of Munich,0.3333
+2232,AR-LDM,"Alibaba,University of Waterloo,Vector Institute",2022-11-20,2022,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Heidelberg University,0.3333
+2237,AltCLIP_M9,Beijing Academy of Artificial Intelligence / BAAI,2022-11-12,2022,CLIP (ViT L/14@336px),CLIP (ViT L/14@336px),OpenAI,1.0
+2238,Innovative Drug-like Molecule Generation from,"University of Pittsburgh,Carnegie Mellon University (CMU)",2022-11-12,2022,GraphBP,GraphBP,Texas A&M,0.5
+2238,Innovative Drug-like Molecule Generation from,"University of Pittsburgh,Carnegie Mellon University (CMU)",2022-11-12,2022,GraphBP,GraphBP,Fujitsu,0.5
+2243,mT0-13B,"Hugging Face,BigScience",2022-11-03,2022,mT5-XXL,mT5-XXL,Alphabet,1.0
+2246,Taiyi-Stable Diffusion,IDEA CCNL,2022-10-31,2022,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Runway,0.3333
+2246,Taiyi-Stable Diffusion,IDEA CCNL,2022-10-31,2022,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Ludwig Maximilian University of Munich,0.3333
+2246,Taiyi-Stable Diffusion,IDEA CCNL,2022-10-31,2022,Stable Diffusion (LDM-KL-8-G),Stable Diffusion (LDM-KL-8-G),Heidelberg University,0.3333
+2248,retrieval-quality-kNN-LMs,University of Massachusetts Amherst,2022-10-28,2022,Base LM + kNN LM + Continuous Cache,Base LM + kNN LM + Continuous Cache,Stanford University,0.5
+2248,retrieval-quality-kNN-LMs,University of Massachusetts Amherst,2022-10-28,2022,Base LM + kNN LM + Continuous Cache,Base LM + kNN LM + Continuous Cache,Meta,0.5
+2249,ADP-FAIRSEQ + NGRAMRES,"Nara Institute of Science and Technology,Chinese University of Hong Kong (CUHK),Tsinghua University",2022-10-26,2022,Transformer (Adaptive Input Embeddings) WT103,Transformer (Adaptive Input Embeddings) WT103,Meta,1.0
+2256,Tk-Instruct,"University of Washington,Arizona State University,Allen Institute for AI",2022-10-24,2022,T5-11B,T5-11B,Alphabet,1.0
+2262,GPT-2 + Progressive LRD,"Huawei,Huawei Noah's Ark Lab",2022-10-12,2022,GPT-2 (124M),GPT-2 (124M),OpenAI,1.0
+2264,Instruct-GPT + Mind's Eye,"Google,Dartmouth College",2022-10-11,2022,InstructGPT 175B,InstructGPT 175B,OpenAI,1.0
+2267,Decaying Fast Weights Transformer (WT-103),Jenni,2022-10-09,2022,Transformer (Adaptive Input Embeddings) WT103,Transformer (Adaptive Input Embeddings) WT103,Meta,1.0
+2273,NMST+GPT-2,New York University (NYU),2022-10-03,2022,GPT-2 (124M),GPT-2 (124M),OpenAI,1.0
+2290,Stable Diffusion 1.5,Runway,2022-08-22,2022,Stable Diffusion 1.2,Stable Diffusion 1.2,Ludwig Maximilian University of Munich,1.0
+2293,Stable Diffusion 1.1,Ludwig Maximilian University of Munich,2022-08-22,2022,CLIP (ViT L/14@336px),CLIP (ViT L/14@336px),OpenAI,1.0
+2304,SGPT BE 5.8B,Peking University,2022-08-05,2022,GPT-J-6B,GPT-J-6B,EleutherAI,0.5
+2304,SGPT BE 5.8B,Peking University,2022-08-05,2022,GPT-J-6B,GPT-J-6B,LAION,0.5
+2308,GPT-NeoX-Japanese,Abeja,2022-07-27,2022,GPT-NeoX-20B,GPT-NeoX-20B,EleutherAI,1.0
+2372,SimCSE,"Princeton University,Tsinghua University",2022-05-18,2022,RoBERTa Large,RoBERTa Large,Meta,0.5
+2372,SimCSE,"Princeton University,Tsinghua University",2022-05-18,2022,RoBERTa Large,RoBERTa Large,University of Washington,0.5
+2391,BERT-RBP,Waseda University,2022-04-07,2022,DNABERT,DNABERT,Northeastern University,1.0
+2433,OntoProtein,Zhejiang University (ZJU),2022-01-23,2022,ProtBERT-BFD,ProtBERT-BFD,Technical University of Munich,0.1667
+2433,OntoProtein,Zhejiang University (ZJU),2022-01-23,2022,ProtBERT-BFD,ProtBERT-BFD,Nvidia,0.1667
+2433,OntoProtein,Zhejiang University (ZJU),2022-01-23,2022,ProtBERT-BFD,ProtBERT-BFD,Seoul National University,0.1667
+2433,OntoProtein,Zhejiang University (ZJU),2022-01-23,2022,ProtBERT-BFD,ProtBERT-BFD,Alphabet,0.1667
+2433,OntoProtein,Zhejiang University (ZJU),2022-01-23,2022,ProtBERT-BFD,ProtBERT-BFD,Oak Ridge National Laboratory,0.1667
+2433,OntoProtein,Zhejiang University (ZJU),2022-01-23,2022,ProtBERT-BFD,ProtBERT-BFD,Med AI Technology,0.1667
+2442,Vespa,Technical University of Munich,2021-12-30,2021,ProteinBERT,ProteinBERT,Hebrew University of Jerusalem,0.3333
+2442,Vespa,Technical University of Munich,2021-12-30,2021,ProteinBERT,ProteinBERT,Ben-Gurion University of the Negev,0.3333
+2442,Vespa,Technical University of Munich,2021-12-30,2021,ProteinBERT,ProteinBERT,Deep Trading,0.3333
+2450,HSO,Toyota Technological Institute at Chicago,2021-12-16,2021,GPT-2 (355M),GPT-2 (355M),OpenAI,1.0
+2451,Contriever,"Meta AI,University College London (UCL),PSL University,Université Grenoble Alpes",2021-12-16,2021,BERT-Large,BERT-Large,Alphabet,1.0
+2455,Engine-XL(NE),Boston University,2021-12-11,2021,GPT-2 (1.5B),GPT-2 (1.5B),OpenAI,1.0
+2479,Masked Autoencoders ViT-H,Facebook AI Research,2021-11-11,2021,ViT-Huge/14,ViT-Huge/14,Alphabet,1.0
+2481,GPT-2 (AMPS),University of California (UC) Berkeley,2021-11-08,2021,GPT-2 (1.5B),GPT-2 (1.5B),OpenAI,1.0
+2482,GPT2+CoreLM+Fine-Tuning,Aristotle University of Thessaloniki,2021-11-04,2021,GPT-2 (124M),GPT-2 (124M),OpenAI,1.0
+2495,base LM+GNN+kNN,"Shannon.AI,Nanjing University,Nanyang Technological University,Zhejiang University (ZJU)",2021-10-17,2021,Transformer (Adaptive Input Embeddings) WT103,Transformer (Adaptive Input Embeddings) WT103,Meta,1.0
+2496,base LM+GNN (WT103),"Shannon.AI,Nanjing University,Nanyang Technological University,Zhejiang University (ZJU)",2021-10-17,2021,Transformer (Adaptive Input Embeddings) WT103,Transformer (Adaptive Input Embeddings) WT103,Meta,1.0
+2498,GPT-2 (fine-tuned with HYDRA),University of California San Diego,2021-10-16,2021,GPT-2 (1.5B),GPT-2 (1.5B),OpenAI,1.0
+2501,T0-XXL,"Hugging Face,Brown University",2021-10-15,2021,T5-11B,T5-11B,Alphabet,1.0
+2502,KnGPT2,"Huawei Noah's Ark Lab,McGill University",2021-10-15,2021,GPT-2 (124M),GPT-2 (124M),OpenAI,1.0
+2523,$\infty$-former (SM),"Universidade de Lisboa (ULisboa),DeepMind",2021-09-01,2021,GPT-2 (124M),GPT-2 (124M),OpenAI,1.0
+2524,HJRSS,"University of Washington,Microsoft",2021-09-01,2021,ESM1b,ESM1b,Meta,0.5
+2524,HJRSS,"University of Washington,Microsoft",2021-09-01,2021,ESM1b,ESM1b,New York University (NYU),0.5
+2578,Transformer-XL + SIS,INRIA,2021-05-03,2021,Transformer-XL (257M),Transformer-XL (257M),Carnegie Mellon University (CMU),0.5
+2578,Transformer-XL + SIS,INRIA,2021-05-03,2021,Transformer-XL (257M),Transformer-XL (257M),Alphabet,0.5
+2594,Unicorn,Allen Institute for AI,2021-03-24,2021,T5-11B,T5-11B,Alphabet,1.0
+2669,KEPLER,"Tsinghua University,Mila - Quebec AI (originally Montreal Institute for Learning Algorithms),HEC,CIFAR AI Research,Princeton University,University of Montreal / Université de Montréal",2020-11-23,2020,RoBERTa Base,RoBERTa Base,Meta,0.5
+2669,KEPLER,"Tsinghua University,Mila - Quebec AI (originally Montreal Institute for Learning Algorithms),HEC,CIFAR AI Research,Princeton University,University of Montreal / Université de Montréal",2020-11-23,2020,RoBERTa Base,RoBERTa Base,University of Washington,0.5
+2700,Transformer+Recurrent Windows of Context,"Toyota Technological Institute at Chicago,University of Chicago",2020-08-16,2020,GPT-2 (124M),GPT-2 (124M),OpenAI,1.0
+2740,UnifiedQA,"Allen Institute for AI,University of Washington",2020-05-02,2020,T5-11B,T5-11B,Alphabet,1.0
+2772,Theseus 6/768,"University of California San Diego,Beihang University,Microsoft",2020-02-07,2020,BERT-Large,BERT-Large,Alphabet,1.0
+2874,Transformer-XL Large + Phrase Induction,"Massachusetts Institute of Technology (MIT),University of Illinois Urbana-Champaign (UIUC)",2019-06-04,2019,Transformer-XL (257M),Transformer-XL (257M),Carnegie Mellon University (CMU),0.5
+2874,Transformer-XL Large + Phrase Induction,"Massachusetts Institute of Technology (MIT),University of Illinois Urbana-Champaign (UIUC)",2019-06-04,2019,Transformer-XL (257M),Transformer-XL (257M),Alphabet,0.5
+2902,BERT-Large-CAS (WT103),Amazon,2019-04-20,2019,BERT-Large,BERT-Large,Alphabet,1.0
+2903,BERT-Large-CAS (WT2),Amazon,2019-04-20,2019,BERT-Large,BERT-Large,Alphabet,1.0
+2916,Cross-lingual alignment,"Tel Aviv University,Massachusetts Institute of Technology (MIT)",2019-04-04,2019,ELMo,ELMo,University of Washington,0.5
+2916,Cross-lingual alignment,"Tel Aviv University,Massachusetts Institute of Technology (MIT)",2019-04-04,2019,ELMo,ELMo,Allen Institute for AI,0.5
+2955,Fine-tuned-AWD-LSTM-DOC (fin),Samsung R&D Institute Russia,2018-11-12,2018,AWD-LSTM-DOC (fin) (23M),AWD-LSTM-DOC (fin) (23M),NTT Communication Science Laboratories,0.5
+2955,Fine-tuned-AWD-LSTM-DOC (fin),Samsung R&D Institute Russia,2018-11-12,2018,AWD-LSTM-DOC (fin) (23M),AWD-LSTM-DOC (fin) (23M),Tohoku University,0.5
+3040,ULM-FiT,"University of San Francisco,Insight Centre NUI Galway,Fast.ai",2018-01-18,2018,AWD-LSTM,AWD-LSTM,Alphabet,0.5
+3040,ULM-FiT,"University of San Francisco,Insight Centre NUI Galway,Fast.ai",2018-01-18,2018,AWD-LSTM,AWD-LSTM,University of Oxford,0.5
+3145,HR-ResNet101,Carnegie Mellon University (CMU),2016-12-13,2016,ResNet-101 (ImageNet),ResNet-101 (ImageNet),Microsoft,1.0
+3191,Layer Normalization: The Attentive Reader,University of Toronto,2016-07-21,2016,The Attentive Reader,The Attentive Reader,Alphabet,1.0
+3193,Layer Normalization: Draw,University of Toronto,2016-07-21,2016,Draw,Draw,Alphabet,1.0
+3205,CMS-RCNN,IEEE,2016-06-17,2016,VGG16,VGG16,University of Oxford,1.0
+3209,LRR-4X,UC Irvine,2016-05-08,2016,VGG16,VGG16,University of Oxford,1.0
+3233,SSD,,2015-12-08,2015,VGG16,VGG16,University of Oxford,1.0
+3240,SAF R-CNN,"Beijing Institute of Technology,Sun Yat-sen University,Panasonic R&D,National University of Singapore",2015-10-28,2015,VGG16,VGG16,University of Oxford,1.0
+3248,CompACT-Deep,University of California San Diego,2015-07-19,2015,"AlexNet,VGG16",AlexNet,University of Toronto,1.0

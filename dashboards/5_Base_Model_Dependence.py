@@ -10,6 +10,7 @@ from src.base_models import (ALL_FILE, NOT_FOUND, PARENT, derived_models,
 from src.preprocessing import LAST_YEAR
 
 SOURCE_FILE = "data/raw/ai_models/all_ai_models.csv"
+LAST_REFRESH = "22 October 2026"  # date the CSV snapshot was committed (commit eded8d5)
 FIRST = 2015
 # Okabe-Ito colours, distinguishable with common colour-vision deficiencies.
 PALETTE = ["#0072B2", "#E69F00", "#009E73", "#CC79A7", "#56B4E9", "#D55E00"]
@@ -56,7 +57,7 @@ def owner_chart(shares: pd.DataFrame) -> go.Figure:
                              textfont=dict(size=10, color="#59616f"), showlegend=False,
                              hoverinfo="skip"))
     fig.update_layout(barmode="stack", height=440, margin=dict(t=40, b=10, l=10, r=10),
-                      legend=dict(orientation="h", y=1.12, x=0, title=None),
+                      legend=dict(orientation="h", y=1.14, x=0, title=dict(text="Base-model owner: ")),
                       xaxis=dict(title="Publication year of the derived model", dtick=1),
                       yaxis=dict(title="Share of derived models (%)", range=[0, 108], ticksuffix="%"))
     return fig
@@ -70,6 +71,7 @@ def ranking_chart(rank: pd.DataFrame) -> go.Figure:
         textposition="outside",
         hovertemplate="%{y}: %{x:.1f}% of derived models<extra></extra>"))
     fig.update_layout(height=60 + 30 * len(rank), margin=dict(t=10, b=10, l=10, r=40),
+                      yaxis=dict(title="Base-model owner"),
                       xaxis=dict(title="Share of derived models in the period (%)", ticksuffix="%",
                                  range=[0, rank["Share"].max() * 1.25]))
     return fig
@@ -95,6 +97,11 @@ def main() -> None:
         st.warning(f"The model data could not be loaded: {exc}")
         return
 
+    latest = records["Publication date"].replace("", pd.NA).dropna().max()
+    st.caption(f"Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models) (CC BY 4.0), "
+               f"`{SOURCE_FILE}`. Latest record in this snapshot: {latest}. "
+               f"Data last refreshed in the repository: {LAST_REFRESH}.")
+
     c1, c2, c3 = st.columns([2, 1, 1])
     years = c1.slider("Publication years", FIRST, LAST_YEAR, (2020, LAST_YEAR), key="bm_years")
     parent = c2.toggle("Group labs by parent company", value=True, key="bm_parent",
@@ -106,7 +113,8 @@ def main() -> None:
     share = derived_share_by_year(records, derived, years)
     shares = owner_shares(derived, years)
     if shares.empty:
-        st.info("No derived models in the selected years. Widen the year range.")
+        st.info("No models built on another developer's model in the selected years. "
+                "Widen the year range to see results.")
         return
 
     lead = (shares[shares["Owner"].isin(["Other", NOT_FOUND]) == False]  # noqa: E712
@@ -126,17 +134,43 @@ def main() -> None:
 
     st.subheader("How many new models are built on another developer's model?")
     st.plotly_chart(share_line(share), width="stretch", key="bm_line")
-    st.caption("Share of all models published each year whose Base model field names another "
-               "developer's model. Hover for counts.")
+    st.caption(f"Change over time, {years[0]}–{years[1]}: share (%) of all models published each "
+               "year whose Base model field names another developer's model. Baseline: all models "
+               "published that year, labelled on each point.")
 
     st.subheader("Whose base models are they built on?")
     st.plotly_chart(owner_chart(shares), width="stretch", key="bm_stack")
     st.caption("100% stacked: each year adds to 100% of that year's derived models, so the bars "
                "show who the field depends on, not how many models there are (n above each bar). "
-               "Small n before 2023 makes those years unstable.")
+               "Small n before 2023 makes those years unstable. Exact values are in the table.")
+    table = (shares.pivot(index="Owner", columns="Year", values="Share").round(0)
+             .reindex(list(dict.fromkeys(shares["Owner"]))))
+    table.columns = [str(c) for c in table.columns]
+    st.dataframe(table.map(lambda v: f"{v:.0f}%"), width="stretch",
+                 column_config={"Owner": "Base-model owner"})
 
     st.subheader(f"Base-model owners ranked, {years[0]}–{years[1]}")
-    st.plotly_chart(ranking_chart(owner_ranking(derived, years)), width="stretch", key="bm_rank")
+    rank = owner_ranking(derived, years)
+    st.plotly_chart(ranking_chart(rank), width="stretch", key="bm_rank")
+    st.caption(f"Ranking: each owner's share (%) and number of derived models across "
+               f"{years[0]}–{years[1]} combined.")
+
+    top = rank[rank["Base owner"] != NOT_FOUND].head(3)
+    names = ", ".join(top["Base owner"].iloc[:-1]) + (" and " if len(top) > 1 else "") + top["Base owner"].iloc[-1]
+    first_share = share["Share"].iloc[0]
+    last_share = share.set_index("Year").loc[last, "Share"]
+    st.info(
+        f"**Answer for {years[0]}–{years[1]}:** the share of new models built on another "
+        f"developer's model went from {first_share:.0f}% in {int(share['Year'].iloc[0])} to "
+        f"{last_share:.0f}% in {last}. {names} owned the base models behind "
+        f"{top['Share'].sum():.0f}% of them, so dependence is concentrated in a few organisations, "
+        f"but the leading owner has changed over time ({' → '.join(dict.fromkeys(leaders))})."
+    )
+    st.warning(
+        "**What this data cannot show:** licence terms, how widely each model is used, or market "
+        "share. Epoch AI lists only the models it has catalogued, and Base model is filled only "
+        "when the source states it, so dependence is a lower bound."
+    )
 
     with st.expander("Verify a displayed number", expanded=False):
         v1, v2 = st.columns(2)

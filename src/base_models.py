@@ -120,3 +120,49 @@ def owner_ranking(derived: pd.DataFrame, years: tuple[int, int], n: int = 12) ->
     r = r.head(n).rename("Models").reset_index()
     r["Share"] = r["Models"] / total * 100
     return r
+
+
+PROCESSED_DIR = ROOT / "data/processed/base_models"
+EXPORT_YEARS = (2015, 2025)
+
+
+def export(out_dir: Path = PROCESSED_DIR) -> list[Path]:
+    """Regenerate page 5's processed files from the unchanged raw CSV.
+
+    Run from the repository root:  python -m src.base_models [--output DIR]
+    Default page settings: parent companies merged, a developer's own base models excluded.
+    Values are rounded and written with Unix line endings, so a fresh run is byte-identical.
+    """
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    records = load_all()
+    records = records[records["Year"].isna() | (records["Year"] <= EXPORT_YEARS[1])]
+    derived = derived_models(records, parent=True, include_own=False)
+    derived_out = derived[["Source record", "Model", "Organization", "Publication date", "Year",
+                           "Base model", "Base used", "Base owner", "Credit"]].copy()
+    derived_out["Credit"] = derived_out["Credit"].round(4)
+    share = derived_share_by_year(records, derived, EXPORT_YEARS).round({"Share": 1})
+    shares = owner_shares(derived, EXPORT_YEARS).round({"Models": 2, "Total": 2, "Share": 1})
+    ranking = owner_ranking(derived, (2020, EXPORT_YEARS[1]), n=50).round({"Models": 2, "Share": 1})
+    files = {
+        "derived_models.csv": derived_out,
+        "derived_share_by_year.csv": share,
+        "owner_shares_by_year.csv": shares,
+        "owner_ranking_2020_2025.csv": ranking,
+    }
+    paths = []
+    for name, frame in files.items():
+        path = out_dir / name
+        frame.to_csv(path, index=False, lineterminator="\n")
+        paths.append(path)
+    return paths
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Regenerate page 5's processed files.")
+    parser.add_argument("--output", type=Path, default=PROCESSED_DIR)
+    args = parser.parse_args()
+    for written in export(args.output):
+        print(f"wrote {written}")

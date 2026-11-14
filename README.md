@@ -169,3 +169,60 @@ The 11 checks cover the merging and counting rules (including no double counting
 ### Limits
 
 Counts models, not compute or capability. Epoch AI's notable list is a curated selection, not every AI model, and recent years may gain records retrospectively. A model is attributed to every organisation listed; the data does not record who led the work. Merging uses current corporate parents, so DeepMind before its 2014 acquisition is grouped with Google.
+
+## Base Model Dependence (Tuan Anh)
+
+**Sub-question:** Is AI development becoming dependent on base models from a few organisations?
+
+**User story:** As a technology policy analyst, I want to see how many new AI models are built on another organisation's base model, and whose base models they are, so that I can judge whether a few organisations control the foundations other developers rely on.
+
+**Walkthrough:** open **Base Model Dependence** in the sidebar → read the line chart (share of new models built on another developer's model: 3% in 2020, 23% in 2023, 15% in 2025) → read the 100% stacked bar and its value table to see who they depend on each year (Meta 52% in 2023, Alibaba 50% in 2025) → read the ranking (Meta, Alibaba and Alphabet own the base models behind 64% of derived models in 2020–2025) → move the **Publication years** slider or switch the toggles and the charts, answer and ranking update.
+
+**Answer on screen:** dependence on other developers' base models rose sharply from 2023 and is concentrated in a few organisations, but the leading owner keeps changing (Alphabet → OpenAI → Meta → Alibaba), so no single organisation holds this position.
+
+It complements the Model Access page: that page asks how each model is released; this one asks whose models other developers build on.
+
+### Files
+
+```text
+dashboards/5_Base_Model_Dependence.py             Page: three charts, value table, answer, limits, verification
+src/base_models.py                                All-file loader, base-model owner matching, shares, exports
+tests/test_base_models.py                         Loading, counting rules, raw-CSV recount, regeneration and page checks
+data/dictionary/base_models.yml                   Data dictionary for the four processed files
+data/processed/base_models/derived_models.csv     Every model built on another developer's base model, with its owner
+data/processed/base_models/derived_share_by_year.csv   Share of each year's models that are derived, 2015–2025
+data/processed/base_models/owner_shares_by_year.csv    Each owner's share of derived models per year, 2015–2025
+data/processed/base_models/owner_ranking_2020_2025.csv Owners ranked by derived models, 2020–2025
+```
+
+### Data and attribution
+
+Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models), All AI Models, local file `data/raw/ai_models/all_ai_models.csv` (CC BY 4.0; 3,628 records; latest publication date 2026-10-17; snapshot added to the repository on 22 October 2026). The page reads the All file rather than the shared Notable default because `Base model` is filled for 693 All records but only 141 Notable ones. The shared loader stops on the All file's 12 undated records, so `src/base_models.py` reads it with the same conventions (all fields as text, one-based `Source record`, `Year` from `Publication date`) and keeps undated records without a year. The raw file is not changed.
+
+| Step | Rule |
+| --- | --- |
+| Derived model | A record whose `Base model` is not blank; if several are listed, the first is used |
+| Owner | The `Organization` of the base model's own record in the same file, matched on its exact name; unmatched names are shown as "Not in dataset" (4 records) |
+| Credit | A base model with k owners gives each owner 1/k, so credits add up to the number of derived models |
+| Own base models | Excluded by default: Meta fine-tuning its own Llama is not dependence on someone else. A toggle includes them |
+| Parent company | On by default: Google, Google Brain and DeepMind become Alphabet; Meta AI and Facebook AI Research become Meta; Qwen Team becomes Alibaba (`PARENT` in `src/base_models.py`) |
+| Exclude | The incomplete 2026 calendar year |
+
+### Design and recording
+
+The owner chart is a 100% stacked bar because the task is part-to-whole over time. A stacked bar of raw counts was rejected: derived models rise from 16 in 2021 to 168 in 2024, so counts would mainly show growth and hide the shift in who the field depends on. Each bar's total is shown as n above it, and a value table below gives every share. The line chart shows change over time in one measure, and the sorted horizontal bar ranks owners. Colours follow the Okabe–Ito palette, which stays distinguishable with common colour vision deficiencies.
+
+For a numerical demonstration, choose a year and owner under **Verify a displayed number**. Example: in 2025, 43 of 86 derived models were built on an Alibaba base model (50%). *K2 Think* (Source record 289, spreadsheet row 290) lists *Qwen2.5-32B* as its base model; Qwen2.5-32B's own record (1061, row 1062) has `Organization` = Alibaba.
+
+### Regenerate and check
+
+```bash
+python -m src.base_models
+python -m unittest tests.test_base_models -v
+```
+
+The 14 checks cover loading every record once with unchanged fields, shares that sum to 100% each year, credits that add up, the default exclusion of own base models, an independent recount of the 2025 Alibaba figure from the raw CSV using the `csv` module, byte-identical regeneration of the four processed files, and the page opening through `app.py` with working toggles, a single-year range and the verification table.
+
+### Limits
+
+Epoch AI records only the models it has catalogued, and `Base model` is filled only when the source states it, so dependence is a lower bound. Dependence here means being built on a model; it does not measure licence terms, usage or market share. Name matching is exact, so a base model recorded under a different name is shown as "Not in dataset". Years before 2023 have few derived models, so their shares are unstable.
