@@ -1,6 +1,6 @@
 # The Rise of AI: group story and student dashboards
 
-The default **Story** page introduces the working group research question: **Is AI model development becoming dominated by a few organisations?** It connects sector participation, relative sector shares, sample selection and organisational concentration as distinct analytical questions. The intended audience is technology policymakers and AI researchers.
+The default **Story** page introduces the working group research question: **Is AI model development becoming dominated by a few organisations?** It connects sector participation, relative sector shares, sample selection and organisational concentration as distinct analytical questions. The persona is a technology policy analyst preparing a briefing on whether AI model development is becoming concentrated, who needs to decide whether that concentration warrants policy attention.
 
 ## Run
 
