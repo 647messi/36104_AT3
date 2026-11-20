@@ -228,6 +228,61 @@ The 11 checks cover the merging and counting rules (including no double counting
 
 Counts models, not compute or capability. Epoch AI's notable list is a curated selection, not every AI model, and recent years may gain records retrospectively. A model is attributed to every organisation listed; the data does not record who led the work. Merging uses current corporate parents, so DeepMind before its 2014 acquisition is grouped with Google.
 
+## Model Access (Rebecca)
+
+**Sub-question:** Are notable AI models becoming more openly available, or is access shifting to developer-controlled APIs?
+
+**User story:** As a technology policy analyst, I want to see each year how notable AI models are made available (open weights, API, hosted or limited access, or unreleased), so that I can judge whether the organisations that build advanced AI also control who can use it.
+
+**Walkthrough:** open **Model Access** in the navigation → read the three cards and the blue summary (2015 to 2025) → read the 100% stacked bar chart and the **Every value in the chart** table below it → switch **Show** to **Number of models** to see the growth in counts → open **Verify a displayed number**, choose 2025 and API access to see the 46 matching source rows.
+
+**Answer on screen:** from 2015 to 2025, unreleased models fell from 69% to 7% of models with a recorded accessibility, developer-controlled access (API, hosted or limited) rose from 0% to 51%, and open weights rose from 31% to 42%. Access has widened, but mostly on the developer's terms.
+
+### Files
+```text
+dashboards/4_Model_Access.py               Page: cards, stacked bar, value table, trend lines, verification
+src/model_access.py                        Access classification, annual counts and shares, exports
+tests/test_model_access.py                 Rules, real-data recount, regeneration, dictionary and page checks
+data/dictionary/model_access.yml           Data dictionary for the two processed files
+data/processed/annual_model_access.csv     Models and shares by year and access type, 2003–2025
+data/processed/access_classification.csv   Every source accessibility value and the access type it maps to
+```
+### Data and Attribution
+
+Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models), Notable AI Models, local file `data/raw/ai_models/notable_ai_models.csv` (CC BY 4.0; 1,078 records; latest publication date 2026-09-30; snapshot added 22 October 2026). The page always reads the Notable file, whatever the shared default source is, and computes its charts from it directly; the processed files are exports of the same calculation.
+
+Each model is counted once in the year of `Publication date`. The access types are an explicit analytical grouping of the source field `Model accessibility`, not a classification supplied by Epoch AI:
+
+| Source value | Access type |
+| --- | --- |
+| Open weights (unrestricted), Open weights (non-commercial), Open weights (restricted use) | Open weights |
+| API access | API access |
+| Hosted access (no API), Limited access | Hosted or limited access |
+| Unreleased | Unreleased |
+| blank | Not recorded (counted, but excluded from shares) |
+
+API access and Hosted or limited access together are **developer-controlled**: outsiders can use the model, but the developer keeps the weights and sets the terms. Any source value not in this table stops processing, so a new category is reviewed rather than silently miscounted. This is how "Limited access" (3 models, all from 2026) was found and added. Shares use models with a recorded accessibility as the denominator, so the four access types add up to 100% in each year. The incomplete 2026 calendar year is excluded.
+
+### Design and Recording
+
+The main chart is a 100% stacked bar because the task is comparing the composition of access types across years. Open weights sits on the common baseline, so its share can be compared by length from year to year. One pie chart per year was rejected: eleven separate pies would have to be compared by angle, which is much less accurate than length along a shared baseline. Raw counts are not the default because recorded models per year grow from 16 to 107 between 2015 and 2025, which would hide the change in composition; a toggle shows counts. Each bar shows its sample size n, and years with fewer than 10 recorded models are faded. Segments too thin for a label inside the bar are listed in the table below the chart, so every value can be read without hovering. A line chart then compares open weights with developer-controlled access directly. The access colours follow the Okabe-Ito palette, designed to stay distinguishable with common colour-vision deficiencies.
+
+For a numerical demonstration, open **Verify a displayed number** and choose a year and access type: the page shows the calculation (e.g. 46 of 107 = 43% for API access in 2025) and every matching source record with its one-based `Source record` number in the unchanged CSV. The rows can be downloaded and compared with the raw file.
+
+### Regenerate and Check
+
+```bash
+python -m src.model_access
+python -m unittest tests.test_model_access -v
+```
+
+The 9 checks cover every source accessibility value and the rejection of unknown ones, counts that reconcile with the source and shares that sum to 100%, an independent recount of 2025 from the raw CSV, zero-filled years, the value table, a check that the committed processed files regenerate byte-for-byte, a check that the data dictionary documents every exported column, and a Streamlit AppTest that opens the page through `app.py`, checks the refresh line and the value table, and exercises the controls including an empty year range.
+
+### Limits
+
+Accessibility is the status Epoch AI recorded, not necessarily the status at release, and it is missing for 23% of models (251 of 1,078, 182 of them before 2015). Notable models are a curated selection, not every AI model. The counts show how models are made available, not how widely they are used, how capable they are, or the detailed licence terms.
+
+
 ## Base Model Dependence (Tuan Anh)
 
 **Sub-question:** Is AI development becoming dependent on base models from a few organisations?
@@ -252,9 +307,7 @@ data/processed/base_models/derived_share_by_year.csv   Share of each year's mode
 data/processed/base_models/owner_shares_by_year.csv    Each owner's share of derived models per year, 2015–2025
 data/processed/base_models/owner_ranking_2020_2025.csv Owners ranked by derived models, 2020–2025
 ```
-
-### Data and attribution
-
+### Data and Attribution
 Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models), All AI Models, local file `data/raw/ai_models/all_ai_models.csv` (CC BY 4.0; 3,628 records; latest publication date 2026-10-17; snapshot added to the repository on 22 October 2026). The page reads the All file rather than the shared Notable default because `Base model` is filled for 693 All records but only 141 Notable ones. The shared loader stops on the All file's 12 undated records, so `src/base_models.py` reads it with the same conventions (all fields as text, one-based `Source record`, `Year` from `Publication date`) and keeps undated records without a year. The raw file is not changed.
 
 | Step | Rule |
@@ -272,7 +325,7 @@ The owner chart is a 100% stacked bar because the task is part-to-whole over tim
 
 For a numerical demonstration, choose a year and owner under **Verify a displayed number**. Example: in 2025, 43 of 86 derived models were built on an Alibaba base model (50%). *K2 Think* (Source record 289, spreadsheet row 290) lists *Qwen2.5-32B* as its base model; Qwen2.5-32B's own record (1061, row 1062) has `Organization` = Alibaba.
 
-### Regenerate and check
+### Regenerate and Check
 
 ```bash
 python -m src.base_models

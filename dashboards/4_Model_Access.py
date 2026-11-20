@@ -12,9 +12,11 @@ from src.model_access import (
     MIN_RECORDED,
     NOT_RECORDED,
     NOTABLE_FILE,
+    SNAPSHOT_ADDED,
     add_access,
     annual_access,
     share_of,
+    values_table,
 )
 from src.preprocessing import FIRST_YEAR, LAST_YEAR, load_models
 
@@ -32,13 +34,12 @@ SOURCE_FIELDS = [
 
 
 @st.cache_data(show_spinner=False)
-def load_notable(modified_ns: int) -> pd.DataFrame:
+def load_notable(modified_ns: int) -> tuple[pd.DataFrame, dict]:
     """Always read the Notable file, whatever the shared default source is.
 
     The modification time is part of the cache key, so an updated file is reread.
     """
-    models, _ = load_models(NOTABLE_FILE)
-    return models
+    return load_models(NOTABLE_FILE)
 
 
 def pct(value: float | None) -> str:
@@ -160,10 +161,13 @@ def main() -> None:
     )
 
     try:
-        models = load_notable(NOTABLE_FILE.stat().st_mtime_ns)
+        models, quality = load_notable(NOTABLE_FILE.stat().st_mtime_ns)
     except (OSError, ValueError, pd.errors.ParserError) as exc:
         st.warning(f"The model data could not be loaded: {exc}")
         return
+    st.caption(f"Source: Epoch AI, Notable AI Models (CC BY 4.0) · last data refresh: snapshot added "
+               f"{SNAPSHOT_ADDED} · latest publication date in the file: {quality['latest_date']} · "
+               f"{quality['raw_rows']:,} records")
 
     c1, c2 = st.columns([3, 2])
     start, end = c1.slider(
@@ -209,8 +213,16 @@ def main() -> None:
         f"Each bar is one publication year; n = models with a recorded accessibility in that "
         f"year. Faded bars have fewer than {MIN_RECORDED} recorded models, so their shares are "
         "unstable. Models with no recorded accessibility are excluded from the bars and listed "
-        "in the verification table below."
+        "in the verification table below. Segments too thin for a label are listed in the "
+        "table that follows."
     )
+    st.markdown("**Every value in the chart**" + (
+        " (share of recorded models, with the number of models in brackets)" if as_share
+        else " (number of models)"))
+    values = values_table(annual, as_share)
+    # Tall enough for every year (35 px per row plus the header), so no row is hidden.
+    st.dataframe(values, hide_index=True, width="stretch", height=35 * (len(values) + 1) + 3,
+                 key="ma_values")
 
     st.subheader("Open weights against developer-controlled access")
     trend = trend_chart(annual)
@@ -248,6 +260,7 @@ def main() -> None:
         st.caption("Source record is the one-based data-record number in "
                    "data/raw/ai_models/notable_ai_models.csv (excluding the header).")
 
+    missing = int((add_access(models)["Access"] == NOT_RECORDED).sum())
     with st.expander("Source and methodology"):
         st.markdown(
             f"""
@@ -270,7 +283,8 @@ but the developer keeps the weights and sets the terms. Shares use models with a
 accessibility as the denominator.
 
 **What the data cannot show:** accessibility is the status Epoch AI recorded, not necessarily the
-status at release, and it is missing for about one in five models (mostly before {DEFAULT_START}).
+status at release, and it is missing for {missing / len(models):.0%} of models ({missing:,} of
+{len(models):,}, mostly before {DEFAULT_START}).
 Notable models are a curated selection, not every AI model. The counts say how models are made
 available, not how widely they are used, how capable they are, or which licences apply in detail.
 """

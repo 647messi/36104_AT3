@@ -1,0 +1,116 @@
+Year,Access,Count,Recorded,Share (%),Thin year
+2003,Open weights,0,0,,True
+2003,API access,0,0,,True
+2003,Hosted or limited access,0,0,,True
+2003,Unreleased,0,0,,True
+2003,Not recorded,4,0,,True
+2004,Open weights,0,0,,True
+2004,API access,0,0,,True
+2004,Hosted or limited access,0,0,,True
+2004,Unreleased,0,0,,True
+2004,Not recorded,2,0,,True
+2005,Open weights,0,1,0.0,True
+2005,API access,0,1,0.0,True
+2005,Hosted or limited access,0,1,0.0,True
+2005,Unreleased,1,1,100.0,True
+2005,Not recorded,2,1,,True
+2006,Open weights,0,2,0.0,True
+2006,API access,0,2,0.0,True
+2006,Hosted or limited access,0,2,0.0,True
+2006,Unreleased,2,2,100.0,True
+2006,Not recorded,7,2,,True
+2007,Open weights,0,0,,True
+2007,API access,0,0,,True
+2007,Hosted or limited access,0,0,,True
+2007,Unreleased,0,0,,True
+2007,Not recorded,6,0,,True
+2008,Open weights,1,1,100.0,True
+2008,API access,0,1,0.0,True
+2008,Hosted or limited access,0,1,0.0,True
+2008,Unreleased,0,1,0.0,True
+2008,Not recorded,5,1,,True
+2009,Open weights,0,2,0.0,True
+2009,API access,0,2,0.0,True
+2009,Hosted or limited access,0,2,0.0,True
+2009,Unreleased,2,2,100.0,True
+2009,Not recorded,11,2,,True
+2010,Open weights,0,3,0.0,True
+2010,API access,0,3,0.0,True
+2010,Hosted or limited access,0,3,0.0,True
+2010,Unreleased,3,3,100.0,True
+2010,Not recorded,7,3,,True
+2011,Open weights,0,4,0.0,True
+2011,API access,0,4,0.0,True
+2011,Hosted or limited access,0,4,0.0,True
+2011,Unreleased,4,4,100.0,True
+2011,Not recorded,7,4,,True
+2012,Open weights,0,6,0.0,True
+2012,API access,0,6,0.0,True
+2012,Hosted or limited access,0,6,0.0,True
+2012,Unreleased,6,6,100.0,True
+2012,Not recorded,7,6,,True
+2013,Open weights,0,2,0.0,True
+2013,API access,0,2,0.0,True
+2013,Hosted or limited access,0,2,0.0,True
+2013,Unreleased,2,2,100.0,True
+2013,Not recorded,17,2,,True
+2014,Open weights,1,6,16.7,True
+2014,API access,0,6,0.0,True
+2014,Hosted or limited access,0,6,0.0,True
+2014,Unreleased,5,6,83.3,True
+2014,Not recorded,27,6,,True
+2015,Open weights,5,16,31.2,False
+2015,API access,0,16,0.0,False
+2015,Hosted or limited access,0,16,0.0,False
+2015,Unreleased,11,16,68.8,False
+2015,Not recorded,13,16,,False
+2016,Open weights,11,30,36.7,False
+2016,API access,0,30,0.0,False
+2016,Hosted or limited access,1,30,3.3,False
+2016,Unreleased,18,30,60.0,False
+2016,Not recorded,19,30,,False
+2017,Open weights,1,26,3.8,False
+2017,API access,0,26,0.0,False
+2017,Hosted or limited access,1,26,3.8,False
+2017,Unreleased,24,26,92.3,False
+2017,Not recorded,29,26,,False
+2018,Open weights,9,30,30.0,False
+2018,API access,0,30,0.0,False
+2018,Hosted or limited access,1,30,3.3,False
+2018,Unreleased,20,30,66.7,False
+2018,Not recorded,7,30,,False
+2019,Open weights,31,68,45.6,False
+2019,API access,0,68,0.0,False
+2019,Hosted or limited access,0,68,0.0,False
+2019,Unreleased,37,68,54.4,False
+2019,Not recorded,0,68,,False
+2020,Open weights,28,50,56.0,False
+2020,API access,1,50,2.0,False
+2020,Hosted or limited access,0,50,0.0,False
+2020,Unreleased,21,50,42.0,False
+2020,Not recorded,0,50,,False
+2021,Open weights,41,79,51.9,False
+2021,API access,4,79,5.1,False
+2021,Hosted or limited access,5,79,6.3,False
+2021,Unreleased,29,79,36.7,False
+2021,Not recorded,0,79,,False
+2022,Open weights,41,90,45.6,False
+2022,API access,8,90,8.9,False
+2022,Hosted or limited access,5,90,5.6,False
+2022,Unreleased,36,90,40.0,False
+2022,Not recorded,1,90,,False
+2023,Open weights,59,119,49.6,False
+2023,API access,20,119,16.8,False
+2023,Hosted or limited access,4,119,3.4,False
+2023,Unreleased,36,119,30.3,False
+2023,Not recorded,0,119,,False
+2024,Open weights,39,98,39.8,False
+2024,API access,30,98,30.6,False
+2024,Hosted or limited access,13,98,13.3,False
+2024,Unreleased,16,98,16.3,False
+2024,Not recorded,0,98,,False
+2025,Open weights,45,107,42.1,False
+2025,API access,46,107,43.0,False
+2025,Hosted or limited access,9,107,8.4,False
+2025,Unreleased,7,107,6.5,False
+2025,Not recorded,0,107,,False
