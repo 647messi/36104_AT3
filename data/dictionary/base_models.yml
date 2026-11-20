@@ -1,0 +1,237 @@
+# Data dictionary: base model dependence page (dashboards/5_Base_Model_Dependence.py)
+# Owner: Tuan Anh. Format follows the Assignment 2 Part C dashboard.yml standard (sources + datasets).
+# Regenerate every processed file below with:  python -m src.base_models
+# Check that the committed files match a fresh run with:  python -m unittest tests.test_base_models
+# All processed files use the page's default settings: labs merged by parent company, a developer's
+# own base models excluded, publication years up to 2025 (2026 is an incomplete calendar year).
+
+sources:
+- id: epoch_all_models
+  publisher: Epoch AI
+  title: Data on AI models, All AI Models (all_ai_models.csv)
+  url: https://epoch.ai/data/ai-models
+  licence: Creative Commons Attribution 4.0 International (CC BY 4.0); cite Epoch AI, 'Data on AI models'
+  retrieved: '2026-10-22'
+  cadence: Updated continuously by Epoch AI; records can be added or revised retrospectively
+  status: snapshot
+  notes: Unchanged local copy at data/raw/ai_models/all_ai_models.csv (3,628 records, 57 columns,
+    SHA-256 271051c653d9a602afe4c96c4da83afb5a783095a416a984a5b76109be990aaf). The retrieved date is
+    the date the snapshot was committed to the repository (commit eded8d5); the exact download time was
+    not recorded. Publication dates run from 1950-07-02 to 2026-10-17; 12 records are undated and are
+    kept without a year. Base model is filled for 693 records. The All file is used rather than the
+    Notable file because Base model is filled for only 141 Notable records. Fields used - Model,
+    Organization, Publication date, Base model. Several Abstract values contain line breaks inside
+    quotes, so the file must be read with a CSV parser that respects quoted line breaks.
+
+datasets:
+- id: derived_models
+  source_ids:
+  - epoch_all_models
+  sample: data/raw/ai_models/all_ai_models.csv
+  processed_output: data/processed/base_models/derived_models.csv
+  format: csv
+  date_column: Publication date
+  primary_key:
+  - Source record
+  - Base owner
+  minimum_rows: 649
+  latest_observation: '2025-12-15'
+  time_coverage: Publication years 2015-2025 (no earlier record has a Base model owned by another developer)
+  transform: >-
+    src/base_models.py derived_models(). Read the raw CSV as text and number records from 1
+    (Source record). Keep records with a non-blank Base model; if several are listed, use the first.
+    Look up that name, exactly, in the Model column of the same file and take that record's
+    Organization as the base-model owner(s); unmatched names become 'Not in dataset'. Merge labs of
+    the same company with PARENT (e.g. Google, Google Brain, DeepMind -> Alphabet; Meta AI, Facebook AI
+    Research -> Meta; Qwen Team -> Alibaba). Drop records whose developer also owns the base model.
+    A base model with k owners gives each owner a credit of 1/k (rounded to 4 decimal places).
+  columns:
+    Source record:
+      type: integer
+      role: identifier
+      nullable: false
+      unit: one-based data-record number in all_ai_models.csv (excluding the header)
+      minimum: 179
+      maximum: 3248
+    Model:
+      type: string
+      role: identifier
+      nullable: false
+      unit: name of the derived model, as in the source
+    Organization:
+      type: string
+      role: dimension
+      nullable: false
+      unit: developer(s) of the derived model, comma-separated, as in the source
+    Publication date:
+      type: date
+      role: time
+      nullable: false
+      unit: YYYY-MM-DD, as in the source
+    Year:
+      type: integer
+      role: time
+      nullable: false
+      unit: calendar year of Publication date
+      minimum: 2015
+      maximum: 2025
+    Base model:
+      type: string
+      role: dimension
+      nullable: false
+      unit: Base model field exactly as in the source (may list several)
+    Base used:
+      type: string
+      role: dimension
+      nullable: false
+      unit: the first listed base model, used for the owner lookup
+    Base owner:
+      type: string
+      role: dimension
+      nullable: false
+      unit: organisation that owns the base model, after parent-company merging; 'Not in dataset' if unmatched (4 rows)
+    Credit:
+      type: number
+      role: measure
+      nullable: false
+      unit: share of one derived model credited to this owner (1/k), 0-1
+      minimum: 0.027
+      maximum: 1.0
+
+- id: derived_share_by_year
+  source_ids:
+  - epoch_all_models
+  sample: data/raw/ai_models/all_ai_models.csv
+  processed_output: data/processed/base_models/derived_share_by_year.csv
+  format: csv
+  date_column: Year
+  primary_key:
+  - Year
+  minimum_rows: 11
+  latest_observation: '2025-12-31'
+  time_coverage: Publication years 2015-2025; the app's default view is 2020-2025
+  transform: >-
+    src/base_models.py derived_share_by_year(). For each year: All models = dated records published
+    that year; Derived models = distinct records in derived_models that year; Share = Derived models
+    divided by All models x 100, rounded to 1 decimal place. Shown in the app's line chart.
+  columns:
+    Year:
+      type: integer
+      role: time
+      nullable: false
+      unit: calendar year of Publication date
+      minimum: 2015
+      maximum: 2025
+    All models:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of records published in the year (share denominator)
+      minimum: 44
+      maximum: 938
+    Derived models:
+      type: integer
+      role: measure
+      nullable: false
+      unit: count of records built on another developer's base model (share numerator)
+      minimum: 0
+      maximum: 168
+    Share:
+      type: number
+      role: measure
+      nullable: false
+      unit: percent of the year's models (0-100), 1 decimal place
+      minimum: 0.0
+      maximum: 23.2
+
+- id: owner_shares_by_year
+  source_ids:
+  - epoch_all_models
+  sample: data/raw/ai_models/all_ai_models.csv
+  processed_output: data/processed/base_models/owner_shares_by_year.csv
+  format: csv
+  date_column: Year
+  primary_key:
+  - Year
+  - Owner
+  minimum_rows: 70
+  latest_observation: '2025-12-31'
+  time_coverage: Publication years 2015-2025 (the app recomputes this for the selected range)
+  transform: >-
+    src/base_models.py owner_shares(). Take the five owners with the most credit over the whole
+    period; group every other owner as 'Other' and keep 'Not in dataset' separate. For each year, sum
+    the credit per owner (Models) and over all owners (Total); Share = Models divided by Total x 100.
+    Every year sums to 100%. Models and Total rounded to 2 decimal places, Share to 1. Shown in the
+    app's 100% stacked bar and its value table.
+  columns:
+    Year:
+      type: integer
+      role: time
+      nullable: false
+      unit: calendar year of Publication date
+      minimum: 2015
+      maximum: 2025
+    Owner:
+      type: string
+      role: dimension
+      nullable: false
+      unit: base-model owner after merging, or a group
+      allowed_values: [Meta, Alibaba, Alphabet, Mistral AI, OpenAI, Other, Not in dataset]
+    Models:
+      type: number
+      role: measure
+      nullable: false
+      unit: credit-weighted count of derived models built on this owner's base models
+      minimum: 0.0
+      maximum: 63.25
+    Total:
+      type: number
+      role: measure
+      nullable: false
+      unit: credit-weighted count of all derived models in the year (share denominator)
+      minimum: 2.0
+      maximum: 168.0
+    Share:
+      type: number
+      role: measure
+      nullable: false
+      unit: percent of the year's derived models (0-100), 1 decimal place
+      minimum: 0.0
+      maximum: 100.0
+
+- id: owner_ranking_2020_2025
+  source_ids:
+  - epoch_all_models
+  sample: data/raw/ai_models/all_ai_models.csv
+  processed_output: data/processed/base_models/owner_ranking_2020_2025.csv
+  format: csv
+  primary_key:
+  - Base owner
+  minimum_rows: 50
+  latest_observation: '2025-12-31'
+  time_coverage: Publication years 2020-2025 combined (the app recomputes this for the selected range)
+  transform: >-
+    src/base_models.py owner_ranking(). Over 2020-2025: sum the credit per base-model owner, sort
+    descending and keep the top 50; Share = owner's credit divided by all derived-model credit in the
+    period x 100. Models rounded to 2 decimal places, Share to 1. The app shows the top 12 as a
+    sorted horizontal bar.
+  columns:
+    Base owner:
+      type: string
+      role: identifier
+      nullable: false
+      unit: base-model owner after merging
+    Models:
+      type: number
+      role: measure
+      nullable: false
+      unit: credit-weighted count of derived models, 2020-2025
+      minimum: 0.67
+      maximum: 147.5
+    Share:
+      type: number
+      role: measure
+      nullable: false
+      unit: percent of all derived models in 2020-2025 (0-100), 1 decimal place
+      minimum: 0.2
+      maximum: 35.4

@@ -249,8 +249,14 @@ def main() -> None:
         "Start with the All dataset, then examine whether the pattern also holds among Notable models."
     )
     st.caption(
-        "Audience: technology policymakers and AI researchers. "
+        "Persona: a technology policy analyst preparing a briefing on whether AI model "
+        "development is becoming concentrated and whether it warrants policy attention. "
         "Main sample: the local Epoch AI All AI Models dataset. All refers to Epoch's recorded models."
+    )
+    st.caption(
+        "Source: Epoch AI, All AI Models (main analysis) and Notable AI Models (comparison), "
+        "CC BY 4.0 · Last data refresh: local snapshots added to the repository on 22 October 2026. "
+        "Download dates were not recorded."
     )
     st.markdown(
         """

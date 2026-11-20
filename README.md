@@ -1,8 +1,6 @@
 # The Rise of AI: group story and student dashboards
 
-The default **Story** page introduces the working group research question: **Is AI model development becoming dominated by a few organisations?** It connects sector participation, relative sector shares, sample selection and organisational concentration as distinct analytical questions. The intended audience is technology policymakers and AI researchers. Future chapters are labelled as planned until their analyses are available.
-
-The separate **Industry vs Academia** dashboard asks: **Has AI model development recorded by Epoch AI shifted from academia towards industry?** The main analysis uses the **All AI Models** CSV. Chart 1 compares annual Industry, Academia and industry–academia Collaboration counts over 2003–2025. Chart 2 shows the shares of all five sector categories in a 100% stacked area chart. Below these, a separate **Notable comparison** examines whether the sector pattern changes with sample selection. A horizontal year-range slider stays at the top while scrolling and controls all three charts. The menu links to each section and the collapsed verification panel.
+The default **Story** page introduces the working group research question: **Is AI model development becoming dominated by a few organisations?** It connects sector participation, relative sector shares, sample selection and organisational concentration as distinct analytical questions. The persona is a technology policy analyst preparing a briefing on whether AI model development is becoming concentrated, who needs to decide whether that concentration warrants policy attention.
 
 ## Run
 
@@ -23,35 +21,81 @@ The app computes directly from the raw CSVs, so processed exports never become s
 
 ## Working together
 
+The project now contains four individual dashboards. Each member maintains their dashboard and topic-specific processing code; `app.py` and `views/story.py` provide the shared navigation and narrative.
+
 ```text
-app.py                              Shared entry point and automatic navigation
-views/story.py                      Shared home page: question and narrative
+app.py                               Shared entry point and automatic navigation
+views/story.py                       Shared home page: question and narrative
 dashboards/
-  1_Industry_vs_Academia.py          Existing individual dashboard
-templates/student_page.py           Starter for another student's page
+  1_Industry_vs_Academia.py           Siqi Liu: sector counts, shares and sample comparison
+  2_Organisational_Concentration.py   Organisational concentration
+  4_Model_Access.py                  Model access
+  5_Base_Model_Dependence.py         Base model dependence
 src/
-  data_access.py                    Cached source access for all pages
-  preprocessing.py                  Existing sector classification and aggregation
-data/raw/ai_models/                  Unchanged source snapshots
-data/processed/                      Reproducible exports
-notebooks/verify_sector_share.ipynb   Raw-record numerical trace for recording
-tests/                              Data and navigation checks
+  data_access.py                     Cached loader available to shared and individual pages
+  preprocessing.py                   Sector classification, aggregation and quality reports
+  concentration.py                   Organisation mapping, concentration and rankings
+  model_access.py                    Model access processing
+  base_models.py                     Base model matching and owner attribution
+data/raw/ai_models/                   Unchanged source snapshots
+data/processed/                       Reproducible exports
+data/dictionary/                      Topic-specific data dictionaries
+tests/                               Data and navigation checks
+  verify_sector_share.ipynb           Siqi Liu's independent numerical trace
+DISCLOSURE.md                         Each member's data and AI disclosure
+PROVENANCE.md                         AI uses and verification methods
+templates/student_page.py             Starter for an additional dashboard
 ```
 
-Each student maintains their own page and any topic-specific processing module. To add a contribution:
+When updating a contribution:
 
-1. Copy `templates/student_page.py` to `dashboards/2_Your_Topic.py`, using a unique number and descriptive name. Use two-digit prefixes such as `01_` if the group will have ten or more pages; filenames are sorted alphabetically.
-2. Replace the starter content with the individual question, charts, narrative, source and numerical verification. Put any substantial data processing in a separate module such as `src/your_topic.py`.
-3. Run `streamlit run app.py`. New Python files in `dashboards/` automatically appear in the navigation; underscores become spaces and the numeric prefix is omitted from the label. Files beginning with `_` are ignored. Page filenames must produce unique URLs.
-4. Once the contribution is ready, add its evidence and a page link to the shared story. Coordinate edits to `views/story.py`, shared source definitions and `requirements.txt` with the group.
+1. Keep topic-specific changes in the relevant dashboard, processing module and tests. Coordinate changes to `app.py`, `views/story.py`, shared loading and classification rules, or `requirements.txt` with the group.
+2. Run `streamlit run app.py` and check that the page opens through the shared navigation and that its filters, charts and verification controls work.
+3. Run the relevant checks in `tests/`. If processing rules change, regenerate the affected exports and update the methodology and verification evidence.
+4. Update the shared story when the contribution's findings change, and keep the member's entries in `DISCLOSURE.md` and `PROVENANCE.md` consistent with the work performed.
 
-Keep helper files outside `dashboards/`, since its visible Python files become navigation entries. The template stays outside that directory until copied. The custom `dashboards/` directory lets the shared entry point own navigation without invoking Streamlit's separate legacy `pages/` mechanism. Page files should render their content without calling `st.set_page_config` or `st.navigation`; `app.py` owns those settings. Do not add code to run another Streamlit server from an individual page.
+For an additional dashboard, copy `templates/student_page.py` into `dashboards/` with an unused numeric prefix and descriptive name, such as `6_Your_Topic.py`. Python files in this folder are discovered automatically; filenames are sorted alphabetically, underscores become spaces and the numeric prefix is omitted from the navigation label. Use two-digit prefixes consistently if the group grows to ten or more pages. Files beginning with `_` are ignored, and page filenames must produce unique URLs.
+
+Keep helper files outside `dashboards/`, since its visible Python files become navigation entries. Page files should render their content without calling `st.set_page_config` or `st.navigation`; `app.py` owns those settings. Run the application through the shared entry point.
 
 Pages can use `from src.data_access import load_source` to obtain the **All** source records and quality report. Pass `NOTABLE_SOURCE` from `src.preprocessing` to `load_source` for the separate Notable file. This helper preserves all original CSV fields and adds `Source record`, nullable `Year` and the sector module's `Sector` classification. Undated records remain available for audit but have no assigned year. If a teammate needs different attribution rules, add a separate field or processing module and document the distinction. The cache refreshes when the source file's modification time changes. Avoid editing the raw data or changing another student's classification implicitly.
 
 The home page provides the narrative and links to evidence. Detailed filters, charts, record tables and downloads belong on each contribution's dashboard. Adding a page does not automatically imply that its findings have been incorporated into the shared story.
 
-## Data and attribution
+## Project checks
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The checks cover classification boundaries, zero-filled years, rejected duplicate records, count reconciliation and an independent raw-CSV recomputation. Streamlit's AppTest checks that Story opens first, that navigation can reach the dashboard and return home, and that the dashboard supports the full range, changed ranges, a single year and verification selections without a browser. An isolated fixture also verifies that an additional student page is discovered without changing the entry point.
+
+## Industry vs. Academia (Siqi Liu)
+
+**Sub-question:** Has AI model development recorded by Epoch AI shifted from academia towards industry?
+
+**User story:** As a technology policy analyst, I want to compare the number and share of AI models developed by industry, academia and their collaborations over time, so that I can assess how sector participation is changing.
+
+The **Industry vs Academia** dashboard uses the **All AI Models** CSV for its main analysis. Chart 1 compares annual Industry, Academia and industry–academia Collaboration counts over 2003–2025. Chart 2 shows the shares of all five sector categories in a 100% stacked area chart. Below these, a separate **Notable comparison** examines whether the sector pattern changes with sample selection. A horizontal year-range slider stays at the top while scrolling and controls all three charts. The menu links to each section and the collapsed verification panel.
+
+**Walkthrough:** Open **Industry vs Academia** in the sidebar → compare annual model counts → inspect sector shares → compare All and Notable → expand **Verify a displayed number** to trace a value back to the source records. Change the year-range slider to inspect other periods.
+
+**Key findings (2003–2025):** In All, Industry-only models increase from 1 of 10 recorded models (10.0%) in 2003 to 479 of 578 (82.9%) in 2025. Academia-only counts rise from 9 to 15 over the same endpoints, so a lower relative share does not imply fewer models. In 2025, Industry's share is 91.6% in Notable (98 of 107), compared with 82.9% in All, a gap of 8.7 percentage points. These figures support a shift towards industry within Epoch's recorded models; sample selection affects the measured share. The 2003 sample is small, and the comparison does not establish a cause or measure concentration among individual organisations.
+
+**Disclosure and verification:** Data and AI disclosures are documented in [DISCLOSURE.md](DISCLOSURE.md#siqi-liu--industry-vs-academia), with AI uses and verification methods recorded in [PROVENANCE.md](PROVENANCE.md#siqi-liu--industry-vs-academia). The numerical trace is in [tests/verify_sector_share.ipynb](tests/verify_sector_share.ipynb), with automated data checks in [tests/test_preprocessing.py](tests/test_preprocessing.py).
+
+### Files
+
+```text
+dashboards/1_Industry_vs_Academia.py   Dashboard: counts, shares, comparison and verification
+src/preprocessing.py                 Sector classification, aggregation and exports
+tests/test_preprocessing.py          Classification and independent numerical checks
+tests/verify_sector_share.ipynb      Notebook recount of All / 2025 / Industry
+data/processed/                     All exports and All-versus-Notable comparison
+data/processed/notable/              Separate Notable exports
+```
+
+### Data and attribution
 
 Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models). The main analysis reads `data/raw/ai_models/all_ai_models.csv`; the comparison reads `data/raw/ai_models/notable_ai_models.csv`. See the source's accompanying README for its citation and Creative Commons Attribution licence. The download dates were not recorded. The two quality reports record each source hash, dimensions, date coverage and quality checks; they identify the exact local snapshots without establishing their download dates.
 
@@ -73,7 +117,7 @@ Other and Unknown are excluded from Chart 1's three lines and included in Chart 
 
 Missing publication dates are explicitly excluded from annual analysis, without assigning a year or shifting source record numbers. The original rows remain accessible in the loader, the app's methodology panel and `excluded_undated_models.csv`. In the current All snapshot, 12 records are undated. Nonempty dates that cannot be parsed, missing model names and duplicate model/date pairs stop processing for review. No raw records are silently deduplicated or changed.
 
-## Interpreting growth
+### Interpreting growth
 
 Chart 1 displays annual counts. The accompanying comparison reports start-year and end-year counts, their net difference, and that difference divided by elapsed years. It is an endpoint comparison, not a regression slope, compound growth rate or statistical significance test. A single selected year has no growth comparison. Changing the time window can change the conclusion, so inspect the full trajectory as well as the endpoints.
 
@@ -83,13 +127,13 @@ Percentages are calculated before plotting. The share chart does not use Plotly'
 
 The source's Academia category should not be equated with universities alone. These observations describe Epoch's recorded models, not all AI research, model quality, academic influence or concentration among companies. Coverage, collection priorities and retrospective additions can affect trends.
 
-## Notable comparison
+### Notable comparison
 
 The lower section compares Industry's annual share in All with its annual share in Notable. Each line has its **own** sample's annual denominator, including Other and Unknown; the overlapping samples are never added together. A table compares the five sectors in the selected end year, showing counts, shares and the gap `Notable share − All share` in percentage points. The interpretation compares the directions of the endpoint changes only when both samples have defined endpoint shares. The shared filter and CSV download support checking other windows and years.
 
 This examines how measured sector participation changes with sample selection. A higher Industry share in Notable does not establish which inclusion criterion caused the difference or imply a higher share of research quality, capability or organisational concentration.
 
-## Design and recording
+### Design and recording
 
 The line chart supports temporal comparison across 23 years. A grouped bar chart was considered but would require 69 bars at the default range, making trajectories harder to follow. Shared axes, a zero baseline, integer counts, distinct colours and line patterns support comparison. Year filtering and hover help inspect changes; legend clicks hide or restore a series.
 
@@ -97,15 +141,29 @@ The 100% stacked area chart supports comparison of sector composition through ti
 
 For a numerical demonstration, expand **Verify a displayed number**, which is collapsed by default. Choose **All or Notable**, then a year and sector. The app identifies the exact source file and displays the count and share formula. The first tab shows numerator records; the second shows **all source records in that sample's annual denominator**, including Other and Unknown. Both preserve relevant unchanged source fields, raw sector tags, notability criteria, original reference and a one-based source data-record number (excluding the header; not a physical file line). Download the matching rows and compare them with the indicated CSV. Annual downloads include counts, totals and shares for the selected sample. Switching verification samples leaves the All main analysis unchanged.
 
-For a notebook demonstration, open [notebooks/verify_sector_share.ipynb](notebooks/verify_sector_share.ipynb), select the project's `.venv` Python kernel and run all cells. Install `ipykernel` in a fresh environment with `python -m pip install ipykernel` if needed. The default point is All / 2025 / Industry. It reads the original CSV with Python's `csv` reader, shows the year and sector records, calculates the full annual denominator and share, then checks the results and exact source-record membership against the dashboard's processing functions. `DATASET`, `YEAR` and `SECTOR` can be changed at the top. The saved outputs provide a preview; rerun the relevant cells on screen for the live trace. Chart 2 hover uses one decimal place and the Verify panel uses two, so their displayed percentages can differ in rounding.
+For a notebook demonstration, open [tests/verify_sector_share.ipynb](tests/verify_sector_share.ipynb), select the project's `.venv` Python kernel and run all cells. Install `ipykernel` in a fresh environment with `python -m pip install ipykernel` if needed. The notebook verifies All / 2025 / Industry. It reads the original CSV with Python's `csv` reader, calculates the annual denominator and Industry count independently, and checks both counts and the share rounded to one decimal place against the dashboard's processing functions. The saved outputs provide a preview; rerun the cells on screen for the live trace. Chart 2 hover uses one decimal place and the Verify panel uses two, so their displayed percentages can differ in rounding.
 
-## Checks
+### Regenerate and check
+
+From the project root, with the project's Python environment activated:
 
 ```bash
-python -m unittest discover -s tests -v
+python -m src.preprocessing
+python -m unittest discover -s tests -p 'test_preprocessing.py' -v
+python -m unittest discover -s tests -p 'test_app.py' -v
 ```
 
-The checks cover classification boundaries, zero-filled years, rejected duplicate records, count reconciliation and an independent raw-CSV recomputation. Streamlit's AppTest checks that Story opens first, that navigation can reach the dashboard and return home, and that the dashboard supports the full range, changed ranges, a single year and verification selections without a browser. An isolated fixture also verifies that an additional student page is discovered without changing the entry point.
+The regeneration command reads the unchanged All and Notable snapshots and writes their separate counts, shares, classified records, undated-record exclusions and quality reports, plus `data/processed/all_vs_notable.csv`. The dashboard calculates from the raw snapshots rather than these exports.
+
+The preprocessing checks cover sector classification, duplicate rejection, auditable undated records, zero counts, undefined shares in empty years, and separate sample denominators. An independent pass through the raw CSV checks annual sector counts. The app checks cover shared navigation, year filtering, single-year displays and verification selections. For a manual numerical trace, run all cells in [tests/verify_sector_share.ipynb](tests/verify_sector_share.ipynb): it independently recalculates All / 2025 / Industry and compares the count, denominator and rounded share with the dashboard calculations.
+
+### Limits
+
+Epoch AI's database is a collected sample, not a comprehensive or statistically representative census of worldwide AI development. Coverage, collection priorities and retrospective additions can affect the apparent trends. Notable applies additional selection criteria, so differences from All describe sample selection rather than proving differences in research quality or capability.
+
+Each model receives one sector category based on its recorded organisation tags. Industry-only and Academia-only counts exclude industry–academia collaborations, which are shown separately; Academia should not be interpreted as universities alone. Missing sector tags remain Unknown, and undated records cannot contribute to annual comparisons. The analysis excludes years before 2003 and the incomplete 2026 calendar year.
+
+Counts and shares measure recorded model output, not compute, investment, model capability or concentration among individual organisations. Small annual samples can produce large percentage changes. Endpoint comparisons depend on the selected years and do not establish a causal relationship or statistical significance; a declining share can occur alongside a rising model count.
 
 ## Organisational Concentration (Vaishnavi)
 
@@ -181,7 +239,6 @@ Counts models, not compute or capability. Epoch AI's notable list is a curated s
 **Answer on screen:** from 2015 to 2025, unreleased models fell from 69% to 7% of models with a recorded accessibility, developer-controlled access (API, hosted or limited) rose from 0% to 51%, and open weights rose from 31% to 42%. Access has widened, but mostly on the developer's terms.
 
 ### Files
-
 ```text
 dashboards/4_Model_Access.py               Page: cards, stacked bar, value table, trend lines, verification
 src/model_access.py                        Access classification, annual counts and shares, exports
@@ -190,8 +247,7 @@ data/dictionary/model_access.yml           Data dictionary for the two processed
 data/processed/annual_model_access.csv     Models and shares by year and access type, 2003–2025
 data/processed/access_classification.csv   Every source accessibility value and the access type it maps to
 ```
-
-### Data and attribution
+### Data and Attribution
 
 Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models), Notable AI Models, local file `data/raw/ai_models/notable_ai_models.csv` (CC BY 4.0; 1,078 records; latest publication date 2026-09-30; snapshot added 22 October 2026). The page always reads the Notable file, whatever the shared default source is, and computes its charts from it directly; the processed files are exports of the same calculation.
 
@@ -207,13 +263,13 @@ Each model is counted once in the year of `Publication date`. The access types a
 
 API access and Hosted or limited access together are **developer-controlled**: outsiders can use the model, but the developer keeps the weights and sets the terms. Any source value not in this table stops processing, so a new category is reviewed rather than silently miscounted. This is how "Limited access" (3 models, all from 2026) was found and added. Shares use models with a recorded accessibility as the denominator, so the four access types add up to 100% in each year. The incomplete 2026 calendar year is excluded.
 
-### Design and recording
+### Design and Recording
 
 The main chart is a 100% stacked bar because the task is comparing the composition of access types across years. Open weights sits on the common baseline, so its share can be compared by length from year to year. One pie chart per year was rejected: eleven separate pies would have to be compared by angle, which is much less accurate than length along a shared baseline. Raw counts are not the default because recorded models per year grow from 16 to 107 between 2015 and 2025, which would hide the change in composition; a toggle shows counts. Each bar shows its sample size n, and years with fewer than 10 recorded models are faded. Segments too thin for a label inside the bar are listed in the table below the chart, so every value can be read without hovering. A line chart then compares open weights with developer-controlled access directly. The access colours follow the Okabe-Ito palette, designed to stay distinguishable with common colour-vision deficiencies.
 
 For a numerical demonstration, open **Verify a displayed number** and choose a year and access type: the page shows the calculation (e.g. 46 of 107 = 43% for API access in 2025) and every matching source record with its one-based `Source record` number in the unchanged CSV. The rows can be downloaded and compared with the raw file.
 
-### Regenerate and check
+### Regenerate and Check
 
 ```bash
 python -m src.model_access
@@ -225,3 +281,59 @@ The 9 checks cover every source accessibility value and the rejection of unknown
 ### Limits
 
 Accessibility is the status Epoch AI recorded, not necessarily the status at release, and it is missing for 23% of models (251 of 1,078, 182 of them before 2015). Notable models are a curated selection, not every AI model. The counts show how models are made available, not how widely they are used, how capable they are, or the detailed licence terms.
+
+
+## Base Model Dependence (Tuan Anh)
+
+**Sub-question:** Is AI development becoming dependent on base models from a few organisations?
+
+**User story:** As a technology policy analyst, I want to see how many new AI models are built on another organisation's base model, and whose base models they are, so that I can judge whether a few organisations control the foundations other developers rely on.
+
+**Walkthrough:** open **Base Model Dependence** in the sidebar → read the line chart (share of new models built on another developer's model: 3% in 2020, 23% in 2023, 15% in 2025) → read the 100% stacked bar and its value table to see who they depend on each year (Meta 52% in 2023, Alibaba 50% in 2025) → read the ranking (Meta, Alibaba and Alphabet own the base models behind 64% of derived models in 2020–2025) → move the **Publication years** slider or switch the toggles and the charts, answer and ranking update.
+
+**Answer on screen:** dependence on other developers' base models rose sharply from 2023 and is concentrated in a few organisations, but the leading owner keeps changing (Alphabet → OpenAI → Meta → Alibaba), so no single organisation holds this position.
+
+It complements the Model Access page: that page asks how each model is released; this one asks whose models other developers build on.
+
+### Files
+
+```text
+dashboards/5_Base_Model_Dependence.py             Page: three charts, value table, answer, limits, verification
+src/base_models.py                                All-file loader, base-model owner matching, shares, exports
+tests/test_base_models.py                         Loading, counting rules, raw-CSV recount, regeneration and page checks
+data/dictionary/base_models.yml                   Data dictionary for the four processed files
+data/processed/base_models/derived_models.csv     Every model built on another developer's base model, with its owner
+data/processed/base_models/derived_share_by_year.csv   Share of each year's models that are derived, 2015–2025
+data/processed/base_models/owner_shares_by_year.csv    Each owner's share of derived models per year, 2015–2025
+data/processed/base_models/owner_ranking_2020_2025.csv Owners ranked by derived models, 2020–2025
+```
+### Data and Attribution
+Source: Epoch AI, [Data on AI models](https://epoch.ai/data/ai-models), All AI Models, local file `data/raw/ai_models/all_ai_models.csv` (CC BY 4.0; 3,628 records; latest publication date 2026-10-17; snapshot added to the repository on 22 October 2026). The page reads the All file rather than the shared Notable default because `Base model` is filled for 693 All records but only 141 Notable ones. The shared loader stops on the All file's 12 undated records, so `src/base_models.py` reads it with the same conventions (all fields as text, one-based `Source record`, `Year` from `Publication date`) and keeps undated records without a year. The raw file is not changed.
+
+| Step | Rule |
+| --- | --- |
+| Derived model | A record whose `Base model` is not blank; if several are listed, the first is used |
+| Owner | The `Organization` of the base model's own record in the same file, matched on its exact name; unmatched names are shown as "Not in dataset" (4 records) |
+| Credit | A base model with k owners gives each owner 1/k, so credits add up to the number of derived models |
+| Own base models | Excluded by default: Meta fine-tuning its own Llama is not dependence on someone else. A toggle includes them |
+| Parent company | On by default: Google, Google Brain and DeepMind become Alphabet; Meta AI and Facebook AI Research become Meta; Qwen Team becomes Alibaba (`PARENT` in `src/base_models.py`) |
+| Exclude | The incomplete 2026 calendar year |
+
+### Design and recording
+
+The owner chart is a 100% stacked bar because the task is part-to-whole over time. A stacked bar of raw counts was rejected: derived models rise from 16 in 2021 to 168 in 2024, so counts would mainly show growth and hide the shift in who the field depends on. Each bar's total is shown as n above it, and a value table below gives every share. The line chart shows change over time in one measure, and the sorted horizontal bar ranks owners. Colours follow the Okabe–Ito palette, which stays distinguishable with common colour vision deficiencies.
+
+For a numerical demonstration, choose a year and owner under **Verify a displayed number**. Example: in 2025, 43 of 86 derived models were built on an Alibaba base model (50%). *K2 Think* (Source record 289, spreadsheet row 290) lists *Qwen2.5-32B* as its base model; Qwen2.5-32B's own record (1061, row 1062) has `Organization` = Alibaba.
+
+### Regenerate and Check
+
+```bash
+python -m src.base_models
+python -m unittest tests.test_base_models -v
+```
+
+The 14 checks cover loading every record once with unchanged fields, shares that sum to 100% each year, credits that add up, the default exclusion of own base models, an independent recount of the 2025 Alibaba figure from the raw CSV using the `csv` module, byte-identical regeneration of the four processed files, and the page opening through `app.py` with working toggles, a single-year range and the verification table.
+
+### Limits
+
+Epoch AI records only the models it has catalogued, and `Base model` is filled only when the source states it, so dependence is a lower bound. Dependence here means being built on a model; it does not measure licence terms, usage or market share. Name matching is exact, so a base model recorded under a different name is shown as "Not in dataset". Years before 2023 have few derived models, so their shares are unstable.

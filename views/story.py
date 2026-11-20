@@ -145,10 +145,25 @@ def main() -> None:
     st.subheader("4. Ask whether development is concentrated")
     st.markdown(
         "Industry includes many organisations. Even if industry produces most recorded "
-        "models, that does not establish whether a few companies account for most of them. "
-        "The planned Top 3 / Top 5 organisational analysis addresses that separate question."
+        "models, that does not establish whether a few companies account for most of them."
     )
-    st.caption("Planned chapter: organisational concentration. Its findings are still to be added.")
+    st.markdown(
+        "In Epoch AI's **Notable** models, the three organisations with the most models each "
+        "year were involved in **36%** of models in 2014, a peak of **60%** in 2020, **32%** in "
+        "2024 and **44%** in 2025 (share of models with a recorded organisation). Over "
+        "2014–2025, Google appears on 194 of 814 models (24%), followed by Meta (11%) and "
+        "OpenAI (8%). Development is concentrated, but on this measure it is not steadily "
+        "becoming more so."
+    )
+    st.caption(
+        "Counts models, not computing power: training compute is missing for over half of "
+        "recent notable models, mostly the largest closed ones."
+    )
+    st.page_link(
+        "dashboards/2_Organisational_Concentration.py",
+        label="Explore organisational concentration",
+        icon=":material/arrow_forward:",
+    )
 
     st.divider()
     with st.expander("What this story measures"):
